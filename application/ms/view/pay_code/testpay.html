@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="text-center qrcode_img">
+
+</div>
+
+</body>
+{include file="common/common_js" /}
+<script type="text/javascript" src="__MS__/js/jquery.qrcode.min.js"></script>
+<script>
+    var url = "{$url}";
+    //生成二维码
+    function getQrcode(url,qrcode_with=300,qrcode_height=300){
+        $(".qrcode_img").qrcode({
+            render: "canvas",
+            width:300,
+            height:300,
+            text: decodeURIComponent(url)
+        });
+        $('#image').hide();
+        $('.qrcode_img').find('canvas').css({'width':qrcode_with,'height':qrcode_height});
+    }
+    getQrcode(encodeURIComponent(url));
+</script>
+</html>

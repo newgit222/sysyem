@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>后台管理 - 审核商户信息</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css" media="all">
+</head>
+<body>
+
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form" lay-filter="layuiadmin-form-useradmin" id="layuiadmin-form-useradmin" style="padding: 20px 30px 0 0;">
+            <!--产品列表-->
+            <table class="layui-table" lay-even="" lay-skin="line">
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>名称</th>
+                    <th>代号名字（接口标识）</th>
+                    <th>最小接单金额</th>
+                    <th>最大接单金额</th>
+                    <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name='channelList' id="vo"}
+                <tr>
+                    <input type="text" name="r[{$vo.id}][ms_id]" hidden value="{$Request.get.merchant_id}">
+                    <input type="text" name="r[{$vo.id}][pay_code_id]" hidden value="{$vo.id}">
+                    <td>{$vo.id}</td>
+                    <td>{$vo.name}</td>
+                    <td>{$vo.code}</td>
+                    <td>
+                        <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="r[{$vo.id}][min_money]" placeholder="" autocomplete="off" class="layui-input" value="{$vo.min_money}">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="layui-input-inline" style="width: 100px;">
+                            <input type="text" name="r[{$vo.id}][max_money]" placeholder="" autocomplete="off" class="layui-input" value="{$vo.max_money}">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="layui-input-inline">
+                            <select name="r[{$vo.id}][status]" lay-filter="aihao">
+                                <option value="0" {if ($vo['isSwitch'] == 0)} selected {/if}>关闭</option>
+                                <option value="1" {if ($vo['isSwitch'] == 1)} selected {/if}>开启</option>n>
+                            </select>
+                        </div>
+                    </td>
+
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+            <div class="layui-form-item layui-hide">
+                <input type="button" lay-submit lay-filter="app-ms-channel-submit" id="app-ms-channel-submit" value="确认">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="__ADMIN__/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__ADMIN__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'upload'], function(){
+        var $ = layui.$
+            ,form = layui.form
+            ,upload = layui.upload ;
+    });
+
+
+</script>
+</body>
+</html>

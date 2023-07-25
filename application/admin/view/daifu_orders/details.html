@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>狂神科技|狂神聚合支付 - 后台管理 - 订单详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form" lay-filter="layuiadmin-form-useradmin" id="layuiadmin-form-useradmin" style="padding: 20px 30px 0 0;">
+            <table class="layui-table" lay-skin="line">
+                <input type="text" name="order_id" value="{$order.id}" hidden>
+                <tr><td>商户编号：</td><td>{$order.uid}</td></tr>
+                <tr><td>平台订单号：</td><td><strong class="text-success">{$order.out_trade_no}</strong></td></tr>
+                <tr><td>跑分平台订单号：</td><td><strong class="text-success">{$order.out_trade_no}</strong></td></tr>
+                <tr><td>交易金额：</td><td><strong class="text-danger">{$order.amount}</strong></td></tr>
+                <tr><td>银行名称：</td><td><strong class="text-danger">{$order.bank_name}</strong></td></tr>
+                <tr><td>银行卡号：</td><td><strong class="text-danger">{$order.bank_number}</strong></td></tr>
+                <tr><td>真实姓名：</td><td><strong class="text-danger">{$order.bank_owner}</strong></td></tr>
+                <tr><td>手  续  费：</td><td><strong class="text-danger">{$order.service_charge + $order.single_service_charge}</strong></td></tr>
+                <tr><td>码       商：</td><td><strong class="text-danger">{$order.username}</strong></td></tr>
+                <tr><td>商户回调地址：</td><td><strong class="text-danger">{$order.notify_url}</strong></td></tr>
+                <tr><td>冲正状态：</td><td>
+                    {if condition="$order.chongzhen == 0"}<strong class="text-danger">正常</strong>
+                    {else/}<strong class="text-danger">已冲正</strong>
+                    {/if}
+                </td></tr>
+                <tr><td>是否中转：</td><td>
+                    {if condition="$order.is_to_channel == 1"}<strong class="text-danger">否</strong>
+                    {else/}<strong class="text-danger" >是</strong>
+                    {/if}
+                </td></tr>
+                <tr><td>中转平台：</td><td><strong class="text-danger">{$order.daifu_transfer_name}</strong></td></tr>
+
+                <tr><td>订单状态{$order.status}：</td><td>
+                    {switch $order.status}
+                    {case 0}<button class="layui-btn layui-btn-primary layui-btn-xs">处理失败</button>{/case}
+                    {case 1}<button class="layui-btn layui-btn-danger layui-btn-xs">待处理</button>{/case}
+                    {case 2}<button class="layui-btn layui-btn-success layui-btn-xs">已完成</button>{/case}
+                    {case 3}<button class="layui-btn layui-btn-normal layui-btn-xs">处理中</button>{/case}
+                    {/switch}
+                </td></tr>
+
+                <tr><td>回调状态：</td><td>
+                    {if condition="$order.notify_result == 'SUCCESS'"}
+                    <button class="layui-btn layui-btn layui-btn-xs">回调成功</button>
+                    {elseif condition="$order.status == 2 && $order.notify_result != 'SUCCESS'"/}
+                    <button class="layui-btn layui-btn-danger layui-btn-xs">回调失败</button>
+                    {elseif condition="$order.status == 3"/}
+                    <button class="layui-btn layui-btn-huse layui-btn-xs">处理中</button>
+                    {else/}
+                    <button class="layui-btn layui-btn-warm layui-btn-xs">待处理</button>
+                    {/if}
+                </td></tr>
+                {if condition="$order.status == 0"}
+                <tr><td>回调结果：</td><td><strong class="text-danger">{$order.notify_result}</strong></td></tr>
+                <tr><td>回调记录：</td><td><strong class="text-danger">{:str_replace(',,,,,', "<br/>", $order.notify_content)}</strong></td></tr>
+                <tr><td style="width: 100px">回调请求参数：</td><td style="max-width: 82%;word-break: break-all;white-space: pre-wrap;"><strong class="text-danger">{$order.notify_params}</strong></td></tr>
+                {/if}
+
+                {if condition="$order.status == 2"}
+                <tr><td>回调结果：</td><td><strong class="text-danger">{$order.notify_result}</strong></td></tr>
+                <tr><td>回调记录：</td><td><strong class="text-danger">{:str_replace(',,,,,', "<br/>", $order.notify_content)}</strong></td></tr>
+                <tr><td style="width: 100px">回调请求参数：</td><td style="max-width: 82%;word-break: break-all;white-space: pre-wrap;"><strong class="text-danger">{$order.notify_params}</strong></td></tr>
+                {/if}
+
+
+
+
+
+            </table>
+            <div class="layui-form-item layui-hide">
+                <input type="button" lay-submit lay-filter="app-order-details" id="app-order-details" value="确认">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="__ADMIN__/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__ADMIN__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'upload'], function(){
+        var $ = layui.$
+            ,form = layui.form
+            ,upload = layui.upload ;
+
+    });
+</script>
+</body>
+</html>

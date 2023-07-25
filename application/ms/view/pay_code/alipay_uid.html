@@ -1,0 +1,327 @@
+{include file="common/common_header" /}
+{include file="common/common_menu" /}
+<link rel="stylesheet" href="__MS__/layui/css/layui.css">
+<!--页面主要内容-->
+<main class="lyear-layout-content">
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-toolbar clearfix">
+
+            <form class="form-inline pull-right " method="get" action="#!" role="form">
+
+              <div class="form-group">
+                <label class="sr-only" for="account">收款账号</label>
+                <input class="form-control" type="text" id="account_name" name="account_name" value=""  placeholder="请输入收款账号">
+              </div>
+
+
+              <div class="form-group">
+                <label class="sr-only" >搜索</label>
+                <button class="btn btn-primary form-control" type="submit">搜索</button>
+              </div>
+
+              <div class="form-group">
+                <label class="sr-only" >重置</label>
+                <a href="{:url('User/ewm')}" class="btn btn-danger form-control" type="reset">重置</a>
+              </div>
+            </form>
+            <div class="toolbar-btn-action">
+              <a class="btn btn-primary m-r-5" href="{:url('alipayuidadd')}"><i class="mdi mdi-plus"></i> 新增</a>
+            </div>
+
+            <div>
+              <br>
+              <p>收款账户: <span style="color: red">{$codeSum}</span>个，账户开启总数: <span style="color: red">{$codeOnSum}</span>个</p>
+
+
+            </div>
+          </div>
+
+          <div class="card-body">
+
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th>类型</th>
+                  <th>账号ID</th>
+                  <th>支付宝账号</th>
+                  <th style="width: 10%">支付宝昵称</th>
+                  <th style="width: 10%">支付宝UID</th>
+                  <th>其他信息</th>
+                  <th>收款状态</th>
+                  <th>添加时间</th>
+                  <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+              {volist name="res" id="vo"}
+                <tr>
+                  <td style="font-size:10px;">
+                    {$vo.code_type|getCodeName}
+                  </td>
+                  <td style="font-size:10px;">
+                    {$vo.id}
+                  </td>
+                  <td style="font-size:18px; color: red ">{$vo.bank_name}</td>
+
+                  <td style=" width: 10%; color: red ">
+                    {$vo.account_name}
+                  </td>
+                  <td style=" width: 10%; color: red ">
+                    {$vo.account_number}
+                  </td>
+                  <td style=" width: 10%; color: red ">
+                    日限额：{$vo.limit__total} </br>
+                    单笔最小：{$vo.min_money} </br>
+                    单笔最大：{$vo.max_money}
+                  </td>
+                  <td style="font-size:10px;">
+                    <div class="layui-form">
+
+                      <input type="checkbox" id="editStatus" name="editStatus" lay-filter="editStatus" coid={$vo.id} lay-skin="switch" code_status={$vo.status} lay-text="开|关" {$vo.status == 1 ? 'checked':''} />
+
+                    </div>
+<!--                    {if condition="$vo['status'] == 0"}-->
+<!--                    <span style="color:red">未激活</span>-->
+<!--                    {if condition="$vo['forbidden_reason']"}-->
+<!--                    <span style="font-size: 6px;color: #999" >({$vo['forbidden_reason']})</span>-->
+<!--                    {/if}-->
+<!--                    {else /}-->
+<!--                    <span style="color:green">激活</span>-->
+<!--                    {/if}-->
+                  </td>
+                  <td style="font-size:10px;">{:date("Y-m-d H:i:s",$vo.create_time)}</td>
+                  <td style="font-size:10px;">
+                    <a   class="btn btn-xs btn-success"  href="{:url('PayOrder/lists',['code_id'=>$vo['id']])}" >查看订单</a>
+
+                    <a   class="btn btn-xs btn-success" onclick="edirxiane('{$vo['id']}', {$vo['limit__total']}, {$vo['max_money']}, {$vo['min_money']});" >修改限额</a>
+
+
+
+                    <a   class="btn btn-xs btn-success" onclick="testpay('{$vo['id']}');" >测试</a>
+
+                    <a   class="btn btn-xs btn-danger"  href="{:url('PayCode/del',['id'=>$vo['id']])}" >删除</a>
+                  </td>
+
+
+                </tr>
+          {/volist}
+
+
+                </tbody>
+              </table>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+<!--End 页面主要内容-->
+</div>
+</div>
+
+{include file="common/common_js" /}
+<script type="text/javascript" src="__MS__/layui//layui.js"></script>
+<script>
+  //Demo
+  layui.use('form', function(){
+    var form = layui.form;
+    //监听提交
+    form.on('switch(editStatus)',function (data) {
+      //获取所需属性值
+      var status = data.elem.attributes['code_status'].nodeValue;
+      var coid = data.elem.attributes['coid'].nodeValue;
+        // console.log(coid)
+      $.ajax({
+        url:'disactiveCode?coid=' + coid,
+        method:'post',
+        data:{status:status},
+        success:function(res){
+          if(res.code == 1){
+            layer.msg('操作成功',{icon:1,time:1500})
+            // table.reload('app-uid-list');
+
+          }else{
+            window.location.reload();
+          }
+        }
+      })
+    })
+
+
+  });
+</script>
+
+<script type="text/javascript">
+  $(function(){
+    $('.search-bar .dropdown-menu a').click(function() {
+      var field = $(this).data('field') || '';
+      $('#search-field').val(field);
+      $('#search-btn').html($(this).text() + ' <span class="caret"></span>');
+    });
+  });
+  function  openpic(pic, width=400, height=400) {
+    $.alert({
+      title: '查看二维码',
+      content: '<div id="qrImg" style="max-width: '+width+'px;max-height: '+height+'px;" ></div> <script type="text/javascript">getQrcode("'+pic+'","100%","100%"); ',
+      buttons: {
+        confirm: {
+          text: '确认',
+          btnClass: 'btn-primary',
+          action: function(){
+            // $.alert('你点击了确认!');
+          }
+        },
+
+      }
+    });
+
+  }
+
+
+  //生成二维码
+  function getQrcode(url,qrcode_with,qrcode_height){
+    $("#qrImg").qrcode({
+      render: "canvas",
+      width:300,
+      height:300,
+      text: decodeURIComponent(url)
+    });
+    $('#img-load').hide();
+    $('#qrImg').find('canvas').css({'width':qrcode_with,'height':qrcode_height});
+  }
+
+
+
+
+  /**
+   * 修改限额
+   * @param code_id
+   * @param width
+   * @param height
+   */
+  function edirxiane(code_id, limit_total, max_money, min_money) {
+    jconfirm.defaults = {
+      cancelButton: '取消',
+    };
+
+      $.confirm({
+
+        title: '',
+        content: '' +
+                '<form action="" class="formName">' +
+                '<div class="form-group">' +
+                '<label>日限额</label>' +
+                '<input type="text" placeholder="日限额" class="name form-control" id="limit__total" name="limit__total" value="'+limit_total+'"/>' +
+                '<label>单笔最大</label>' +
+                '：<input type="text" placeholder="单笔最大" class="name form-control" id="max_money" name="max_money" value="'+max_money+'"/>' +
+                '<label>单笔最小</label>' +
+                '<input type="text" placeholder="单笔最小" class="name form-control" id="min_money" name="min_money" value="'+min_money+'"/>' +
+                '</div>' +
+                '</form>',
+        buttons: {
+          formSubmit: {
+            text: '提交',
+            btnClass: 'btn-blue',
+            action: function () {
+              var limit__total = this.$content.find('#limit__total').val();
+              var max_money = this.$content.find('#max_money').val();
+              var min_money = this.$content.find('#min_money').val();
+              var sendRes = "{:url('editXiane')}?id=" + code_id + "&limit__total=" + limit__total+ "&max_money=" + max_money+ "&min_money=" + min_money;
+              ajaxUrl(sendRes)
+            }
+          },
+          '取消': function () {
+            //close
+
+          },
+        },
+        onContentReady: function () {
+          // bind to events
+          var jc = this;
+          this.$content.find('form').on('submit', function (e) {
+            // if the user submits the form by pressing enter in the field.
+            e.preventDefault();
+            jc.$formSubmit.trigger('click'); // reference the button and click it
+          });
+        }
+      });
+
+
+
+  }
+
+
+
+</script>
+<script>
+
+  layui.use('layer', function(){
+    var layer = layui.layer;
+    window.testpay = function (code_id){
+      jconfirm.defaults = {
+        cancelButton: '取消',
+      };
+
+
+      $.confirm({
+
+        title: '',
+        content: '' +
+                '<form action="" class="formName">' +
+                '<div class="form-group">' +
+                '<label>请输入测试金额</label>' +
+                '<input type="number" placeholder="测试金额" min="1" class="amount form-control" name="amount" />' +
+                '</div>' +
+                '</form>',
+        buttons: {
+          formSubmit: {
+            text: '提交',
+            btnClass: 'btn-blue',
+            action: function () {
+              var amount = this.$content.find('.amount').val();
+              // var sendRes = "{:url('testpay')}?id=" + code_id + "&amount=" + amount;
+              // ajaxUrl(sendRes)
+              layer.open({
+                type:2,
+                content:"{:url('testpay')}?code_id=" + code_id + "&amount=" + amount,
+                title:'测试uid',
+                maxmin: !0, area: ['16.5%', '40%'],
+
+              })
+            }
+          },
+          '取消': function () {
+            //close
+
+          },
+        },
+        onContentReady: function () {
+          // bind to events
+          var jc = this;
+          this.$content.find('form').on('submit', function (e) {
+            // if the user submits the form by pressing enter in the field.
+            e.preventDefault();
+            jc.$formSubmit.trigger('click'); // reference the button and click it
+          });
+        }
+      });
+
+    }
+
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="/public/static/member/lib/layui-v2.6.3/css/layui.css" media="all">
+<!--<link rel="stylesheet" href="/public/static/member/css/layuimini.css?v=2.0.4.2" media="all">-->
+<!--<link rel="stylesheet" href="/public/static/member/css/themes/default.css" media="all">-->
+<link rel="stylesheet" href="/public/static/member/css/public.css" media="all">
+<link rel="stylesheet" href="/public/static/member/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+<script src="/public/static/ms/js/jquery.min.js"></script>
+<style>
+    .layui-layer-setwin .layui-layer-close2 {
+        position: absolute;
+        right: -40px !important;
+        top: -49px !important;
+        width: 300px;
+        height: 30px;
+        margin-left: 0;
+        background-position: -149px -31px;
+        *right: -18px;
+        _display: none;
+    }
+</style>
+<script type="text/javascript">
+    function isMobile() {
+        // var userAgentInfo = navigator.userAgent;
+        //
+        // var mobileAgents = ["Android", "iPhone", "SymbianOS", "Windows Phone"];
+        //
+        // var mobile_flag = false;
+        //
+        // //根据userAgent判断是否是手机
+        // for (var v = 0; v < mobileAgents.length; v++) {
+        //     if (userAgentInfo.indexOf(mobileAgents[v]) > 0) {
+        //         mobile_flag = true;
+        //         break;
+        //     }
+        // }
+        // var screen_width = window.screen.width;
+        // var screen_height = window.screen.height;
+        //
+        // //根据屏幕分辨率判断是否是手机
+        // if (screen_width > 325 && screen_height < 750) {
+        //     mobile_flag = true;
+        // }
+        //
+        // return mobile_flag;
+        // 使用正则表达式匹配常见的移动设备的User-Agent字符串
+        const mobileRegex = /Android|webOS|iPhone|BlackBerry|IEMobile|Opera Mini/i;
+
+        // 获取当前浏览器的User-Agent字符串
+        const userAgent = navigator.userAgent;
+
+        // 使用正则表达式测试User-Agent字符串是否匹配移动设备的模式
+        return mobileRegex.test(userAgent);
+    }
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>

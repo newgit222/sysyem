@@ -1,0 +1,191 @@
+
+vi /usr/local/php/etc/php.ini
+php.ini 去掉　proc_open,proc_get_status,exec函数
+
+nohup ./shell.sh &
+
+
+mysqldump -u root -p www_kzk_com > www_kzk_com.sql
+
+scp命令复制本地数据到服务器
+scp /home/www_zf_com.sql root@103.85.23.159:/home/
+scp -r /home/wwwroot/www.paofen.com/ root@103.85.23.159:/home/wwwroot/
+
+use www_pf_com;
+source /home/www_pf_com.sql;
+
+git config core.filemode false
+
+UPDATE  cm_admin SET username = 'admin' WHERE id ='1';
+UPDATE  cm_admin SET password = 'd31f4b567830340af5ec399e4e4da8d6' WHERE id ='1';
+
+ssh-keygen -o 
+
+vi /usr/local/mysql/my.cnf
+去掉严格模式
+
+//每天凌晨定时清除相关数据表数据
+#!/bin/bash
+*/1 * * * * curl http://webkio76useryh.kuhahangsb78687.com/api/pay/Echaka
+*/1 * * * * curl http://web240kscloudapi627pay.koubofeixingq.com/index/cron/daifu_expired_return
+*/1 * * * * cd /home/wwwroot/www.zf.com && ./shouhu.sh
+*/1 * * * * cd /home && ./shell5.sh
+0 0 */3 * *  cd  /home/wwwroot/www.zf.com && php think cleardata
+0 0 * * *  curl http://127.0.0.1/index/cron/notify
+0 0 * * *  curl http://127.0.0.1/index/cron/notify
+0 0 * * * curl http://43.225.47.46/index/cron/clearEwmPayCodeTodayData
+
+*/1 * * * * curl http://webluonauser001gogo.koubofeixingq.com/index/cron/closeOrders
+记得重启crontab服务
+git status |grep modified|wc -l
+ls |wc -l
+*/1 * * * * cd /home && ./shell5.sh
+*/1 * * * * curl http://web240kscloudapi627pay.koubofeixingq.com/api/pay/kuke
+
+<<<<<<< HEAD
+
+curl -X POST -d "amount=100&bank_code=农业银行&bank_number=62258454554545&bank_owner=雪糕&body=21&mchid=67&notify_url=http://ta.sanfang.com/test/daifunotify.php&out_trade_no=2305291947449195&subject=c&sign=2ff30ce90e49c77e0cda081f4562c28a" http://aaadddbbb.shenxingzhifu.com/api/dfpay/pay
+
+
+=======
+>>>>>>> 4f73033bfaa0a110a515d2ef1e10346a6f1d420e
+ //代付回调  项目根目录执行
+ 需要将daifu.sh  shell3.sh权限设置为755
+./daifu.sh
+
+ location ^~ /test/ { deny all; }
+        location ^~ /data/ { deny all; }
+        location ^~ /application/ { deny all; }
+        location ^~ /thinkphp/ { deny all; }
+        location ^~ /vendor/ { deny all; }
+location ^~ /.git/ { deny all; }
+        include enable-php-pathinfo.conf;
+       location /public {
+    location ~ .*\.(php)?$ {
+    deny all;
+    }
+}
+
+0 0 * * * curl http://68.178.165.20:783/index/cron/clearEwmPayCodeTodayData
+
+
+location ^~ /test/ { deny all; }
+        location ^~ /data/ { deny all; }
+        location ^~ /application/ { deny all; }
+        location ^~ /thinkphp/ { deny all; }
+        location ^~ /vendor/ { deny all; }
+location ^~ /.git/ { deny all; }
+       location /public {
+    location ~ .*\.(php)?$ {
+    deny all;
+    }
+}
+    location ~ ^/(\.user.ini|\.htaccess|\.git|\.env|\.svn|\.project|LICENSE|README.md|zhuyi)
+    {
+        return 404;
+    }
+
+
+php think queue:listen --queue AutoOrderNotify
+php think queue:listen --queue AutoDfOrderNotify
+<<<<<<< HEAD
+=======
+
+cd /home/wwwroot/www.zf.com
+php think queue:listen --queue AutoOrderNotify
+
+cd /home/wwwroot/www.zf.com
+php think queue:listen --queue AutoDfOrderNotify
+<<<<<<< HEAD
+>>>>>>> a0c47e63fe5bb5d9d1d073366ef91307245ce167
+=======
+>>>>>>> 4f73033bfaa0a110a515d2ef1e10346a6f1d420e
+
+
+#!/bin/bash
+while [ true ]; do
+/bin/sleep 1
+curl "http://webalifyccapipay.xiaoxianwebapi.xyz/index/cron/orderCallback"
+done
+nohup ./shouhu.sh &
+
+
+
+#!/bin/sh
+ps -fe|grep  callback|grep -v grep
+if [ $? -ne 0 ]
+then
+ nohup ./callback.sh &
+else
+echo "runing....."
+fi
+
+
+
+
+
+#!/bin/bash
+
+ALLOWED_IPS=("148.72.244.40" "68.178.164.76")
+latest_login=$(last -n 1 | head -n 1)
+ip_address=$(echo $latest_login | awk '{print $3}')
+
+ip_allowed=false
+for allowed_ip in "${ALLOWED_IPS[@]}"; do
+  if [[ "$ip_address" == "$allowed_ip" ]]; then
+    ip_allowed=true
+    break
+  fi
+done
+
+if ! $ip_allowed; then
+  iptables -A INPUT -s $ip_address -j DROP
+  echo "Blocked unauthorized access from IP $ip_address"
+  echo "$(date) Unauthorized access from IP $ip_address" >> /usr/unauthorized_ips.log
+fi
+
+
+
+
+
+#!/bin/bash
+
+# 检测目标目录
+DELETE_DIR="/home/wwwroot/www.zhongzhuan.com/"
+TARGET_DIR="/home/wwwroot/www.zhongzhuan.com"
+# 进入目标目录
+cd $TARGET_DIR
+
+# 获取git status结果
+GIT_STATUS=$(git status)
+
+# 提取修改文件的数量
+MODIFIED_COUNT=$(echo "$GIT_STATUS" | grep -c 'modified')
+
+# 检查修改文件数量是否大于5
+if [ $MODIFIED_COUNT -gt 0 ]; then
+    # 删除目标目录
+    rm -rf $DELETE_DIR
+
+    # 停止LNMP
+    lnmp stop
+else
+    echo "文件变化数量未超过0，无需删除目录和停止LNMP。"
+fi
+
+
+sudo sh create.sh
+chattr -i .user.ini
+
+echo '停机维护';die;
+
+INSERT INTO `cm_config` VALUES (9999,'sys_enable_recharge','系统启用充值',3,0,0,'1','1:开启,0:不开启','',1,1666212478,1666212478,1)
+
+(crontab -l ; echo "*/1 * * * *  /home/shouhu.sh") | crontab -
+(crontab -l ; echo "0 0 * * * curl http://${SERVER_IP}/index/cron/clearEwmPayCodeTodayData") | crontab -
+(crontab -l ; echo "*/1 * * * * curl http://${SERVER_IP}/index/cron/closeOrders") | crontab -
+(crontab -l ; echo "*/1 * * * * curl http://${SERVER_IP}/index/cron/notify") | crontab -
+(crontab -l ; echo "*/1 * * * * curl http://${SERVER_IP}/index/cron/daifu_expired_return") | crontab -
+(crontab -l ; echo "0 0 * * * curl http://${SERVER_IP}/index/cron/clearData") | crontab -
+
+*/1 * * * * curl http://apihanghanxingkong.hengaofangfuwuo95.com/index/cron/notify

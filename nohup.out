@@ -1,0 +1,2394 @@
+
+
+                                                                                           
+  [RuntimeException]                                                                       
+  The Process class relies on proc_open, which is not available on your PHP installation.  
+                                                                                           
+
+
+
+
+                                                                                           
+  [RuntimeException]                                                                       
+  The Process class relies on proc_open, which is not available on your PHP installation.  
+                                                                                           
+
+
+The Order Job ID 16 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 16 will be availabe again after 2 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: {"error":"Undefined variable: order_status"}
+<warn>The Order Job ID 16 has been deleted and retried more than 5 times!</warn>
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 17 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 38 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 38 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 53 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 53 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 55 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 58 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 59 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 74 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 78 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 82 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 85 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 89 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 90 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 92 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 113 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 115 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 124 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 127 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 131 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 129 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 135 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 137 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 140 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 143 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 146 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 147 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 150 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 155 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 160 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 164 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 168 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 169 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 172 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 173 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 177 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 176 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 181 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 183 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 184 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 185 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 187 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 190 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 192 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 199 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 197 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 220 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 221 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 225 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 229 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 230 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 240 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 246 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 253 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 252 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 256 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 258 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 259 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 255 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 262 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 267 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 271 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 280 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 283 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 287 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 291 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 288 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 294 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 298 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 306 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 309 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 310 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 314 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 319 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 321 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 326 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 331 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 341 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 343 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 344 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 346 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 350 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 357 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 359 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 360 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 363 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 364 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 365 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 370 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 420 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 423 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 423 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 424 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 424 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 425 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 426 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 427 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 427 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 432 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 438 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 438 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 447 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 446 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 448 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 449 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 454 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 459 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 459 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 462 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 465 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 468 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 471 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 475 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 476 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 481 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 485 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 486 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 489 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 493 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 501 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 510 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 519 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 517 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 521 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 526 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 530 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 535 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 540 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 543 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 547 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 549 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 562 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 562 will be availabe again after 2 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: <html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+<warn>The Order Job ID 562 has been deleted and retried more than 5 times!</warn>
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 564 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 569 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 567 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 571 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 574 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 577 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 579 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 580 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 591 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 596 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 600 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 603 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 606 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 607 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 604 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 614 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 620 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 628 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 629 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 630 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 638 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 639 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 640 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 642 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 645 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 650 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 678 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 679 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 682 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 686 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 695 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 692 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 701 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 704 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 713 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 709 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 707 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 722 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 721 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 724 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 727 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 737 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 734 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 738 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 733 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 743 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 747 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 755 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 775 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 774 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 777 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 780 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 785 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 789 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 799 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 798 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 805 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 807 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 820 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 821 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 836 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 838 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 850 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 854 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 862 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 859 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 863 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 879 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 884 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 883 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 881 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 888 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 894 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 893 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 898 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 897 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 912 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 915 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 918 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 922 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 920 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 924 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 926 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 927 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 928 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 931 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 930 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 936 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 939 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 938 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 941 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 942 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 947 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 956 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 960 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 963 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 970 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 966 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 974 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 983 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 995 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 999 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 985 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 996 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1004 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1007 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1005 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1010 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1025 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1027 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1033 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1023 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1040 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1041 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1058 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1055 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1067 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1072 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1078 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1086 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1089 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1093 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1084 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1098 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1105 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1124 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1135 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1138 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1140 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1145 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1148 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1146 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1151 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1160 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1168 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1167 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1165 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1178 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1179 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1180 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1187 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1191 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1195 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1201 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1206 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1205 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1204 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1214 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1222 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1224 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1230 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1228 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1229 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1232 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1247 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1248 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1244 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1242 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1249 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1258 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1259 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1261 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1263 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1260 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1270 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1268 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1315 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1317 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1319 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1325 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1326 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1324 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1331 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1333 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1355 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1375 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1374 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1382 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1388 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1372 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1383 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1385 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1390 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1430 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1435 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1437 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1436 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1469 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1463 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1491 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1502 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1514 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1517 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1516 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1520 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1528 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1539 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1542 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1572 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1575 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1573 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1588 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1605 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1607 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1628 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1632 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1637 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1642 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1644 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1646 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1654 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1655 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1663 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1665 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1669 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1670 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1672 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1681 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1682 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1710 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1714 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1715 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1716 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1723 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1725 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1730 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1729 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1733 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1755 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1760 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1763 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1765 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1773 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1778 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1781 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1779 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1785 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1787 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1793 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1812 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1815 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1814 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1818 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1821 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1819 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1822 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1817 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1820 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1824 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1827 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1823 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1826 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1825 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1828 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1829 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1837 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1840 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1866 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1868 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1874 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1875 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1876 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1877 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1878 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1879 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1888 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1892 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1894 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1896 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1899 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1901 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1900 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1902 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1907 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1910 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1913 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1919 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1918 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1920 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1922 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1924 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1923 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1926 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1928 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1930 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1931 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1936 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1935 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1940 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1937 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1944 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1943 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1946 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1950 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1952 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1958 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1964 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 1997 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2049 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2052 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2053 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2054 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2059 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2061 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2064 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2068 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2071 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2077 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2088 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2117 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2119 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2120 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2123 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2128 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2125 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2133 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2131 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2132 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2141 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2145 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2146 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2148 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2149 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2150 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2151 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2156 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2157 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2167 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2171 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2188 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2194 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2192 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2190 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2211 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2216 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2224 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2222 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2233 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2235 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2245 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2247 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2217 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2259 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2262 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2264 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2268 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2270 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2287 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2295 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2301 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2310 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2321 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2328 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2325 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2332 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2333 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2331 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2334 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2335 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2339 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2340 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2341 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2342 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2347 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2345 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2346 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2365 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2362 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2366 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2369 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2374 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2376 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2379 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2383 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2386 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2387 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2384 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2391 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2395 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2396 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2390 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2392 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2400 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2407 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2405 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2410 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2414 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2421 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2419 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2423 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2424 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2426 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2415 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2430 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2411 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2434 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2433 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2437 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2444 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2442 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2441 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2445 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2440 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2447 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2450 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2451 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2456 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2457 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2462 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2465 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2473 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2476 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2479 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2480 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2485 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2492 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2497 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2498 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2505 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2503 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2506 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2509 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2515 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2514 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2508 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2523 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2520 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2525 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2528 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2535 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2549 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2544 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2546 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2552 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2553 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2551 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2554 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2556 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2561 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2559 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2548 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2569 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2568 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2570 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2580 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2585 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+PHP Fatal error:  Uncaught Error: Class 'think\Log' not found in /home/wwwroot/www.zf.com/thinkphp/library/think/Error.php:93
+Stack trace:
+#0 [internal function]: think\Error::appShutdown()
+#1 {main}
+  thrown in /home/wwwroot/www.zf.com/thinkphp/library/think/Error.php on line 93
+PHP Fatal error:  Uncaught Error: Class 'think\Log' not found in /home/wwwroot/abcd/thinkphp/library/think/Error.php:93
+Stack trace:
+#0 [internal function]: think\Error::appShutdown()
+#1 {main}
+  thrown in /home/wwwroot/abcd/thinkphp/library/think/Error.php on line 93
+response code: 200 response contents: SUCCESS
+The Order Job ID 2596 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2605 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2606 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2621 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2619 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2625 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2627 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2629 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2633 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2634 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2636 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2640 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 2643 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 2643 will be availabe again after 2 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: Illegal sources. (45.207.58.203)
+<warn>The Order Job ID 2643 has been deleted and retried more than 5 times!</warn>
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2649 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2653 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2655 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2642 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2656 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 2658 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2657 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2658 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2662 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2663 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2667 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2666 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2665 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2668 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2670 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2671 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2675 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2676 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2679 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 2681 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2681 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2688 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2692 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2695 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2698 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2702 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2703 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 2707 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2707 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 2711 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2711 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2712 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2713 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2716 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2721 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2727 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2787 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2792 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 2790 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2790 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2796 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2798 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2800 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2802 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2808 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2844 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2855 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2873 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2872 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2876 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2881 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2878 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2887 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2890 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2889 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2892 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2888 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2895 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2901 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2909 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2917 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2921 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2927 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2928 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2934 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2940 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2942 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2948 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2956 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2952 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2962 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2961 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 2963 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2963 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2968 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2971 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2973 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2974 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2976 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2978 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2980 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2984 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2991 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 2998 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3008 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3009 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3013 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3015 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3016 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 3012 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3012 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3020 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3022 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3028 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3037 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3036 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3043 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3044 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3045 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3057 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3064 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3059 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3065 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3073 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3078 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3077 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3074 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3083 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3080 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3086 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3092 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 3088 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3097 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3088 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3098 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3095 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3104 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3113 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3126 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3135 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3150 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3154 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3156 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3175 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3172 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3174 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3173 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3196 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 3182 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3182 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 3185 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3185 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3208 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3212 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3216 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3231 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3234 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3242 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3247 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3251 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3268 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 3257 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3274 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3257 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3273 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3279 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3264 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3284 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3281 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3296 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3298 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3295 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 3303 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3303 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3309 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3315 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3314 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3317 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3325 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3335 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3351 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3354 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3372 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3382 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3387 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3386 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3374 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3393 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3402 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3403 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3406 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3405 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+The Order Job ID 3416 will be availabe again after 1 s.
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3416 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3450 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3457 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3469 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3472 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3480 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3485 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3507 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3508 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3505 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3514 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3521 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3522 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3502 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3531 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3542 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3546 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+response code: 200 response contents: SUCCESS
+The Order Job ID 3549 has been done and deleted
+Processed: app\common\service\worker\AutoOrderNotify
+PHP Fatal error:  Uncaught Error: Class 'think\Log' not found in /home/wwwroot/www.zf.com/thinkphp/library/think/Error.php:93
+Stack trace:
+#0 [internal function]: think\Error::appShutdown()
+#1 {main}
+  thrown in /home/wwwroot/www.zf.com/thinkphp/library/think/Error.php on line 93
+PHP Fatal error:  Uncaught Error: Class 'think\Log' not found in /home/wwwroot/abcd/thinkphp/library/think/Error.php:93
+Stack trace:
+#0 [internal function]: think\Error::appShutdown()
+#1 {main}
+  thrown in /home/wwwroot/abcd/thinkphp/library/think/Error.php on line 93
+PHP Fatal error:  Uncaught Error: Class 'think\Log' not found in /home/wwwroot/www.zf.com/thinkphp/library/think/Error.php:93
+Stack trace:
+#0 [internal function]: think\Error::appShutdown()
+#1 {main}
+  thrown in /home/wwwroot/www.zf.com/thinkphp/library/think/Error.php on line 93
+PHP Fatal error:  Uncaught Error: Class 'think\Log' not found in /home/wwwroot/abcd/thinkphp/library/think/Error.php:93
+Stack trace:
+#0 [internal function]: think\Error::appShutdown()
+#1 {main}
+  thrown in /home/wwwroot/abcd/thinkphp/library/think/Error.php on line 93

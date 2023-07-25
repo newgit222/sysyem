@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{$site.seo_title|default="狂神聚合支付"} - 后台管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__ADMIN__/style/admin.css" media="all">
+    <style>
+        /*手机*/
+        @media screen and (max-width:600px){
+            .usernameDis {
+                display: none;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .layui-nav-item {
+                flex: 1;
+                text-align: center;
+            }
+            #ceshi_shouyintai{
+                display: block;
+            }
+
+            .layui-layout-admin .layui-header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <!-- 头部区域 -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item layadmin-flexible" lay-unselect>
+                    <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                        <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="/" target="_blank" title="前台">
+                        <i class="layui-icon layui-icon-website"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" layadmin-event="refresh" title="刷新">
+                        <i class="layui-icon layui-icon-refresh-3"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <input type="text" placeholder="全局搜索..." autocomplete="off" class="layui-input layui-input-search" layadmin-event="serach" lay-action="/search.html?keywords=">
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
+
+
+                <li class="layui-nav-item" lay-unselect id="ceshi_shouyintai">
+                    <a href="javascript:void(0);" style="background: green;border-radius: 20px;color: #fff;" onclick="testpay()">
+                       测试收银台
+                    </a>
+                </li>
+
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" layadmin-event="fullscreen">
+                        <i class="layui-icon layui-icon-screen-full"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" layadmin-event="theme">
+                        <i class="layui-icon layui-icon-theme"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" layadmin-event="clearcache">
+                        <i class="layui-icon layui-icon-fonts-clear"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:void(0);">
+                        <span style="color: red">  余额 ：{$admin_money}</span>
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a style="margin-top: 13px;color: white" class="layui-btn layui-btn-succss layui-btn-xs"  onclick="chongzhi()">充值</a>
+                </li>
+                <li class="layui-nav-item" lay-unselect style="margin-right: 25px;">
+                    <a href="javascript:;">
+                        <cite class="usernameDis">{$admin_info.nickname}</cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a lay-href="{:url('admin/admin/security_code')}">安全码设置</a></dd>
+                        <dd><a lay-href="{:url('admin/Site/profile')}">基本资料</a></dd>
+                        <dd><a lay-href="{:url('admin/admin/blndGoogle')}">绑定Google</a></dd>
+<!--                        <dd><a lay-href="{:url('admin/admin/setCommand')}">设置口令</a></dd>-->
+                        <dd><a lay-href="{:url('admin/Site/changepwd')}">修改密码</a></dd>
+                        <hr>
+                        <dd layadmin-event="logout" style="text-align: center;"><a>退出</a></dd>
+                    </dl>
+                </li>
+
+                <!--<li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" layadmin-event="about"><i class="layui-icon layui-icon-more-vertical"></i></a>
+                </li>-->
+                <!--<li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
+                    <a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
+                </li>-->
+            </ul>
+        </div>
+
+        <!-- 侧边菜单 -->
+        <div class="layui-side layui-side-menu">
+            <div class="layui-side-scroll">
+                <div class="layui-logo" layadmin-event="refresh" title="刷新">
+                    <span>{$title}</span>
+                </div>
+                <!--/菜单列表-->
+                <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+                    {$menu_view}
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- 页面标签 -->
+        <div class="layadmin-pagetabs" id="LAY_app_tabs">
+            <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-down">
+                <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+                    <li class="layui-nav-item" lay-unselect>
+                        <a href="javascript:;"></a>
+                        <dl class="layui-nav-child layui-anim-fadein">
+                            <dd layadmin-event="closeThisTabs"><a href="javascript:;">关闭当前标签页</a></dd>
+                            <dd layadmin-event="closeOtherTabs"><a href="javascript:;">关闭其它标签页</a></dd>
+                            <dd layadmin-event="closeAllTabs"><a href="javascript:;">关闭全部标签页</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
+                <ul class="layui-tab-title" id="LAY_app_tabsheader">
+                    <li lay-id="home/console.html" lay-attr="home/console.html" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- 主体内容 -->
+        <div class="layui-body" id="LAY_app_body">
+            <div class="layadmin-tabsbody-item layui-show">
+                <iframe src="{:url('admin/Index/welcome')}" frameborder="0" class="layadmin-iframe"></iframe>
+            </div>
+        </div>
+
+        <!-- 辅助元素，一般用于移动设备下遮罩 -->
+        <div class="layadmin-body-shade" layadmin-event="shade"></div>
+    </div>
+</div>
+
+<script src="__ADMIN__/layui/layui.js"></script>
+<script>
+
+    layui.config({
+        base: '__ADMIN__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use('index',function () {
+        var $ = layui.$
+            ,form = layui.form
+            ,upload = layui.upload
+            ,layer = layui.layer
+
+        console.log(layer);
+
+        window.testpay = function (){
+            layer.open({
+                type:2,
+                content:"{:url('index/testpay')}",
+                title:'收银台测试',
+                maxmin: !0, area: ['60%', '50%'],
+
+            })
+        }
+
+
+        window.chongzhi = function(){
+            layer.open({
+                type: 2
+                ,title: '充值'
+                ,content: 'admin/admin/rechargeAdd.html'
+                ,area: ['auto','auto']
+                ,btn: ['确定', '取消']
+                ,yes: function(index, layero){
+                    var iframeWindow = window['layui-layer-iframe'+ index]
+                        ,submitID = 'app-admin-usdt-submit'
+                        ,submit = layero.find('iframe').contents().find('#'+ submitID);
+
+                    //监听提交
+                    iframeWindow.layui.form.on('submit('+ submitID +')', function(data){
+                        $('.layui-layer-btn0').attr('disable', 'disable')
+                        var l = data.field; //获取提交的字段
+                        //提交 Ajax 成功后，静态更新表格中的数据
+                        $.ajax({
+                            url:'admin/admin/rechargeAdd.html',
+                            method:'POST',
+                            data:l,
+                            success:function (res) {
+                                if (res.code == 1){
+                                    layer.close(index); //关闭弹层
+                                    layer.open({
+                                        title: 'USDT 转账'
+                                        ,type: 1
+                                        ,btn: '确定'
+                                        ,btnAlign: 'c'
+                                        ,area: ['auto']
+                                        ,content:
+                                            '<div style="padding: 22px">' +
+                                            '<p style="font-weight: bold;font-size: 1.5rem;color: red;text-align: center">USDT TRC充值<br/><br/></p>'+
+                                            '<p style="font-weight: bold;font-size: 1.2rem;color: red">备注：请在五分钟内完成转账，否则平台概不负责！！<br/><br/></p>'+
+                                            '<p style="font-weight: bold;font-size: 1rem;">usdt地址：'+  res.usdt_address +'  <button class="layui-btn layui-btn-xs copy1" data-clipboard-text="'+  res.usdt_address +'" onclick="copy_txt(\'copy1\')">点击复制</button><br/><br/></p>'+
+                                            '<p style="font-weight: bold;font-size: 1rem;margin-bottom: 100px">usdt数量：'+ res.usdt_num +'  <button class="layui-btn layui-btn-xs copy2" data-clipboard-text="'+  res.usdt_num +'" onclick="copy_txt(\'copy2\')">点击复制</button></p>'+
+                                            '</div>'
+                                        ,yes: function (index) {
+                                            layer.close(index)
+                                            table.reload('app-admin-recharge-manage');
+                                        }
+                                        ,cancel: function (index) {
+                                            table.reload('app-admin-recharge-manage');
+                                        }
+                                    });
+                                }else{
+                                    layer.msg(res.msg, {icon: res.code == 1 ? 1: 2,time: 1500});
+
+                                }
+
+                            }
+                        });
+                    });
+
+                    submit.trigger('click');
+                }
+
+
+            });
+        }
+
+
+        // layer.open({
+        //     type: 2,
+        //     title: '渠道统计',
+        //     shadeClose: true,
+        //     shade: false,
+        //     offset:'rt',
+        //     maxmin: true, //开启最大化最小化按钮
+        //     area: ['830px', '300px'],
+        //     content: '{:url("channel/statistics")}'
+        // });
+
+        /*var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+        if (isMobile) {
+            $('#ceshi_shouyintai').hide();
+        }*/
+
+
+    })
+
+
+    // {php}   if($is_channel_statistics){   {/php}
+
+
+    // {php}  }  {/php}
+
+
+
+</script>
+</body>
+</html>
+
+

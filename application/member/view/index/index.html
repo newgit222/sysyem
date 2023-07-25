@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>码商管理后台</title>
+    <meta name="keywords" content="码商管理后台">
+    <meta name="description" content="码商管理后台">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="/public/static/ms/favicon.ico">
+    <link rel="stylesheet" href="/public/static/member/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="/public/static/member/css/layuimini.css?v=2.0.4.2" media="all">
+    <link rel="stylesheet" href="/public/static/member/css/themes/default.css" media="all">
+    <link rel="stylesheet" href="/public/static/member/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+
+
+    <![endif]-->
+    <style id="layuimini-bg-color">
+        .layui-form-switch{
+            margin-top:0;
+        }
+    </style>
+</head>
+
+<body class="layui-layout-body layuimini-all">
+<div class="layui-layout layui-layout-admin">
+
+    <div class="layui-header header">
+        <div class="layui-logo layuimini-logo"></div>
+
+        <div class="layuimini-header-content">
+            <a>
+                <div class="layuimini-tool"><i title="展开" class="fa fa-outdent" data-side-fold="1"></i></div>
+            </a>
+
+            <!--电脑端头部菜单-->
+            <ul class="layui-nav layui-layout-left layuimini-header-menu layuimini-menu-header-pc layuimini-pc-show">
+            </ul>
+
+            <!--手机端头部菜单-->
+            <ul class="layui-nav layui-layout-left layuimini-header-menu layuimini-mobile-show">
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块</a>
+                    <dl class="layui-nav-child layuimini-menu-header-mobile">
+                    </dl>
+                </li>
+            </ul>
+
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item layuimini-setting">
+                    <form class="layui-form">
+                        <span id="channel_open_chk">
+                            <input type="checkbox" name="is_receive_order" value="1" lay-skin="switch" lay-text="开启接单|关闭接单"
+                                   lay-filter="editMsWorkStatus" {if condition="$work_status == 1"}checked{/if}>
+                            <div class="layui-unselect layui-form-switch" lay-skin="_switch"  ><em>关闭接单</em><i></i></div>
+                        </span>
+                        <span id="new_order_music">
+                            <input type="checkbox" name="new_order_music" value="1" lay-skin="switch" lay-text="来单提示开启|来单提示关闭"
+                                   lay-filter="new_order_music" {if condition="$Think.cookie.new_order_music eq 1"}checked{/if}>
+<!--                            <div class="layui-unselect layui-form-switch" lay-skin="_switch"  ><em>关闭来单提示</em><i></i></div>-->
+                        </span>
+                    </form>
+                </li>
+                <li class="layui-nav-item layuimini-setting">
+                    <a href="javascript:;" style="">余额: <strong id="money" style="font-weight: bold;font-size: 1rem;color: green"> {$money}</strong></a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" data-clear="清理" class="layuimini-clear"><i class="fa fa-trash-o"></i></a>
+                </li>
+                <li class="layui-nav-item mobile layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
+                </li>
+                <li class="layui-nav-item layuimini-setting">
+                    <a href="javascript:;">{$agent.username}</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" layuimini-content-href="/member/servers/bindGoogle" data-title="绑定Google" data-icon="fa fa-gears">绑定Google</a>
+                        </dd>
+                        <dd>
+                            <hr>
+                        </dd>
+                        <dd>
+                            <a href="{:url('Login/out')}" class="login-out">退出登录</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layuimini-select-bgcolor" lay-unselect>
+                    <a href="javascript:;" data-bgcolor="配色方案"><i class="fa fa-ellipsis-v"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--无限极左侧菜单-->
+    <div class="layui-side layui-bg-black layuimini-menu-left">
+    </div>
+
+    <!--初始化加载层-->
+    <div class="layuimini-loader">
+        <div class="layuimini-loader-inner"></div>
+    </div>
+
+    <!--手机端遮罩层-->
+    <div class="layuimini-make"></div>
+
+    <!-- 移动导航 -->
+    <div class="layuimini-site-mobile"><i class="layui-icon"></i></div>
+
+    <div class="layui-body">
+
+        <div class="layuimini-tab layui-tab-rollTool layui-tab" lay-filter="layuiminiTab" lay-allowclose="true">
+            <ul class="layui-tab-title">
+                <li class="layui-this" id="layuiminiHomeTabId" lay-id=""></li>
+            </ul>
+            <div class="layui-tab-control">
+                <li class="layuimini-tab-roll-left layui-icon layui-icon-left"></li>
+                <li class="layuimini-tab-roll-right layui-icon layui-icon-right"></li>
+                <li class="layui-tab-tool layui-icon layui-icon-down">
+                    <ul class="layui-nav close-box">
+                        <li class="layui-nav-item">
+                            <a href="javascript:;"><span class="layui-nav-more"></span></a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="javascript:;" layuimini-tab-close="current">关 闭 当 前</a></dd>
+                                <dd><a href="javascript:;" layuimini-tab-close="other">关 闭 其 他</a></dd>
+                                <dd><a href="javascript:;" layuimini-tab-close="all">关 闭 全 部</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <div class="layui-tab-content">
+                <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="/public/static/member/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="/public/static/member/js/lay-config.js?v=2.0.0" charset="utf-8"></script>
+<link rel="stylesheet" href="/public/static/member/css/toastr.css">
+<script type="text/javascript" src="__MS__/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/static/member/js/toastr.js"></script>
+<script>
+    layui.use(['jquery', 'layer', 'miniAdmin', 'form'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer,
+            form = layui.form,
+            miniAdmin = layui.miniAdmin;
+
+
+        var options = {
+            iniUrl: "/member/index/replaceMenu",
+            //iniUrl: "/public/static/member/api/init.json",    // 初始化接口
+            clearUrl: "/public/static/member/api/clear.json", // 缓存清理接口
+            urlHashLocation: true,      // 是否打开hash定位
+            bgColorDefault: false,      // 主题默认配置
+            multiModule: true,          // 是否开启多模块
+            menuChildOpen: false,       // 是否默认展开菜单
+            loadingTime: 0,             // 初始化加载时间
+            pageAnim: true,             // iframe窗口动画
+            maxTabNum: 20,              // 最大的tab打开数量
+        };
+        miniAdmin.render(options);
+
+        form.on('switch(editMsWorkStatus)',function (data) {
+            $.ajax({
+                url:"{:url('servers/edit_work_status')}",
+                method:'post',
+                data:{status:data.elem.checked ? 0 : 1},
+                success:function(res){
+                    if(res.code == 1){
+                        layer.msg('操作成功',{icon:1,time:1500},function (){
+                            window.location.reload();
+                        })
+                    }else{
+                        layer.msg(res.msg,{icon:2,time:1500}),function (){
+                            window.location.reload();
+                        }
+                    }
+                }
+            })
+        })
+
+
+        form.on('switch(new_order_music)',function (data) {
+            // console.log(data.elem.checked);return false;
+            $.ajax({
+                url:"{:url('servers/new_order_music')}",
+                method:'post',
+                data:{status:data.elem.checked ? 1 : 0},
+                success:function(res){
+                    if(res.code == 1){
+                        layer.msg(res.msg,{icon:1,time:1500},function (){
+                            window.location.reload();
+                        })
+                    }else{
+                        layer.msg('操作失败',{icon:2,time:1500}),function (){
+                            window.location.reload();
+                        }
+                    }
+                }
+            })
+        })
+
+        //写个刷新余额的方法，下面的定时器请求
+        window.refreshMoney = function (){
+            $.ajax({
+                url:"{:url('getMsBalance')}",
+                method:'post',
+                success:function(res){
+                    if(res.code == 1){
+                        $('#money').html(res.data);
+                    }
+                }
+            })
+        }
+
+        $(document).on('click','[data-refresh="刷新"]',function (){
+            window.refreshMoney();
+        })
+
+        setInterval(function (){
+            window.refreshMoney();
+        },60000)
+
+
+        // 先请求是否有要显示的通过，如果有，展示通知，用layui的方法,
+            // 如果没有，就不展示
+        $.ajax({        
+            url: 'isShowNotice',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                // 如果有通知数据，则展示通知
+                if (data.code == 1) {
+                    // 使用 layui 的方法展示通知
+                    layui.use(['layer'], function() {
+                        var layer = layui.layer;
+                        // var icon = layui.icon;
+                        let content = '<h3 style="text-align:center;">'+ data.data.title +'</h3>' + '<br>' + data.data.content;
+                        layer.open({
+                            title:  '通知' + '<i class="layui-icon layui-icon-speaker"></i>',
+                            area: ['60%', '60%'],
+                            content: content,
+                            yes: function(index, layero) {
+                                // 发送请求，将通知标记为已读
+                                $.ajax({
+                                    url: 'markNoticeRead',
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    data: {
+                                        notice_id: data.data.id
+                                    },
+                                    success: function(data) {
+                                        if (data.code == 1) {
+                                            layer.close(index);
+                                        } else {
+                                            layer.msg(data.msg, {icon: 2});
+                                        }
+                                    },
+                                    error: function() {
+                                        layer.msg('网络错误，请稍后重试', {icon: 2});
+                                    }
+                                });
+                            }
+                        });
+                    });
+                }
+            }
+        });
+    });
+
+
+
+
+
+        /*
+* 播报新订单以及以及弹出订单号
+*
+*/
+        function playVoiceAndOpenLayer($) {
+            var borswer = window.navigator.userAgent.toLowerCase();
+            if (borswer.indexOf("ie") >= 0) {
+                //IE内核浏览器
+                var strEmbed = '<embed name="embedPlay" src="__COMMON__/order.mp3" autostart="true" hidden="true" loop="false"></embed>';
+                if ($("body").find("embed").length <= 0) {
+                    $("body").append(strEmbed);
+                }
+                var embed = document.embedPlay;
+                //浏览器不支持 audio，则使用 embed 播放
+                embed.volume = 100;
+            } else {
+                //非IE内核浏览器
+                var strAudio = "<audio id='audioPlay' src='__COMMON__/order.mp3' hidden='true'>";
+                if ($("body").find("audio").length <= 0) {
+                    $("body").append(strAudio);
+                }
+                var audio = document.getElementById("audioPlay");
+                //浏览器支持 audio
+                // audio.play(); //没有就播放
+                playAudioWithUserGesture(audio); // 播放音频
+            }
+        }
+
+
+    function playAudioWithUserGesture(audio) {
+        // 在用户交互事件中播放音频
+        var playPromise = audio.play();
+
+        if (playPromise !== undefined && playPromise instanceof Promise) {
+            playPromise.catch(function(error) {
+                // 播放失败时的处理
+                console.log("Failed to play audio: " + error);
+            });
+        }
+    }
+
+
+    //新订单提醒
+
+    setInterval(checkNewOrders, 30000);
+
+    function checkNewOrders() {
+        $.ajax({
+            url: "{:url('servers/lastOrder')}", // 将该地址替换为你的 ThinkPHP 路由地址
+            type: "post",
+            success: function(response) {
+                if (response.status === 1) {
+                    // 有新订单，显示提醒
+                    playVoiceAndOpenLayer($);
+                    toastr.success("有新的订单,请注意查收");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
+
+    // {if condition="$Think.cookie.new_order_music eq 1"}
+    // setInterval(function () {
+    //     var pay_code = '{:input("pay_code")}';
+    //     var url = "{:url('servers/lastOrder')}?pay_code=" + pay_code;
+    //     $.ajax({
+    //         type: 'post',
+    //         url: url,
+    //         dataType: 'json',
+    //         async: false,
+    //         success: function (order_id) {
+    //             var itemStr = pay_code + 'ewm_order_id';
+    //             var loacal_order_id = localStorage.getItem(itemStr);
+    //             if (loacal_order_id !== null){
+    //                 if (order_id != loacal_order_id && order_id > 0) {
+    //                     playVoiceAndOpenLayer($);
+    //                     toastr.success("有新的订单,请注意查收");
+    //                 }
+    //             }
+    //             localStorage.setItem(itemStr, order_id);
+    //         }
+    //     });
+    // }, 5000);
+    // {/if}
+
+
+</script>
+
+</body>
+</html>

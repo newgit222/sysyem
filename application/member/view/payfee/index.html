@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>通道费率 - 码商管理后台</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/public/static/member/lib/layui-v2.6.3/css/layui.css" media="all">
+  <link rel="stylesheet" href="/public/static/member/css/layuimini.css?v=2.0.4.2" media="all">
+  <link rel="stylesheet" href="/public/static/member/css/themes/default.css" media="all">
+  <link rel="stylesheet" href="/public/static/member/css/public.css" media="all">
+  <link rel="stylesheet" href="/public/static/member/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+  <style>
+    .layui-card-body fieldset {
+      margin: 0;
+      border: 1px solid #e6e6e6;
+      padding: 10px 20px 5px 20px;
+      color: #6b6b6b;
+    }
+    .layui-card .layui-table-view{
+
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+<body layadmin-themealias="default">
+
+
+<div class="layui-fluid">
+  <div class="layui-card">
+    <div class="layui-card-body">
+      <fieldset id="searchFieldset_currentTableRenderId" class="table-search-fieldset layui-hide1">
+        <legend>高级搜索</legend>
+        <div class="layui-form layui-form-pane form-search">
+          <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">通道名称</label>
+            <div class="layui-input-inline">
+              <input id="c-product_name" name="name" data-search-op="%*%" value="" placeholder="请输入通道名称" class="layui-input">
+            </div>
+          </div>
+          <div class="layui-form-item layui-inline">
+          <label class="layui-form-label">通道编码</label>
+          <div class="layui-input-inline">
+            <input id="c-product_code" name="code" data-search-op="%*%" value="" placeholder="请输入通道编码" class="layui-input">
+          </div>
+        </div>
+          <div class="layui-form-item layui-inline" style="margin-left: 115px">
+          <button type="submit" class="layui-btn layui-btn-normal" data-type="tableSearch" data-table="currentTableRenderId" lay-submit lay-filter="currentTableRenderId_filter"> 搜 索</button>
+          <button type="reset" class="layui-btn layui-btn-primary" data-table-reset="currentTableRenderId"> 重 置 </button>
+        </div>
+        </div></fieldset>
+
+      <table class="layui-hide" id="test" lay-filter="test"></table>
+    </div>
+  </div>
+</div>
+
+
+<script src="/public/static/member/lib/layui-v2.6.3/layui.js"></script>
+
+
+<script>
+  layui.use('table', function(){
+    var table = layui.table,
+            form = layui.form,
+            u = layui.util;
+
+    table.render({
+      elem: '#test'
+      ,url: "{:url('payfee/getfee')}"
+      ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+        layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+        //,curr: 5 //设定初始在第 5 页
+        ,groups: 1 //只显示 1 个连续页码
+        // ,first: false //不显示首页
+        // ,last: false //不显示尾页
+      }
+      ,cellMinWidth: 80
+      ,cols: [[
+        {field:'name', title: '通道名称'}
+        ,{field:'code', title: '通道编码'}
+        ,{field:'rate', title: '费率(%)'}
+        ,{field:'create_time', width:200, title: '创建时间', templet: function (d) {
+            return u.toDateString(d.create_time * 1000);
+          }}
+      ]]
+    });
+
+
+    form.on('submit(currentTableRenderId_filter)', function (data) {
+      var field = data.field;
+      //监听搜索分页为1
+      //执行重载
+      table.reload('test', {
+        where: field,
+        page: {
+          curr: 1,
+        }
+      });
+    });
+
+    //监听输入框的回车事件
+    layui.$('input').on('keydown', function(event) {
+      if (event.keyCode == 13) {
+        //触发表单提交事件
+        layui.$('button[lay-filter="currentTableRenderId_filter"]').click();
+      }
+    });
+
+  });
+</script>
+
+</body>
+</html>

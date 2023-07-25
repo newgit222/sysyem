@@ -1,0 +1,93 @@
+
+
+<!DOCTYPE html>
+<!--
+  ~  +----------------------------------------------------------------------
+  ~  | 狂神系统系统 [ WE CAN DO IT JUST THINK ]
+  ~  +----------------------------------------------------------------------
+  ~  | Copyright (c) 2018 http://www.iredcap.cn All rights reserved.
+  ~  +----------------------------------------------------------------------
+  ~  | Licensed ( https://www.apache.org/licenses/LICENSE-2.0 )
+  ~  +----------------------------------------------------------------------
+  ~  | Author: Brian Waring <BrianWaring98@gmail.com>
+  ~  +----------------------------------------------------------------------
+  -->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>设置操作口令</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__ADMIN__/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">绑定Google</div>
+                <div class="layui-card-body" pad15>
+
+                    <div class="layui-form" lay-filter="">
+                        <div class="layui-form" lay-filter="">
+                            {if condition="$sys_operating_password"}
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">当前口令</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="at_command" lay-verify="required" lay-verType="tips" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">新口令</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="command" lay-verify="required" lay-verType="tips" autocomplete="off"  class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">确认口令</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="confirm_command" lay-verify="required" lay-verType="tips" autocomplete="off"  class="layui-input">
+                                </div>
+                            </div>
+                            {else/}
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">设置口令</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="command" lay-verify="required" lay-verType="tips" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">确认口令</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="confirm_command" lay-verify="required" lay-verType="tips" autocomplete="off" id="LAY_password" class="layui-input">
+                                </div>
+                            </div>
+                            {/if}
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="setCommand">确认设置</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="__ADMIN__/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__ADMIN__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'set']);
+</script>
+</body>
+</html>

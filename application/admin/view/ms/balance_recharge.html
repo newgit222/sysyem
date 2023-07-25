@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>后台管理 - 码商充值列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__ADMIN__/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <!--头部-->
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">码商名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="username" placeholder="请输入码商名称" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">金额</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="amount" placeholder="请输入金额" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">状态</label>
+                    <div class="layui-input-inline">
+                        <select class="layui-select" id="status" name="status" data-search-op="=">
+                            <option value="-1">- 全部 -</option>
+                            <option value="1">待审核</option>
+                            <option value="2">审核通过</option>
+                            <option value="3">审核驳回</option>
+                            <option value="4">已取消</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="start" class="layui-input app-laydate-item" placeholder="yyyy-MM-dd">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="end" class="layui-input app-laydate-item" placeholder="yyyy-MM-dd">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <button  class="layui-btn layuiadmin-btn-order" lay-submit lay-filter="ms-balance-recharge-search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                        搜素
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--数据表-->
+        <div class="layui-card-body">
+
+            <table id="balance_recharge-list" lay-filter="balance_recharge-list"> </table>
+
+            <script type="text/html" id="table-ms-balance-recharge">
+                {{# if(d.status == 1){ }}
+                <a class="layui-btn layui-btn-xs" lay-event="balanceRechargeAgree">同意</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="balanceRechargeRefuse">驳回</a>
+                {{# } }}
+            </script>
+
+            <script type="text/html" id="statusTpl">
+                {{# if(d.status == 1){ }}
+                <a style="color: #FFB800;" class="btn btn-xs btn-block">待审核</a>
+                {{# }else if(d.status == 2){ }}
+                <span style="color: #5FB878;">审核通过</span>
+                {{# }else if(d.status == 3){ }}
+                <span style="color: #FF5722;">审核驳回</span>
+                {{# }else if(d.status == 4){ }}
+               <span style="color: #999;">已取消</span>
+                {{# } }}
+            </script>
+    </div>
+</div>
+
+<script src="__ADMIN__/layui/layui.js"></script>
+<script src="__STATIC__/cloudui/js/define.js"></script>
+<script>
+    layui.config({
+        base: '__ADMIN__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'user', 'laydate', 'table', 'laydate'], function () {
+        var $ = layui.$
+            , form = layui.form
+            , laydate = layui.laydate
+            , table = layui.table
+            , laydate = layui.laydate;
+
+        //监听搜索
+        form.on('submit(ms-balance-recharge-search)', function (data) {
+            var field = data.field;
+            //监听搜索分页为1
+            //执行重载
+            table.reload('balance_recharge-list', {
+                where: field,
+                page: {
+                    curr: 1,
+                }
+            });
+
+            return false;
+        });
+
+
+        table.on('tool(balance_recharge-list)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'balanceRechargeAgree') {
+                layer.confirm('确定同意该充值申请吗？', function (index) {
+                    //执行同意操作
+                    $.ajax({
+                        url: 'balanceRechargeAgree',
+                        type: 'post',
+                        data: {id: data.id},
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.code == 1) {
+                                layer.msg(res.msg, {icon: 1, time: 1000}, function () {
+                                    table.reload('balance_recharge-list');
+                                });
+                            } else {
+                                layer.msg(res.msg, {icon: 2, time: 1000});
+                            }
+                        }
+                    });
+                });
+            } else if (obj.event === 'balanceRechargeRefuse') {
+                layer.confirm('确定驳回该充值申请吗？', function (index) {
+                    //执行驳回操作
+                    $.ajax({
+                        url: 'balanceRechargeRefuse',
+                        type: 'post',
+                        data: {id: data.id},
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.code == 1) {
+                                layer.msg(res.msg, {icon: 1, time: 1000}, function () {
+                                    table.reload('balance_recharge-list');
+                                });
+                            } else {
+                                layer.msg(res.msg, {icon: 2, time: 1000});
+                            }
+                        }
+                    });
+                });
+            }
+        });
+
+        table.render({
+            elem: '#balance_recharge-list'
+            , url: 'getBalanceRechargeList'
+            , toolbar: '#table-ms-webuser'
+            , title: '码商充值列表'
+            , cols: [[
+                {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
+                // , {field: 'ms_id', title: '码商ID'}
+                , {field: 'username', title: '码商名称'}
+                , {field: 'amount', title: '充值金额'}
+                , {field: 'reason', title: '申请原因'}
+                , {field: 'status', title: '状态', templet: '#statusTpl'}
+                , {field: 'create_time', title: '创建时间'}
+                , {field: 'update_time', title: '更新时间'}
+                , {fixed: 'right', title: '操作', width: 150, align: 'center', toolbar: '#table-ms-balance-recharge'}
+            ]]
+            , page: true
+            , limit: 15
+            , text: '对不起，加载出现异常！'
+        });
+
+
+    
+        lay('.app-laydate-item').each(function(k,v){
+            var  timestamp=(k==0)?' 00:00:00':" 00:00:00";
+            var date=new Date();
+            date.setHours('00');date.setMinutes('00');date.setSeconds('00');
+            if(k==1){
+                date.setHours('23');date.setMinutes('59');date.setSeconds('59');
+            }
+            laydate.render({
+                elem: this,
+                format: 'yyyy-MM-dd',type:'datetime'
+                ,istime:false
+                ,value:date
+                ,trigger: 'click'
+            });
+        });
+
+    });
+
+
+
+</script>
+</body>
+</html>

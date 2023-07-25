@@ -1,0 +1,57 @@
+{include file="common/common_header" /}
+{include file="common/common_menu" /}
+
+<!--页面主要内容-->
+<main class="lyear-layout-content">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        {if condition="$admin['google_status'] eq 0"}
+                        <div class="alert alert-danger" role="alert">为了账户安全考虑，绑定google</div>
+                        <form  id="inputForm" method="post" action="{:url('blndGoogle')}" class="site-form">
+
+
+                            <div class="form-group">
+                                <label >绑定google</label>
+                                <img src="{$google.google_qr}">
+                                <input type="hidden" name="google_secretkey" value="{$google.google_secret}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="security">验证码</label>
+                                <input type="password" class="form-control" name="google_code" id="security" placeholder="输入验证码">
+                            </div>
+                            {else/}
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">绑定状态</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" disabled value="已绑定" lay-verify="google_code" autocomplete="off" placeholder="请输入Google验证码" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux"></div>
+                            </div>
+                            {/if}
+                            {if condition="$admin['google_status'] eq 0"}
+                            <button type="submit" class="btn btn-primary">确认修改</button>
+                            {/if}
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+<!--End 页面主要内容-->
+</div>
+</div>
+
+{include file="common/common_js" /}
+</body>
+</html>

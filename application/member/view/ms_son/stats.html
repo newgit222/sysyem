@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>下级服务商团队统计 - 服务商管理 - 码商管理后台</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  {include file="/common/link"}
+</head>
+<body>
+<div class="layuimini-container">
+  <div class="layuimini-main">
+
+    <fieldset class="table-search-fieldset">
+      <legend>高级搜索</legend>
+      <div style="margin: 10px 10px 10px 10px">
+        <form class="layui-form layui-form-pane" action="">
+          <div class="layui-form-item">
+            <div class="layui-inline">
+              <label class="layui-form-label">服务商名称</label>
+              <div class="layui-input-inline">
+                <input type="text" name="username" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label">层级</label>
+              <div class="layui-input-inline">
+                <input type="text" name="level" min="1" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+              <label class="layui-form-label">开始时间</label>
+              <div class="layui-input-block">
+                <input type="text" name="start_time" class="layui-input app-laydate-item" placeholder="yyyy-MM-dd HH:mm:ss">
+              </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+              <label class="layui-form-label">结束时间</label>
+              <div class="layui-input-block">
+                <input type="text" name="end_time" class="layui-input app-laydate-item" placeholder="yyyy-MM-dd HH:mm:ss">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </fieldset>
+
+    <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+  </div>
+</div>
+</body>
+</html>
+{include file="common/js"}
+<script>
+  layui.use(['form', 'table', 'laydate'], function () {
+    var $ = layui.jquery,
+            form = layui.form,
+            laydate = layui.laydate,
+            table = layui.table;
+
+    table.render({
+      elem: '#currentTableId',
+      url: "{:url('MsSon/getTeamStats')}",
+      cols: [[
+        {field: 'username',align: "center", title: '用户名'},
+        {field: 'level',align: "center",title: '层级'},
+        // {field: 'team_people_number', align: "center", title: '团队人数'},
+        // {field: 'cash_pledge', title: '团队押金', align: "center"},
+        {field: 'money', title: '余额', align: "center"},
+        {field: 'today_amount',  align: "center", title: '跑量金额'},
+        {field: 'today_daifu',  align: "center", title: '代付金额'},
+        {field: 'total_ewmcode_num',  align: "center", title: '收款码数量'},
+        {field: 'total_success_rate',  align: "center", title: '成功率'},
+        // {field: 'son_income',  align: "center", title: '当日产生收益'},
+        // {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+      ]],
+      limits: [10, 15, 20, 25, 50, 100],
+      limit: 15,
+      page: true,
+      skin: 'line'
+    });
+
+    // 监听搜索操作
+    form.on('submit(data-search-btn)', function (data) {
+      //执行搜索重载
+      table.reload('currentTableId', {
+        where:data.field,
+        page: {
+          curr: 1
+        }
+      }, 'data');
+
+      return false;
+    });
+
+
+    lay('.app-laydate-item').each(function(k,v){
+      var  timestamp=(k==0)?' 00:00:00':" 00:00:00";
+      var date=new Date();
+      date.setHours('00');date.setMinutes('00');date.setSeconds('00');
+      if(k==1){
+        date.setHours('23');date.setMinutes('59');date.setSeconds('59');
+      }
+      laydate.render({
+        elem: this,
+        format: 'yyyy-MM-dd',type:'datetime'
+        ,istime:false
+        ,value:date
+        ,trigger: 'click'
+      });
+    });
+
+  });
+</script>

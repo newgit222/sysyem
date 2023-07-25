@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>服务商信息 - 码商管理后台</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  {include file="/common/link"}
+  <link rel="stylesheet" href="/public/static/member/css/welcome.css?v=1670414150" media="all">
+
+  <style>
+    th.layui-table-patch{
+      padding: 0 !important;
+    }
+  </style>
+</head>
+<body layadmin-themealias="default">
+
+<script type="text/html" id="test-table-operate-barDemo">
+<!--  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>-->
+  <a class="layui-btn layui-btn-xs" lay-event="editPass">修改密码</a>
+<a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="BindGoogle">谷歌验证</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="editPayPass">安全码</a>
+
+</script>
+<script type="text/javascript" charset="utf-8" id="table-work-status">
+  <input type="checkbox" id="editMsWorkStatus" name="editMsWorkStatus" lay-filter="editMsWorkStatus" userid={{d.userid}} lay-skin="switch" ms_work_status={{d.work_status}} lay-text="已开启|已关闭" {{d.work_status == 1 ? 'checked':''}} />
+</script>
+<script type="text/javascript" charset="utf-8" id="table-daifu-status">
+  <input type="checkbox" id="editDaifuStatus" name="editDaifuStatus" lay-filter="editDaifuStatus" userid={{d.userid}} lay-skin="switch" ms_daifu_status={{d.is_daifu}} lay-text="已开启|已关闭" {{d.is_daifu == 1 ? 'checked':''}} />
+</script>
+<div class="layui-fluid">
+  <div class="layui-card">
+    <div class="layui-card-body">
+      <table class="layui-hide" id="test" lay-filter="currentTableFilter"></table>
+    </div>
+  </div>
+</div>
+
+{include file="common/js"}
+
+
+<script>
+  layui.use('table', function(){
+    var      u = layui.util,
+            $ = layui.$,
+            form = layui.form,
+            table = layui.table;
+
+
+    table.render({
+      elem: '#test'
+      ,url:"{:url('servers/setInfo')}"
+
+      // ,cellMinWidth: 80
+      ,cols: [[
+        // {field:'id', width:80, title: 'ID', sort: true}
+        {field:'username', width:100, title: '登录账户'}
+        ,{field:'money', width:100, title: '佣金余额'}
+        ,{field:'cash_pledge', width:100, title: '总押金'}
+        ,{field:'cash_pledge', width:100, title: '可用押金'}
+        ,{field:'cash_pledge', title: '最低接单押金', width:120,}
+        ,{field: "status", width: 100, title: "账号状态", templet: function (d) {role = '';if (d.status == 1) {role = '正常'}if (d.status == 0) {role = '禁用'}return role;}}
+        ,{title: "接单状态", align: "center", width: 120, toolbar: "#table-work-status"}
+        // ,{title: "代付状态", align: "center", width: 120, toolbar: "#table-daifu-status"}
+        ,{field:'reg_date', width:200, title: '创建时间', templet: function (d) {
+            return u.toDateString(d.reg_date * 1000);
+          }}
+        ,{field:'cz', title: '操作', toolbar: '#test-table-operate-barDemo'}
+      ]]
+    });
+
+
+    table.on('tool(currentTableFilter)', function (obj) {
+      var data = obj.data;
+      console.log(data)
+      if (obj.event === 'editPass') {
+        var index = layer.open({
+          title: '修改登录密码',
+          type: 2,
+          shade: 0.2,
+          maxmin:true,
+          shadeClose: true,
+          area: ['70%', '80%'],
+          content: '/member/servers/editPass.html?userid=' + data.userid,
+        });
+        $(window).on("resize", function () {
+          layer.full(index);
+        });
+        return false;
+      } else if (obj.event === 'BindGoogle') {
+        var index = layer.open({
+          title: '绑定google',
+          type: 2,
+          shade: 0.2,
+          maxmin:true,
+          shadeClose: true,
+          area: ['70%', '80%'],
+          content: '/member/servers/bindGoogle.html',
+        });
+        $(window).on("resize", function () {
+          layer.full(index);
+        });
+        return false;
+      }
+      else if (obj.event === 'editPayPass') {
+        var index = layer.open({
+          title: '修改安全码',
+          type: 2,
+          shade: 0.2,
+          maxmin:true,
+          shadeClose: true,
+          area: ['70%', '80%'],
+          content: '/member/servers/editPayPass.html',
+        });
+        $(window).on("resize", function () {
+          layer.full(index);
+        });
+        return false;
+      }
+    });
+
+
+    form.on('switch(editMsWorkStatus)',function (data) {
+      //获取所需属性值
+      var ms_work_status = data.elem.attributes['ms_work_status'].nodeValue;
+      //   console.log(ms_status)
+      $.ajax({
+        url:"{:url('servers/edit_work_status')}",
+        method:'post',
+        data:{status:ms_work_status},
+        success:function(res){
+          if(res.code == 1){
+            layer.msg(res.msg,{icon:1,time:1500},function (){
+              // window.location.reload();
+              table.reload('test');
+            })
+          }else{
+            layer.msg(res.msg,{icon:2,time:1500}),function (){
+              window.location.reload();
+            }
+          }
+        }
+      })
+    })
+
+    form.on('switch(editDaifuStatus)',function (data) {
+      //获取所需属性值
+      var is_daifu = data.elem.attributes['ms_daifu_status'].nodeValue;
+      $.ajax({
+        url:"{:url('servers/edit_daifu_status')}",
+        method:'post',
+        data:{is_daifu:is_daifu},
+        success:function(res){
+          if(res.code == 1){
+            layer.msg('操作成功',{icon:1,time:1500},function (){
+              // window.location.reload();
+              table.reload('test');
+            })
+          }else{
+            layer.msg('操作失败',{icon:2,time:1500}),function (){
+              window.location.reload();
+            }
+          }
+        }
+      })
+    })
+  });
+</script>
+
+</body>
+</html>

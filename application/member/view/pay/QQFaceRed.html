@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>支付宝口令红包 - 码商管理后台</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/public/static/member/css/zoom.css">
+  {if condition="$Think.cookie.yhk_order_refresh eq 1"}
+  <meta http-equiv="refresh" content="30">
+  {/if}
+  {include file="/common/link"}
+
+  <style>
+    .layui-card-body fieldset {
+      margin: 0;
+      border: 1px solid #e6e6e6;
+      padding: 10px 20px 5px 20px;
+      color: #6b6b6b;
+    }
+
+    .layui-card .layui-table-view {
+
+      margin-top: 10px;
+    }
+
+    .layui-table-cell {
+      height: auto;
+      overflow: visible;
+      text-overflow: inherit;
+      white-space: normal;
+      word-break: break-all;
+    }
+    .table-responsive-y table, .table-responsive-y thead, .table-responsive-y tbody, .table-responsive-y th, .table-responsive-y td, .table-responsive-y tr {
+      display: block
+    }
+
+    .table-responsive-y thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px
+    }
+
+    .table-responsive-y tr {
+      border: 1px solid #ccc
+    }
+
+    .table-responsive-y td {
+      border: 0;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding: 5px;
+      padding-left: 35%;
+      white-space: normal;
+      text-align: left;
+      height: auto !important;
+      min-height: 35px;
+      line-height: auto !important;;
+    }
+
+    .table-responsive-y td:before {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 40%; /*这里可能没用*/
+      padding-right: 10px;
+      white-space: nowrap;
+      text-align: left;
+      font-weight: bold;
+      height: auto !important;
+      line-height: auto !important;
+    }
+
+    .table-responsive-y td:before {
+      content: attr(data-title)
+    }
+
+    .table-responsive-y h3 a {
+      font-size: 16px;
+      color: #3cbfae;
+      font-weight: bold
+    }
+  </style>
+
+</head>
+<body layadmin-themealias="default">
+
+<div class="layui-fluid">
+  <div class="layui-card">
+    <div class="layui-card-body">
+
+      {include file="/common/order_header"}
+
+      <fieldset id="searchFieldset_currentTableRenderId" class="table-search-fieldset layui-hide1">
+        <legend>高级搜索</legend>
+        <form class="layui-form layui-form-pane form-search">
+          <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">订单号</label>
+            <div class="layui-input-inline">
+              <input id="c-order_no" name="order_no" data-search-op="=" value=""
+                     placeholder="请输入订单号" class="layui-input">
+            </div>
+          </div>
+          <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">账号名称</label>
+            <div class="layui-input-inline">
+              <input id="c-gema_username" name="gema_username" data-search-op="=" value=""
+                     placeholder="请输入账号名称" class="layui-input">
+            </div>
+          </div>
+          <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">付款人姓名</label>
+            <div class="layui-input-inline">
+              <input id="c-pay_username" name="pay_username" data-search-op="%*%" value=""
+                     placeholder="请输入付款人姓名" class="layui-input">
+            </div>
+          </div>
+          <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">订单金额</label>
+            <div class="layui-input-inline">
+              <input id="c-order_price" name="order_price" data-search-op="=" value=""
+                     placeholder="请输入订单金额" class="layui-input">
+            </div>
+          </div>
+          <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">开始时间</label>
+            <div class="layui-input-block">
+              <input type="text" name="start_time" class="layui-input app-laydate-item" placeholder="yyyy-MM-dd HH:mm:ss">
+            </div>
+          </div>
+          <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">结束时间</label>
+            <div class="layui-input-block">
+              <input type="text" name="end_time" class="layui-input app-laydate-item" placeholder="yyyy-MM-dd HH:mm:ss">
+            </div>
+          </div>
+          <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">订单状态</label>
+            <div class="layui-input-inline">
+              <select class="layui-select" id="c-status" name="status"
+                      data-search-op="=">
+                <option value="-1">- 全部 -</option>
+                <option value="0">待支付</option>
+                <option value="1">已支付</option>
+                <option value="2">已关闭</option>
+                <option value="3">已过期</option>
+              </select>
+
+            </div>
+          </div>
+
+          <div class="layui-form-item layui-inline" style="margin-left: 115px">
+            <button type="submit" class="layui-btn layui-btn-normal" data-type="tableSearch"
+                    data-table="currentTableRenderId" lay-submit
+                    lay-filter="order-search"> 搜 索
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary"
+                    data-table-reset="currentTableRenderId"> 重 置
+            </button>
+          </div>
+        </form>
+      </fieldset>
+      <blockquote class="layui-elem-quote layui-text">
+
+        当前订单总金额：<span id="amount" class="layui-badge layui-bg-black">{$fees.amount}</span> 元
+        成交总金额：<span id="success_amount" class="layui-badge layui-bg-green">{$fees.success_amount}</span> 元
+        当前订单总数：<span id="count" class="layui-badge layui-bg-black">{$fees.count}</span> 单
+        成交订单总数：<span id="success_count" class="layui-badge layui-bg-green">{$fees.success_count}</span> 单
+        成功率：<span id="success_rate" class="layui-badge layui-bg-blue">{$fees.success_rate}</span> % &nbsp;
+      </blockquote>
+
+      <table class="layui-hide" id="payOrderList" lay-filter="payOrderListFilter"></table>
+    </div>
+  </div>
+</div>
+
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm layui-bg-cyan" lay-event="refresh">刷新订单</button>
+    <button class="layui-btn layui-btn-sm" lay-event="export">导出</button>
+    <input type="checkbox" lay-skin="switch" lay-filter="auto-refresh"  lay-text="自动刷新开|自动刷新关"
+           {if condition="$Think.cookie.yhk_order_refresh eq 1"}checked{/if} >
+  </div>
+</script>
+
+<script type="text/html" id="table-order">
+  {{#  if(d.status != 1 && d.status!=2 && d.status!=3 && d.legality==1) { }}
+  <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="issueOrder">确认收款</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="is_legality">标记异常</a>
+  {{# } }}
+</script>
+
+<script type="text/html" id="table-select-card">
+  {{#  if(d.cardKey != '') { }}
+  <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="select-card">查看</a>
+  {{# } }}
+</script>
+<script src="/public/static/member/lib/layui-v2.6.3/layui.js"></script>
+<script type="text/javascript" src="__MS__/js/clipboard.min.js"></script>
+<script type="text/javascript" src="/public/static/member/js/zoom.js"></script>
+
+<script>
+  function booksTemplet(data) {
+    $('.book-box').remove();//移除上一个
+    var h = $('<div></div>');
+    if (data.length > 0) {
+      data.forEach(function (item, index) {
+        var d = $('<div class="table-responsive-y"></div>');
+        var d_table = $('<table class=""></table>');
+        var d_table_thead = $('<thead></thead>')
+        var d_table_thead_tr = $('<tr></tr>')
+
+        var d_table_tbody = $('<tbody></tbody>')
+        var d_table_tbody_tr = $('<tr></tr>')
+
+
+
+        //d_table_tbody_tr.append($('<td data-title="收款人">'+ item.bank_name +'</td>'))
+        d_table_tbody_tr.append($('<td data-title="核销账号">'+ item.account_number +'</td>'))
+        d_table_tbody_tr.append($('<td data-title="红包二维码"><img data-action="zoom" src="'+ item.cardKey +'" width="100"></td>'))
+        var order_no = '';
+        if (item.legality != 1){
+          order_no = '<span style="color: red">'+ item.order_no + '</span>';
+        }else{
+          order_no =  item.order_no;
+        }
+        d_table_tbody_tr.append($('<td data-title="订单号">'+ order_no +'</td>'))
+        var order_price = '';
+        if (item.legality != 1){
+          order_price = '<span style="color: red">'+ item.order_price + '</span>';
+        }else{
+          order_price = item.order_price;
+        }
+        d_table_tbody_tr.append($('<td data-title="订单金额">'+ order_price +'</td>'))
+        var order_pay_price = '';
+        if (item.legality != 1){
+          order_pay_price = '<span style="color: red">'+ item.order_pay_price + '</span>';
+        }else{
+          order_pay_price = item.order_pay_price;
+        }
+        d_table_tbody_tr.append($('<td data-title="实际支付金额">'+ order_pay_price +'</td>'))
+        var add_time = '';
+        if (item.legality != 1){
+          add_time = '<span style="color: red">'+ item.add_time + '</span>';
+        }else{
+          add_time = item.add_time;
+        }
+        d_table_tbody_tr.append($('<td data-title="创建时间">'+add_time +'</td>'))
+        var pay_time = '';
+        if (item.legality != 1){
+          pay_time = '<span style="color: red">'+ item.pay_time + '</span>';
+        }else{
+          pay_time = item.pay_time;
+        }
+        d_table_tbody_tr.append($('<td data-title="支付时间">'+pay_time +'</td>'))
+        var status = '';
+        if (item.status == 0) {
+          status = ' <button type="button"   class="layui-btn layui-btn-primary layui-btn-xs">未支付</button>';
+        } else if (item.status == 1) {
+          status = '<button type="button"  class="layui-btn layui-btn-xs">已支付</button>';
+        } else if (item.status == 2) {
+          status = '  <button type="button"   class="layui-btn layui-btn-warm layui-btn-xs">已关闭</button>';
+        } else if (item.status == 3) {
+          status = '<button type="button"   class="layui-btn layui-btn-disabled layui-btn-xs">已过期</button>'
+        } else {
+          status =  '无';
+        }
+        d_table_tbody_tr.append($('<td data-title="订单状态">'+status +'</td>'))
+        var handel = '';
+        if(item.status != 1 && item.status!=2 && item.status!=3 && item.legality==1) {
+          handel = '<a class="layui-btn layui-btn-normal layui-btn-xs" onclick="issueOrder('+ item.id +')" lay-event="issueOrder">确认收款</a>' +
+                  '  <a class="layui-btn layui-btn-danger layui-btn-xs" onclick="is_legality('+ item.id +')" lay-event="is_legality">标记异常</a>'
+        }
+        d_table_tbody_tr.append($('<td data-title="订单备注">'+ item.note +'</td>'))
+        d_table_tbody_tr.append($('<td data-title="操作">'+ handel +'</td>'))
+
+        d_table_thead.append(d_table_thead_tr);
+        d_table_tbody.append(d_table_tbody_tr);
+
+        d_table.append(d_table_thead);
+        d_table.append(d_table_tbody);
+        d.append(d_table)
+        h.append(d)
+      });
+
+      $('.layui-table-box').after(h);
+    }
+
+  }
+
+
+  layui.use(['table', 'form', 'laydate'], function () {
+    var   table = layui.table,
+            $ = layui.$,
+            layer = layui.layer,
+            laydate = layui.laydate,
+            form = layui.form;
+
+
+
+
+    table.render({
+      elem: '#payOrderList'
+      , url: "/member/pay/lists?pay_code={:input('pay_code')}&code_id={:input('code_id')}"
+      , defaultToolbar: []
+      , toolbar: '#toolbarDemo'
+      , page: true
+      , response: {statusCode: 1}
+      , cols: [[
+        {field: 'account_number',align:"center" , title: 'QQ账号', title: '核销账号',templet: function (d) {
+            if (d.legality != 1){
+              return '<span style="color: red">'+ d.account_number + '</span>';
+            }else{
+              return d.account_number;
+            }
+          }}
+        , {field: 'cardKey',align:"center" , title: '红包二维码',toolbar: "#table-select-card"}
+        ,{field: 'order_no', width: 180, align:"center" ,title: '订单号',templet: function (d) {
+            if (d.legality != 1){
+              return '<span style="color: red">'+ d.order_no + '</span>';
+            }else{
+              return d.order_no;
+            }
+          }}
+        , {field: 'order_price', width: 120,align:"center" , title: '订单金额',templet: function (d) {
+            if (d.legality != 1){
+              return '<span style="color: red">'+ d.order_price + '</span>';
+            }else{
+              return d.order_price;
+            }
+          }}
+        , {field: 'order_pay_price', width: 150, align:"center" ,title: '实际支付金额',templet: function (d) {
+            if (d.legality != 1){
+              return '<span style="color: red">'+ d.order_pay_price + '</span>';
+            }else{
+              return d.order_pay_price;
+            }
+          }}
+        , {field: 'add_time', width: 180, align:"center" ,title: '创建时间',templet: function (d) {
+            if (d.legality != 1){
+              return '<span style="color: red">'+ d.add_time + '</span>';
+            }else{
+              return d.add_time;
+            }
+          }}
+        , {field: 'pay_time', width: 180, align:"center" ,title: '支付时间',templet: function (d) {
+            if (d.legality != 1){
+              return '<span style="color: red">'+ d.pay_time + '</span>';
+            }else{
+              return d.pay_time;
+            }
+          }}
+        // , {field: 'pay_username', width: 100, title: '付款人姓名'}
+        , {field: 'note',align:"center" , title: '订单备注',templet: function (d) {
+            if (d.legality != 1){
+              return '<span style="color: red">'+ d.note + '</span>';
+            }else{
+              return d.note;
+            }
+          }}
+        , {
+          field: 'status', width: 200, align:"center" ,title: '订单状态', templet: function (d) {
+            var html = '';
+            if (d.status == 0) {
+              html = ' <button type="button"   class="layui-btn layui-btn-primary layui-btn-xs">未支付</button>';
+            } else if (d.status == 1) {
+              html = '<button type="button"  class="layui-btn layui-btn-xs">已支付</button>';
+            } else if (d.status == 2) {
+              html = '  <button type="button"   class="layui-btn layui-btn-warm layui-btn-xs">已关闭</button>';
+            } else if (d.status == 3) {
+              html = '<button type="button"   class="layui-btn layui-btn-disabled layui-btn-xs">已过期</button>'
+            } else {
+              return '无';
+            }
+            return html;
+
+          }
+        }
+        , {width: 200, title: '操作',align:"center" , toolbar: "#table-order", fixed: 'right'}
+      ]]
+      , done: function (res, curr, count) {
+        $(".layui-table-main tr").each(function (index, val) {
+          $(".layui-table-fixed").each(function () {
+            $($(this).find(".layui-table-body tbody tr")[index]).height($(val).height());
+          });
+        });
+        $(".layui-table-header tr").each(function (index, val) {
+          $(".layui-table-fixed").each(function () {
+            $($(this).find(".layui-table-header thead tr")[index]).height($(val).height());
+          });
+        });
+
+        if (!isMobile()) {
+          $('.layui-table-box').show();
+          $('.book-box').hide();
+        } else {
+          booksTemplet(res.data);//填充视图模板
+          $('.layui-table-box').hide();
+          $('.book-box').show();
+        }
+
+      }
+    });
+
+    window.copy_txt =  function(id) {
+
+      var clipboard = new ClipboardJS(id);
+
+      clipboard.on('success', function(e) {
+        layer.msg("复制成功",{icon:1,time:1500})
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        layer.msg("复制失败，请手动复制",1500)
+      });
+    }
+
+    window.issueOrder = function(id) {
+
+      if (getCookie('member_check_command_ok')){
+        layer.confirm('确认收款？', {
+          btn : [ '确定', '取消' ]//按钮
+        }, function(index) {
+          layer.close(index);
+          $.ajax({
+            url: "issueOrder",
+            method: 'POST',
+            data: {id: id, pay_code: "{:input('pay_code')}"},
+            success: function (res) {
+              if (res.code == 1) {
+                table.reload('payOrderList');
+              }
+              layer.msg(res.msg, {icon: res.code == 1 ? 1 : 2, time: 1500});
+              layer.close(index); //关闭弹层
+            }
+          });
+        });
+      }else{
+        layer.prompt({
+          formType: 1
+          , title: '请输入请输入安全码'
+        }, function (value, index) {
+          layer.close(index);
+          $.ajax({
+            url: "issueOrder",
+            method: 'POST',
+            data: {pass: value, id: id, pay_code: "{:input('pay_code')}"},
+            success: function (res) {
+              if (res.code == 1) {
+                table.reload('payOrderList');
+              }
+              layer.msg(res.msg, {icon: res.code == 1 ? 1 : 2, time: 1500});
+              layer.close(index); //关闭弹层
+            }
+          });
+        })
+      }
+
+
+    }
+
+    window.is_legality = function(id){
+      layer.confirm('确定将此订单标为异常吗？', {
+        btn: ['确定', '取消'] //可以无限个按钮
+        ,title:'请谨慎操作！'
+      }, function(index, layero){
+        //按钮【按钮一】的回调
+        $.ajax({
+          url: "islegality",
+          method: 'POST',
+          data: {id: id, pay_code: "{:input('pay_code')}"},
+          success: function (res) {
+            if (res.code == 1) {
+              table.reload('payOrderList');
+            }
+            layer.msg(res.msg, {icon: res.code == 1 ? 1 : 2, time: 1500});
+            layer.close(index); //关闭弹层
+          }
+        });
+      }, function(index){
+        //按钮【按钮二】的回调
+      });
+    }
+
+    table.on('tool(payOrderListFilter)', function (obj) {
+      var data = obj.data;
+      if (obj.event === 'issueOrder') {  // 监听添加操作
+
+        if (getCookie('member_check_command_ok')){
+          layer.confirm('确认收款？', {
+            btn : [ '确定', '取消' ]//按钮
+          }, function(index) {
+            layer.close(index);
+            $.ajax({
+              url: "issueOrder",
+              method: 'POST',
+              data: {id: obj.data.id, pay_code: "{:input('pay_code')}"},
+              success: function (res) {
+                if (res.code == 1) {
+                  table.reload('payOrderList');
+                }
+                layer.msg(res.msg, {icon: res.code == 1 ? 1 : 2, time: 1500});
+                layer.close(index); //关闭弹层
+              }
+            });
+          });
+        }else{
+          layer.prompt({
+            formType: 1
+            , title: '请输入请输入安全码'
+          }, function (value, index) {
+            layer.close(index);
+            $.ajax({
+              url: "issueOrder",
+              method: 'POST',
+              data: {pass: value, id: obj.data.id, pay_code: "{:input('pay_code')}"},
+              success: function (res) {
+                if (res.code == 1) {
+                  table.reload('payOrderList');
+                }
+                layer.msg(res.msg, {icon: res.code == 1 ? 1 : 2, time: 1500});
+                layer.close(index); //关闭弹层
+              }
+            });
+          });
+        }
+
+
+      }else if(obj.event === 'select-card'){
+        if(obj.data.status != 1 && obj.data.legality !=2){
+          layer.confirm('<img src="'+ data.cardKey+'" style="width:400px;height: 500px;object-fit: contain">', {
+            title: '红包二维码信息',
+            btn: ['确定到账','这是空包'] //按钮
+            ,area:['400px','600px']
+          }, function(index, layero){
+            if (getCookie('member_check_command_ok')){
+              $.ajax({
+                url: "issueOrder",
+                method: 'POST',
+                data: { id: obj.data.id, pay_code: "{:input('pay_code')}"},
+                success: function (res) {
+                  if (res.code == 1) {
+                    table.reload('payOrderList');
+                  }
+                  layer.msg(res.msg, {icon: res.code == 1 ? 1 : 2, time: 1500});
+                  layer.close(index); //关闭弹层
+                }
+              });
+            }else{
+              layer.prompt({
+                formType: 1
+                , title: '请输入请输入安全码'
+              }, function (value, index) {
+                layer.close(index);
+                $.ajax({
+                  url: "issueOrder",
+                  method: 'POST',
+                  data: {pass: value, id: obj.data.id, pay_code: "{:input('pay_code')}"},
+                  success: function (res) {
+                    if (res.code == 1) {
+                      table.reload('payOrderList');
+                    }
+                    layer.msg(res.msg, {icon: res.code == 1 ? 1 : 2, time: 1500});
+                    layer.close(index); //关闭弹层
+                  }
+                });
+              });
+            }
+
+          }, function(index){
+            layer.confirm('确定这是个空包吗？', {
+              btn: ['确定', '取消'] //可以无限个按钮
+              ,title:'请谨慎操作！'
+            }, function(index, layero){
+              //按钮【按钮一】的回调
+              $.ajax({
+                url: "islegality",
+                method: 'POST',
+                data: {id: obj.data.id, pay_code: "{:input('pay_code')}"},
+                success: function (res) {
+                  if (res.code == 1) {
+                    table.reload('payOrderList');
+                  }
+                  layer.msg(res.msg, {icon: res.code == 1 ? 1 : 2, time: 1500});
+                  layer.close(index); //关闭弹层
+                }
+              });
+            }, function(index){
+              //按钮【按钮二】的回调
+            });
+          });
+        }else{
+          layer.confirm('<img src="'+ data.cardKey+'" style="width:400px;height: 500px;object-fit: contain">', {
+            title: '红包二维码信息',
+            btn: ['已经操作过了'] //可以无限个按钮
+            ,area:['400px','600px']
+          });
+        }
+
+      }else if(obj.event === 'is_legality'){
+        //eg1
+        layer.confirm('确定将此订单标为异常吗？', {
+          btn: ['确定', '取消'] //可以无限个按钮
+          ,title:'请谨慎操作！'
+        }, function(index, layero){
+          //按钮【按钮一】的回调
+          $.ajax({
+            url: "islegality",
+            method: 'POST',
+            data: {id: obj.data.id, pay_code: "{:input('pay_code')}"},
+            success: function (res) {
+              if (res.code == 1) {
+                table.reload('payOrderList');
+              }
+              layer.msg(res.msg, {icon: res.code == 1 ? 1 : 2, time: 1500});
+              layer.close(index); //关闭弹层
+            }
+          });
+        }, function(index){
+          //按钮【按钮二】的回调
+        });
+
+      }
+    });
+    form.on('submit(order-search)', function (data) {
+      table.reload('payOrderList', {
+        page: {
+          curr: 1
+        }
+        , where: data.field
+      }, 'data');
+      $.ajax({
+        url:"/member/pay/searchStats?pay_code={:input('pay_code')}&code_id={:input('code_id')}",
+        type : 'get',
+        data:data.field,
+        dataType:'json',
+        success : function(data) {
+          console.log(data);
+          $("#amount").text(data.data.amount);
+          $("#success_amount").text(data.data.success_amount);
+          $("#count").text(data.data.count);
+          $("#success_count").text(data.data.success_count);
+          $("#success_rate").text(data.data.success_rate);
+        }
+      })
+      return false;
+    });
+    form.on('switch(auto-refresh)', function (data) {
+      $.ajax({
+        url:"/member/Pay/yhk_order_refresh?pay_code=" + "{:input('pay_code')}",
+        data:{status: data.elem.checked ? 1 : 0},
+        method:'post',
+        success:function(res){
+          window.location.reload();
+        }
+      });
+    });
+    form.on('switch(editMsWorkStatus)',function (data) {
+      $.ajax({
+        url:"{:url('servers/edit_work_status')}",
+        method:'post',
+        data:{status:data.elem.checked ? 0 : 1},
+        success:function(res){
+          if(res.code == 1){
+            layer.msg('操作成功',{icon:1,time:1500},function (){
+              window.location.reload();
+            })
+          }else{
+            layer.msg('操作失败',{icon:2,time:1500}),function (){
+              window.location.reload();
+            }
+          }
+        }
+      })
+    });
+    table.on('toolbar(payOrderListFilter)', function (obj) {
+      if (obj.event === 'refresh') {
+        table.reload('payOrderList'); //数据刷新
+      } else if (obj.event === 'export'){
+        var locationUrl = "/member/pay/exportOrder?pay_code={:input('pay_code')}";
+        var urlParams = layui.$('.layui-form').find('select,input[type=\'text\']').serialize();
+        window.location.href = locationUrl + '&' + urlParams;
+      }
+    });
+    lay('.app-laydate-item').each(function(k,v){
+      var  timestamp=(k==0)?' 00:00:00':" 00:00:00";
+      var date=new Date();
+      date.setHours('00');date.setMinutes('00');date.setSeconds('00');
+      if(k==1){
+        date.setHours('23');date.setMinutes('59');date.setSeconds('59');
+      }
+      laydate.render({
+        elem: this,
+        format: 'yyyy-MM-dd',type:'datetime'
+        ,istime:false
+        ,value:date
+        ,trigger: 'click'
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

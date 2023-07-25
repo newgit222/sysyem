@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>后台管理 - 上级码商</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css" media="all">
+</head>
+<body>
+
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form" lay-filter="layuiadmin-form-useradmin" id="layuiadmin-form-useradmin" style="padding: 20px 30px 0 0;">
+
+            <!--产品列表-->
+            <table class="layui-table" lay-even="" lay-skin="line">
+                <thead>
+                <tr>
+                    <th>码商ID</th>
+                    <th>码商名称</th>
+                    <th>码商等级</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="faterMsList" id="vo"}
+                <tr>
+                    <td>{$vo.userid}</td>
+                    <td>{$vo.username}</td>
+                    <td>{$vo.level}级</td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+            <div class="layui-form-item layui-hide">
+                <input type="button" lay-submit lay-filter="app-user-profit-submit" id="app-user-profit-submit" value="确认">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="__ADMIN__/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__ADMIN__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'upload'], function(){
+        var $ = layui.$
+            ,form = layui.form
+            ,upload = layui.upload ;
+
+
+        form.on('switch(status)', function(obj){
+            var _val = obj.elem.checked?1:2;
+            $(this).val(_val);
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>狂神科技|狂神聚合支付 - 添加代付中转平台</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css" media="all">
+  <style>
+    .add-input{
+
+      margin-top: 4px;
+
+    }
+
+    .exp{
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="layui-form" lay-filter="layuiadmin-form-admin" id="layuiadmin-form-admin" style="padding: 20px 30px 0 0;">
+  <div class="layui-form-item">
+    <label class="layui-form-label">平台名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="name" value="" lay-verify="required" placeholder="请输入平台名称" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">商户号</label>
+    <div class="layui-input-block">
+      <input type="text" name="merchant_id" value="" lay-verify="required" placeholder="请输入商户号" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">密钥</label>
+    <div class="layui-input-block">
+      <input type="text" name="api_key" value="" lay-verify="required" placeholder="请输入中转平台密钥" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">代付平台下单网关</label>
+    <div class="layui-input-block">
+      <input type="text" id="api_url" name="api_url" value="" lay-verify="required" placeholder="请输入中转平台网关" autocomplete="off" class="layui-input" onkeyup="searchConfig(this)">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">代付模板</label>
+    <div class="layui-input-block" id='template_wai'>
+      <!--      <input type="text" id="controller" name="controller" value="" lay-verify="required" placeholder="联系技术人员索取，请勿乱填" autocomplete="off" class="layui-input">-->
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">平台查询余额网关</label>
+    <div class="layui-input-block">
+      <input type="text" id="query_balance_url" name="query_balance_url" value=""  placeholder="平台查询余额网关" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">最小请求金额（0为不限制）</label>
+    <div class="layui-input-block">
+      <input type="text" name="min_money" value="" lay-verify="required" placeholder="请输入最小请求金额" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">最大请求金额（0为不限制）</label>
+    <div class="layui-input-block">
+      <input type="text" name="max_money" value="" lay-verify="required" placeholder="请输入最大请求金额" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">权重（1-9）</label>
+    <div class="layui-input-block">
+      <input type="number" name="weight" value="" lay-verify="required" placeholder="请输入权重" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">管理状态</label>
+    <div class="layui-input-block">
+      <input type="radio" name="status" value="1" title="启用" checked>
+      <input type="radio" name="status" value="0" title="禁用" >
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">查询余额</label>
+    <div class="layui-input-block">
+      <input type="radio" name="is_query_balance" value="1" title="启用" checked>
+      <input type="radio" name="is_query_balance" value="0" title="禁用" >
+    </div>
+  </div>
+
+<!--  <div class="layui-form-item">-->
+<!--    <label class="layui-form-label">回调IP白名单</label>-->
+<!--    <div class="layui-input-block">-->
+<!--      <textarea type="text" name="notify_ips" class="form-control"  rows="5"></textarea>-->
+<!--      <p class="card-description">多个IP请用,逗号隔开</p>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">回调IP白名单</label>
+    <div class="layui-input-block" id="notify_ips">
+
+<!--      <div class="layui-input-inline exp">-->
+<!--        <input type="text" name="notify_ips[]" value="" class="layui-input form-control">-->
+<!--        <button type="button" class="layui-btn layui-btn-danger delete-input">删除</button>-->
+<!--      </div>-->
+
+      <button type="button" class="layui-btn add-input">添加</button>
+    </div>
+  </div>
+
+  {:token()}
+
+  <div class="layui-form-item layui-hide">
+    <input type="button" lay-submit lay-filter="app-daifu-transfer-new-submit" id="app-daifu-transfer-new-submit" value="确认">
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="__ADMIN__/layui/layui.js"></script>
+<script>
+
+  layui.config({
+    base: '__ADMIN__/' //静态资源所在路径
+  }).extend({
+    index: 'lib/index' //主入口模块
+  }).use(['index', 'form'], function(){
+    var $ = layui.$
+            ,form = layui.form ;
+
+
+    // 添加输入框
+    $('body').on('click', '.add-input', function() {
+      var inputHtml = '<div class="layui-input-inline" style="display: flex; align-items: center;"><input type="text" name="' + $(this).parent().attr('id') + '[]" class="layui-input form-control"><button type="button" class="layui-btn layui-btn-danger delete-input">删除</button></div>';
+      $(this).before(inputHtml);
+    });
+
+    // 删除输入框
+    $('body').on('click', '.delete-input', function() {
+      $(this).parent().remove();
+    });
+
+  })
+  function searchConfig(obj){
+
+    var api_url = document.getElementById('api_url').value;
+    $.post('searchConfig',{api_url:api_url},function(data){
+
+      $('#template_wai').html(data);
+    });
+  }
+</script>
+</body>
+</html>

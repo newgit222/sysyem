@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>代付订单 - 服务商管理 - 码商管理后台</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="referrer" content="no-referrer" />
+    {if condition="$Think.cookie.daifu_orders_refresh eq 1"}
+    <meta http-equiv="refresh" content="8">
+    {/if}
+    {include file="/common/link"}
+    <style>
+        .table-responsive-y table, .table-responsive-y thead, .table-responsive-y tbody, .table-responsive-y th, .table-responsive-y td, .table-responsive-y tr {
+            display: block
+        }
+
+        .table-responsive-y thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px
+        }
+
+        .table-responsive-y tr {
+            border: 1px solid #ccc
+        }
+
+        .table-responsive-y td {
+            border: 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding: 5px;
+            padding-left: 35%;
+            white-space: normal;
+            text-align: left;
+            height: auto !important;
+            min-height: 35px;
+            line-height: auto !important;;
+        }
+
+        .table-responsive-y td:before {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 40%; /*这里可能没用*/
+            padding-right: 10px;
+            white-space: nowrap;
+            text-align: left;
+            font-weight: bold;
+            height: auto !important;
+            line-height: auto !important;
+        }
+
+        .table-responsive-y td:before {
+            content: attr(data-title)
+        }
+
+        .table-responsive-y h3 a {
+            font-size: 16px;
+            color: #3cbfae;
+            font-weight: bold
+        }
+
+        .layui-upload{
+            margin: 15px;
+        }
+
+        .layui-upload-item {
+            margin: 0;
+            margin-right: 10px;
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            width: 92px;
+            height: 92px;
+            text-align: center;
+            vertical-align: top;
+            position: relative;
+
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            overflow: hidden;
+            
+        }
+
+        .layui-upload-item img {
+            /* max-width: 100%; */
+            /* max-height: 100%; */
+            width: 92px;
+            height: 92px;
+            object-fit: cover;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .layui-upload-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .layui-upload-item-del {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color: #f44336;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            font-size: 10px;
+        }
+
+        .upload-tip {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #FF5722;
+            background-color: #FFF3E0;
+            border: 1px solid #FFB74D;
+            border-radius: 2px;
+            padding: 10px;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <fieldset id="searchFieldset_currentTableRenderId" class="table-search-fieldset layui-hide1">
+            <legend>高级搜索---处理过的订单默认只显示当天的</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <div class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">平台订单</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="trade_no" autocomplete="off" placeholder="请输入平台订单" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">商户单号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="out_trade_no" autocomplete="off" placeholder="请输入商户单号" class="layui-input">
+                            </div>
+                        </div>
+                        {if condition="$status neq 1"}
+                        <div class="layui-inline">
+                            <label class="layui-form-label">订单状态</label>
+                            <div class="layui-input-inline">
+                                <select class="layui-select" name="status">
+                                    <option value="">全部</option>
+<!--                                    <option value="1">待处理</option>-->
+                                    <option value="3">处理中</option>
+                                    <option value="2">处理成功</option>
+                                    <option value="0">处理失败</option>
+                                </select>
+                            </div>
+                        </div>
+                        {/if}
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">下单时间</label>
+                            <div class="layui-inline" id="test-range">
+                                <div class="layui-input-inline">
+                                    <input type="text" id="startDate" name="startDate" class="layui-input app-laydate-item" placeholder="开始日期" placeholder="yyyy-MM-dd HH:mm:ss">
+                                </div>
+                                <div class="layui-form-mid">-</div>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="endDate" name="endDate" class="layui-input app-laydate-item"  placeholder="yyyy-MM-dd HH:mm:ss">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn  layui-btn-sm layui-btn-normal" data-type="tableSearch" data-table="currentTableRenderId" lay-submit lay-filter="currentTableRenderId_filter"> 搜 索</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <style>
+            .layui-unselect{
+                float: right;
+            }
+        </style>
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container" >
+                <button class="layui-btn  layui-btn-sm layuimini-btn-primary" lay-event="refresh"> 刷新订单 </button>
+                <input type="checkbox" style="float: right" lay-skin="switch" lay-filter="auto-refresh"  lay-text="自动刷新开|自动刷新关"
+                       {if condition="$Think.cookie.daifu_orders_refresh eq 1"}checked{/if} >
+            </div>
+
+        </script>
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+        <script type="text/html" id="currentTableBar">
+            {{#  if(d.status == '1'){ }}
+            <a class="layui-btn layui-btn-xs layui-btn-warm data-count-edit" lay-event="matching">处理订单</a>
+            {{#  } else if(d.status == '3'){ }}
+<!--            <a class="layui-btn layui-btn-xs layui-btn-warm" id="uploadsDaiFuImg" lay-event="uploadsDaiFuImg">上传凭证</a>-->
+            {{#  if({$daifu_success_uplode} == '2' && !d.transfer_chart && d.status == '3'){ }}
+            <a href="javascript:void(0)" class="layui-btn layui-btn-xs layui-btn-normal" onclick="uploadPJ('{{ d.id }}')" >上传转账截图</a>
+            <a href="javascript:void(0)" style="display: none" class="layui-btn layui-btn-xs layui-btn-normal" orderid="{{ d.id }}" id="test1" ></a>
+            {{# } }}
+
+            <a class="layui-btn layui-btn-xs" lay-event="alipayToCard">宝转卡</a>
+            <a class="layui-btn layui-btn-xs" lay-event="finishDf">完成代付</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="error_finishDf">代付失败</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="discard_df">弃单</a>
+            {{#  } else if(d.status == '0' || d.status == '2'){ }}
+            <a href="javascript:void(0)" class="layui-btn layui-btn-xs layui-btn-normal" onclick="uploadPJ('{{ d.id }}')" >重新传图</a>
+            <a href="javascript:void(0)" style="display: none" class="layui-btn layui-btn-xs layui-btn-normal" orderid="{{ d.id }}" id="test1" ></a>
+            <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="select_reson">查看备注</a>
+            {{#  } }}
+
+        </script>
+
+        <script type="text/html" id="orderstatus">
+            {{#  if(d.status == '1'){ }}
+            <button class="layui-btn layui-btn-normal layui-btn-xs">待处理</button>
+            {{#  } else if(d.status == '0'){ }}
+            <button class="layui-btn  layui-btn-disabled layui-btn-xs">处理失败</button>
+            {{#  } else if(d.status == '3'){ }}
+            <button class="layui-btn layui-btn-warm layui-btn-xs">处理中</button>
+            {{#  } else if(d.status == '2'){ }}
+            <button class="layui-btn layui-btn-xs">处理完成</button>
+            {{#  } }}
+        </script>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>
+<script src="/public/static/member/layui-v2.7.6/layui/layui.js"></script>
+<script src="/public/static/member/js/lay-config.js?v=2.0.0" charset="utf-8"></script>
+<script type="text/javascript" src="__MS__/js/clipboard.min.js"></script>
+<script src="/public/static/member/js/jsencrypt.js"></script>
+<script>
+
+    function booksTemplet(data) {
+        $('.book-box').remove();//移除上一个
+        var h = $('<div></div>');
+        if (data.length > 0) {
+            data.forEach(function (item, index) {
+                var d = $('<div class="table-responsive-y"></div>');
+                var d_table = $('<table class=""></table>');
+                var d_table_thead = $('<thead></thead>')
+                var d_table_thead_tr = $('<tr></tr>')
+
+                var d_table_tbody = $('<tbody></tbody>')
+                var d_table_tbody_tr = $('<tr></tr>')
+
+
+                {if condition="$daifu_orders_username eq 1"}
+                d_table_tbody_tr.append($('<td data-title="所属商户">'+ item.username +'</td>'))
+                {/if}
+
+                d_table_tbody_tr.append($('<td data-title="商户订单号">'+ item.out_trade_no +'</td>'))
+                d_table_tbody_tr.append($('<td data-title="银行名字">'+ item.bank_name +'</td>'))
+
+                role = '';
+                if (item.status == 3) {
+                    role = item.bank_number + '&nbsp;&nbsp;&nbsp;&nbsp;' +
+                        '<a class="layui-btn layui-btn-normal layui-btn-xs copy1" href="javascript:void(0);" data-clipboard-text="' + item.bank_number + '" ' +
+                        'onclick="copy_txt(\'copy1\')">\n' +
+                        '复制' +
+                        '</a>'
+                } else {
+                    role = '******'
+                }
+                d_table_tbody_tr.append($('<td data-title="收款账号">'+ role +'</td>'))
+                role = '';
+                if (item.status == 3) {
+                    role = item.bank_owner + '&nbsp;&nbsp;&nbsp;&nbsp;' +
+                        '<a class="layui-btn layui-btn-normal layui-btn-xs copy2" href="javascript:void(0);" data-clipboard-text="' + item.bank_owner + '" ' +
+                        'onclick="copy_txt(\'copy2\')">\n' +
+                        '复制' +
+                        '</a>'
+                }else{
+                    role = item.bank_owner;
+                }
+                d_table_tbody_tr.append($('<td data-title="姓名">'+ role +'</td>'))
+                role = '';
+                if (item.status == 3) {
+                    role = item.amount + '&nbsp;&nbsp;&nbsp;&nbsp;' +
+                        '<a class="layui-btn layui-btn-normal layui-btn-xs copy2" href="javascript:void(0);" data-clipboard-text="' + item.amount + '" ' +
+                        'onclick="copy_txt(\'copy2\')">\n' +
+                        '复制' +
+                        '</a>'
+                }else{
+                    role = item.amount;
+                }
+                d_table_tbody_tr.append($('<td data-title="转账金额">'+ role +'</td>'))
+                d_table_tbody_tr.append($('<td data-title="下单时间">'+ item.create_time +'</td>'))
+                    role = '';
+                if (item.finish_time == '') {
+                    role = '';
+                } else {
+                    role =  timestampToTime(item.finish_time);
+                }
+                d_table_tbody_tr.append($('<td data-title="处理时间">'+ role +'</td>'))
+                role = '';
+                if (item.status == 1){
+                    role = ' <button class="layui-btn layui-btn-normal layui-btn-xs">待处理</button>';
+                }else if(item.status == 0){
+                    role = '  <button class="layui-btn  layui-btn-disabled layui-btn-xs">处理失败</button>';
+                }else if(item.status == 3){
+                    role = ' <button class="layui-btn layui-btn-warm layui-btn-xs">处理中</button>';
+                }else if(item.status == 2){
+                    role = '<button class="layui-btn layui-btn-xs">处理完成</button>';
+                }
+
+                d_table_tbody_tr.append($('<td data-title="订单状态">'+ role +'</td>'))
+                    role = '';
+                    if (item.chongzhen == 0) {
+                        role = '<span style="color:green">正常</span>';
+                    } else {
+                        role = '<span style="color:red">已冲正</span>';
+                    }
+                d_table_tbody_tr.append($('<td data-title="冲正状态">'+ role +'</td>'))
+
+                var handel = '';
+
+                if (item.status == 1){
+                    handel += '<a  class="layui-btn layui-btn-xs layui-btn-warm data-count-edit" onclick="matching(\' '+item.id+ '\')">处理订单</a>';
+                }else if(item.status == '3'){
+                    if ({$daifu_success_uplode} == '2' && !item.transfer_chart && item.status == '3'){
+                        handel += '<a style="margin-bottom: 5px" href="javascript:void(0)" class="layui-btn layui-btn-xs layui-btn-normal" onclick="uploadPJ(\''+item.id+'\')" >上传转账截图</a>';
+                        handel += '<a href="javascript:void(0)" style="display: none" class="layui-btn layui-btn-xs layui-btn-normal" orderid="{{ d.id }}" id="test1" ></a>';
+                    }
+
+                    handel += ' <a style="margin-bottom: 5px" class="layui-btn layui-btn-xs" onclick="alipayToCard(\' '+ item.id+ ' \')">宝转卡</a>';
+                    handel +=  '<a style="margin-bottom: 5px" class="layui-btn layui-btn-xs" onclick="finishDf(\' '+ item.id+ ' \')">完成代付</a>';
+                    handel += '<a style="margin-bottom: 5px" class="layui-btn layui-btn-xs layui-btn-danger" onclick="error_finishDf(\' '+ item.id+ ' \')">代付失败</a>';
+                    handel += '<a style="margin-bottom: 5px" class="layui-btn layui-btn-xs layui-btn-danger" onclick="discard_df(\' '+ item.id+ ' \')">弃单</a>';
+                }else if   (item.status == '0' || item.status == '2'){
+                    handel += ' <a style="margin-bottom: 5px" class="layui-btn layui-btn-xs layui-btn-normal" onclick="select_reson(\' '+ item.status+ ' \',\' '+ item.error_reason+ ' \',\' '+ item.remark+ ' \')">查看备注</a>';
+               }
+
+                d_table_tbody_tr.append($('<td data-title="操作">'+ handel +'</td>'))
+
+                d_table_thead.append(d_table_thead_tr);
+                d_table_tbody.append(d_table_tbody_tr);
+
+                d_table.append(d_table_thead);
+                d_table.append(d_table_tbody);
+                d.append(d_table)
+                h.append(d)
+            });
+
+            $('.layui-table-box').after(h);
+        }
+
+    }
+
+    function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000); // 时间戳单位是秒，需要乘以1000转换为毫秒
+        var year = date.getFullYear();
+        var month = ('0' + (date.getMonth() + 1)).slice(-2);
+        var day = ('0' + date.getDate()).slice(-2);
+        var hour = ('0' + date.getHours()).slice(-2);
+        var minute = ('0' + date.getMinutes()).slice(-2);
+        var second = ('0' + date.getSeconds()).slice(-2);
+        return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+    }
+
+
+    var order_status = '{$status}';
+    var member_id = '{$member_id}';
+    layui.use(['form', 'table', 'upload','laydate'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            laydate = layui.laydate,
+            util = layui.util,
+            table = layui.table,
+            layer = layui.layer,
+            upload = layui.upload;
+
+        lay('.app-laydate-item').each(function(k,v){
+            var  timestamp=(k==0)?' 00:00:00':" 00:00:00";
+            var date=new Date();
+            date.setHours('00');date.setMinutes('00');date.setSeconds('00');
+            if(k==1){
+                date.setHours('23');date.setMinutes('59');date.setSeconds('59');
+            }
+            laydate.render({
+                elem: this,
+                format: 'yyyy-MM-dd',type:'datetime'
+                ,istime:false
+                ,value:date
+                ,trigger: 'click'
+            });
+        });
+
+
+
+        form.on('submit(currentTableRenderId_filter)', function (data) {
+            var field = data.field;
+            //监听搜索分页为1
+            //执行重载
+            table.reload('currentTableId', {
+                where: {search: _r(JSON.stringify(field))},
+                page: {
+                    curr: 1,
+                },
+                function(res) {
+
+                }
+            });
+            // $.ajax({
+            //     url: "{:url('searchStats')}",
+            //     type: 'get',
+            //     data: field,
+            //     dataType: 'json',
+            //     success: function (data) {
+            //         console.log(data);
+            //         $("#amount").text(data.data.amount);
+            //         $("#success_amount").text(data.data.success_amount);
+            //         $("#count").text(data.data.count);
+            //         $("#success_count").text(data.data.success_count);
+            //         $("#success_rate").text(data.data.success_rate);
+            //     }
+            // })
+        });
+
+        window.copy_txt = function (id) {
+            var clipboard = new ClipboardJS('.' + id);
+            clipboard.on('success', function (e) {
+                layer.msg("复制成功", {icon: 1, time: 1500})
+                e.clearSelection();
+            });
+            clipboard.on('error', function (e) {
+                layer.msg("复制失败，请手动复制", 1500)
+            });
+        }
+
+        table.render({
+            elem: '#currentTableId',
+            url: "{:url('getDaifuOrderList')}?member_id=" + member_id,
+            toolbar: '#toolbarDemo',
+            cols: [[
+                {if condition="$daifu_orders_username eq 1"}
+                {field: 'username', align: "center", width: 100, title: '所属商户'},
+                {/if}
+                {field: 'out_trade_no', align: "center", width: 180, title: '商户订单号'},
+                {field: 'bank_name', align: "center", width: 150, title: '银行名字'},
+                {
+                    field: 'bank_number', align: "center",width: 240, title: '收款账号',
+                    templet: function (d) {
+                        role = '';
+                        if (d.status == 3) {
+                            role = d.bank_number + '&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                '<a class="layui-btn layui-btn-normal layui-btn-xs copy1" href="javascript:void(0);" data-clipboard-text="' + d.bank_number + '" ' +
+                                'onclick="copy_txt(\'copy1\')">\n' +
+                                '复制' +
+                                '</a>'
+                        } else {
+                            role = '******'
+                        }
+                        return role;
+                    }
+                },
+                {field: 'bank_owner', align: "center", width: 150, title: '姓名'
+                    ,templet: function (d) {
+                        role = '';
+                        if (d.status == 3) {
+                            role = d.bank_owner + '&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                '<a class="layui-btn layui-btn-normal layui-btn-xs copy2" href="javascript:void(0);" data-clipboard-text="' + d.bank_owner + '" ' +
+                                'onclick="copy_txt(\'copy2\')">\n' +
+                                '复制' +
+                                '</a>'
+                        }else{
+                            role = d.bank_owner;
+                        }
+                        return role;
+                    }},
+                {field: 'amount', align: "center", width: 180, title: '转账金额',templet:function (d) {
+                        role = '';
+                        if (d.status == 3) {
+                            role = d.amount + '&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                '<a class="layui-btn layui-btn-normal layui-btn-xs copy2" href="javascript:void(0);" data-clipboard-text="' + d.amount + '" ' +
+                                'onclick="copy_txt(\'copy2\')">\n' +
+                                '复制' +
+                                '</a>'
+                        }else{
+                            role = d.amount;
+                        }
+                        return role;
+                    }},
+                {field: 'create_time', align: "center", width: 180, title: '下单时间'},
+                {
+                    field: 'finish_time', align: "center",width: 180, title: '处理时间', templet: function (d) {
+                        if (d.finish_time == '') {
+                            return '----';
+                        } else {
+                            return util.toDateString(d.finish_time * 1000);
+                        }
+                    }
+                },
+                {field: 'status', width: 150, title: '订单状态', templet: "#orderstatus", align: "center"},
+                {field: 'chongzhen', width: 150, title: '冲正状态', align: "center", templet: function (d) {
+                        if (d.chongzhen == 0) {
+                            return '<span style="color:green">正常</span>';
+                        } else {
+                            return '<span style="color:red">已冲正</span>';
+                        }
+                    }},
+                {title: '操作', width: 600, toolbar: '#currentTableBar', align: "center", fixed: isMobile() ? '' : 'right'}
+            ]],
+            parseData: function (res) {
+                /*var decrypt = new JSEncrypt();
+                var privateKey =  '-----BEGIN RSA PRIVATE KEY-----{$rsa_private_key}-----END RSA PRIVATE KEY-----';
+                decrypt.setPrivateKey(privateKey);
+                var uncrypted = decrypt.decryptLong2(res.data);
+                console.log(JSON.parse(uncrypted))
+                return JSON.parse(uncrypted);*/
+
+            },
+            page: true
+            , done: function (res) {
+            $(".layui-table-main tr").each(function (index, val) {
+                $(".layui-table-fixed").each(function () {
+                    $($(this).find(".layui-table-body tbody tr")[index]).height($(val).height());
+                });
+            });
+            $(".layui-table-header tr").each(function (index, val) {
+                $(".layui-table-fixed").each(function () {
+                    $($(this).find(".layui-table-header thead tr")[index]).height($(val).height());
+                });
+            });
+
+                if (!isMobile()) {
+                    $('.layui-table-box').show();
+                    $('.book-box').hide();
+                } else {
+                    booksTemplet(res.data);//填充视图模板
+                    $('.layui-table-box').hide();
+                    $('.book-box').show();
+                }
+
+        },
+            before:function (){
+                {if condition="$daifu_refresh_isver eq 2"}
+                $.post('query_cache',function (res){
+                    if (res.code == 1){
+                        //输入验证码
+                        layer.confirm('<div style="width: 100%"><img style="width: 100%;height: fit-content;" src="{:captcha_src()}"  onclick="this.src=this.src+\'&\'+Math.random()" alt="captcha" /></div>' +
+                            '<input style="margin-top: 5%;" type="text" class="layui-input" name="captcha" id="captcha" placeholder="请输入验证码">', {
+                            title: '请输入验证码',
+                            closeBtn:false,
+                            shadeClose: false,
+                            btn: ['提交'] //按钮
+                        }, function(index, layero){
+                            //按钮【按钮一】的回调
+                            var captcha = $('#captcha').val();
+                            if (captcha == ''){
+                                alert( "请正确输入验证码");
+                                return false;
+                            } else {
+                                // save_payname(txt_pay_name,index);
+                                $.post('ver_captcha?member_id='+member_id+'&captcha='+captcha,{captcha:captcha},function (data){
+                                    if (data.code != 1){
+                                        alert( "验证码错误");
+                                        // window.location.index;
+                                        return false;
+                                    }
+                                    layer.close(index);
+
+                                })
+                            }
+
+                        })
+                        return false;
+                    }
+                })
+                {/if}
+                    return false;
+            }
+
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = JSON.stringify(data.field);
+            layer.alert(result, {
+                title: '最终的搜索信息'
+            });
+
+            //执行搜索重载
+            table.reload('currentTableId', {
+                page: {
+                    curr: 1
+                }
+                , where: {
+                    searchParams: result
+                }
+            }, 'data');
+
+            return false;
+        });
+
+        /**
+         * toolbar监听事件
+         */
+        table.on('toolbar(currentTableFilter)', function (obj) {
+            if (obj.event === 'refresh') {  // 监听添加操作
+                table.reload('currentTableId', {
+                }, 'data');
+            } else if (obj.event === 'delete') {  // 监听删除操作
+                var checkStatus = table.checkStatus('currentTableId')
+                    , data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+            }
+        });
+
+        //监听表格复选框选择
+        table.on('checkbox(currentTableFilter)', function (obj) {
+            console.log(obj)
+        });
+
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'matching') {
+                $.post("{:url('matching')}",{id:data.id},function (res){
+                    if (res.code == 1){
+                        layer.msg(res.msg,{icon:1,time: 1000},function (){
+                            table.reload('currentTableId', {
+                            }, 'data');
+                        })
+                    }else{
+                        layer.msg(res.msg,{icon:2,time: 1500})
+                    }
+                });
+            } else if (obj.event === 'discard_df') {
+                //提示文本
+                let msg =  '<strong style="color:red">请问是否要放弃【订单号：'+ data.trade_no +'】 【金额：'+ data.amount +'】【姓名：'+ obj.data.bank_owner +'】【银行名称:'+ obj.data.bank_name +'】的订单？</strong>';
+
+                layer.confirm(msg, {
+                    btn: ['确定', '取消'] //可以无限个按钮
+                }, function(index, layero){
+                    //按钮【按钮一】的回调
+                    $.post("{:url('discard_df')}",{id:data.id},function (res){
+                        if (res.code == 1){
+                            layer.msg(res.msg,{icon:1,time: 1000},function (){
+                                layer.close(index)
+                                table.reload('currentTableId', {
+                                }, 'data');
+                            })
+                        }else{
+                            layer.msg(res.msg,{icon:2,time: 1500},function (){
+                                layer.close(index)
+                            })
+                        }
+                    })
+                }, function(index){
+                    //按钮【按钮二】的回调
+                    layer.close(index);
+                });
+            }else if(obj.event === 'finishDf'){
+                layer.open({
+                    title: '备注',
+                    area:['280','250'],
+                    content:'<div>' +
+                        '<div className="layui-form-item">'+
+                        '<input class="layui-input" type="text" id="remark" required    lay-verify="required" placeholder="请输入备注信息" autoComplete="off" className="layui-input">'+
+                        '</div></div>',
+                    yes:function(index){
+                        $.post("{:url('sendDfResult')}",{id:data.id,remark:$('#remark').val(),status:2},function (res){
+                            if (res.code == 1){
+                                layer.msg(res.msg,{icon:1,time: 1000},function (){
+                                    layer.close(index)
+                                    table.reload('currentTableId', {
+                                    }, 'data');
+                                })
+                            }else{
+                                layer.msg(res.msg,{icon:2,time: 1500},function (){
+                                    layer.close(index)
+                                })
+                            }
+                        })
+                    }
+                })
+            }else if(obj.event === 'alipayToCard'){
+                layer.open({
+                    type: 2,
+                    content:'/member/Daifu_Orders/alipayToCard.html?id='+ data.id,
+                    area: ['60%', '70%'],
+                    title: '宝转卡',
+                    scrollbar: true,
+                });
+            }else if(obj.event === 'error_finishDf'){
+
+                layer.open({
+                    title: '订单失败备注',
+                    area:['280','250'],
+                    content:'<div>' +
+                        '<div className="layui-form">' +
+                        '<div class="layui-input-block" style="width: 100%;margin-left: 0" className="layui-input-block">'+
+                        '<select name="remark" style="width: 100%" id="reson"  class="layui-select" className="layui-select" >\n' +
+                        '      </select>'+
+                        '</div>' +
+                        '</div>' +
+                        '</div>',
+                    yes:function(index){
+                        $.post("{:url('sendDfResult')}",{id:data.id,remark:$('#reson').val(),error_reason:$('#reson').val(),status:0},function (res){
+                            if (res.code == 1){
+                                layer.msg(res.msg,{icon:1,time: 1000},function (){
+                                    layer.close(index)
+                                    table.reload('currentTableId', {
+                                    }, 'data');
+                                })
+                            }else{
+                                layer.msg(res.msg,{icon:2,time: 1500},function (){
+                                    layer.close(index)
+                                })
+                            }
+                        })
+                    }
+                })
+                $.ajax({
+                    url: "getErrorReson",
+                    dataType: 'json',
+                    type: 'post',
+                    success: function (data) {
+                        console.log(data);//下面会提到这个data是什么值
+                        //使用循环遍历，给下拉列表赋值
+                        $.each(data.data, function (index, value) {
+                            // console.log(value);
+                            $('#reson').append(new Option(value,value));// 下拉菜单里添加元素
+                        });
+                        layui.form.render("select");//重新渲染 固定写法
+                    }
+                })
+            }else if(obj.event === 'select_reson'){
+                if (data.status == 0){
+                    layer.confirm(data.error_reason, {
+                        title: '订单备注',
+                        btn: ['我知道了'] //按钮
+                    });
+                }else{
+                    layer.confirm(data.remark, {
+                        title: '订单备注',
+                        btn: ['我知道了'] //按钮
+                    });
+                }
+
+            }else if(obj.event === 'uploadsDaiFuImg'){
+
+                //普通图片上传
+            upload.render({
+                    elem: '#uploadsDaiFuImg' //绑定元素
+                    ,url: "{:url('daifu_orders/upload')}" //上传接口
+                    ,accept:'images'
+                    ,before: function (){
+                        this.data = {
+                            orderid: data.id,
+                        }
+                    }
+                    ,done: function(res){
+                        //上传完毕回调
+                        if (res.code == 0){
+                            layer.msg(res.msg,{icon:1,time:1500},function (){
+                                $("#uploadsDaiFuImg").hide();
+                            })
+                        }else{
+                            layer.msg(res.msg,{icon:2,time:1500})
+                        }
+                    }
+                    ,error: function(){
+                        //请求异常回调
+                    console.log(123);
+                }
+                });
+
+            }
+        });
+
+        window.matching = function(id){
+            $.post("{:url('matching')}",{id:id},function (res){
+                if (res.code == 1){
+                    layer.msg(res.msg,{icon:1,time: 1000},function (){
+                        table.reload('currentTableId', {
+                        }, 'data');
+                    })
+                }else{
+                    layer.msg(res.msg,{icon:2,time: 1500})
+                }
+            });
+        }
+
+        window.alipayToCard = function(id) {
+            layer.open({
+                type: 2,
+                content:'/member/Daifu_Orders/alipayToCard.html?id='+ id,
+                area: ['90%', '80%'],
+                title: '宝转卡',
+                scrollbar: true,
+            });
+        }
+
+        window.finishDf = function(id){
+            layer.open({
+                title: '备注',
+                area:['280','250'],
+                content:'<div>' +
+                    '<div className="layui-form-item">'+
+                    '<input class="layui-input" type="text" id="remark" required    lay-verify="required" placeholder="请输入备注信息" autoComplete="off" className="layui-input">'+
+                    '</div></div>',
+                yes:function(index){
+                    $.post("{:url('sendDfResult')}",{id:id,remark:$('#remark').val(),status:2},function (res){
+                        if (res.code == 1){
+                            layer.msg(res.msg,{icon:1,time: 1000},function (){
+                                layer.close(index)
+                                table.reload('currentTableId', {
+                                }, 'data');
+                            })
+                        }else{
+                            layer.msg(res.msg,{icon:2,time: 1500},function (){
+                                layer.close(index)
+                            })
+                        }
+                    })
+                }
+            })
+        }
+
+        window.error_finishDf = function(id){
+            layer.open({
+                title: '订单失败备注',
+                area:['280','250'],
+                content:'<div>' +
+                    '<div className="layui-form">' +
+                    '<div class="layui-input-block" style="width: 100%;margin-left: 0" className="layui-input-block">'+
+                    '<select name="remark" style="width: 100%" id="reson"  class="layui-select" className="layui-select" >\n' +
+                    '      </select>'+
+                    '</div>' +
+                    '</div>' +
+                    '</div>',
+                yes:function(index){
+                    $.post("{:url('sendDfResult')}",{id:id,remark:$('#reson').val(),error_reason:$('#reson').val(),status:0},function (res){
+                        if (res.code == 1){
+                            layer.msg(res.msg,{icon:1,time: 1000},function (){
+                                layer.close(index)
+                                table.reload('currentTableId', {
+                                }, 'data');
+                            })
+                        }else{
+                            layer.msg(res.msg,{icon:2,time: 1500},function (){
+                                layer.close(index)
+                            })
+                        }
+                    })
+                }
+            })
+            $.ajax({
+                url: "getErrorReson",
+                dataType: 'json',
+                type: 'post',
+                success: function (data) {
+                    console.log(data);//下面会提到这个data是什么值
+                    //使用循环遍历，给下拉列表赋值
+                    $.each(data.data, function (index, value) {
+                        // console.log(value);
+                        $('#reson').append(new Option(value,value));// 下拉菜单里添加元素
+                    });
+                    layui.form.render("select");//重新渲染 固定写法
+                }
+            })
+        }
+
+        window.discard_df = function(id){
+            layer.confirm('确定丢弃这一单吗？', {
+                btn: ['确定', '取消'] //可以无限个按钮
+            }, function(index, layero){
+                //按钮【按钮一】的回调
+                $.post("{:url('discard_df')}",{id:id},function (res){
+                    if (res.code == 1){
+                        layer.msg(res.msg,{icon:1,time: 1000},function (){
+                            layer.close(index)
+                            table.reload('currentTableId', {
+                            }, 'data');
+                        })
+                    }else{
+                        layer.msg(res.msg,{icon:2,time: 1500},function (){
+                            layer.close(index)
+                        })
+                    }
+                })
+            }, function(index){
+                //按钮【按钮二】的回调
+                layer.close(index);
+            });
+        }
+
+        window.select_reson = function(status,error_reason,remark){
+            console.log('status:' + status)
+            console.log('error_reason:' + error_reason)
+            console.log('remark:' + remark)
+            if (status == 0){
+                layer.confirm(error_reason, {
+                    title: '订单备注',
+                    btn: ['我知道了'] //按钮
+                });
+            }else{
+                layer.confirm(remark, {
+                    title: '订单备注',
+                    btn: ['我知道了'] //按钮
+                });
+            }
+        }
+
+        form.on('switch(auto-refresh)', function (data) {
+            $.ajax({
+                url:"/member/daifu_orders/daifu_order_refresh",
+                data:{status: data.elem.checked ? 1 : 0},
+                method:'post',
+                success:function(res){
+                    window.location.reload();
+                }
+            });
+        });
+
+
+
+
+        function _r(d) {
+            var encrypt = new JSEncrypt();
+            var  pubkey = '-----BEGIN PUBLIC KEY-----{$publicKeyString}-----END PUBLIC KEY-----'
+
+            encrypt.setPublicKey(pubkey);
+            var str = d;
+            return encrypt.encrypt(str);
+        }
+    });
+
+    // function uploadPJ(id, number = 1) {
+    //
+    //     layui.use(['upload'], function () {
+    //         var upload = layui.upload,
+    //               $ = layui.jquery;
+    //         var images = [];
+    //         var has_error = '';
+    //         upload.render({
+    //             elem: '#test1' //绑定元素
+    //             ,url: "/member/daifu_orders/upload_https" //上传接口
+    //             ,accept:'images'
+    //             ,multiple:true
+    //             ,number:3
+    //             ,field:'image'
+    //             ,before: function (){
+    //
+    //             }
+    //             ,done: function(res){
+    //                 if (res.code == 1){
+    //                     images.push(res.data);
+    //                 }else{
+    //                     has_error = res.msg;
+    //                 }
+    //             },
+    //             allDone:function (obj){
+    //
+    //                 if (has_error !== ''){
+    //                     layer.msg(has_error,{icon:2,time:1500}, function () {
+    //                         window.location.reload();
+    //                     })
+    //                     return;
+    //                 }
+    //
+    //                 let image_path = images.join(',');
+    //
+    //                 $.post('upload1', {orderid:id, image_path:image_path, number: number}, function (result) {
+    //                     if (result.code == 0){
+    //                         layer.msg(result.msg,{icon:1,time:1500},function (){
+    //                                 window.location.reload();
+    //                             /* table.reload('currentTableId', {
+    //                             }, 'data');*/
+    //                         })
+    //                     }else{
+    //                         layer.msg(result.msg,{icon:2,time:1500}, function () {
+    //                                 window.location.reload();
+    //                             /*table.reload('currentTableId', {
+    //                             }, 'data');*/
+    //                         })
+    //
+    //                     }
+    //                 })
+    //             }
+    //             ,error: function(){
+    //                 layer.msg('上传失败',{icon:2,time:1500}, function () {
+    //                     window.location.reload();
+    //                 })
+    //             }
+    //         });
+    //         $("#test1").click();
+    //     })
+    // }
+
+    function uploadPJ(id, number = 1) {
+        layui.use(['layer', 'upload'], function() {
+            var layer = layui.layer;
+            var upload = layui.upload;
+    
+            layer.open({
+                type: 1,
+                title: '上传转账截图',
+                content: '<div class="layui-upload"><button type="button" class="layui-btn" id="uploadFileBtn"><i class="layui-icon layui-icon-add-circle"></i>选择图片</button><p class="upload-tip">注：最多上传三张转账截图。</p><blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">上传列表：<div class="layui-upload-list" id="fileList"></div></blockquote></div>',
+                area: ['80%', '60%'],
+                btn: ['提交', '取消'],
+                yes: function(index, layero) {
+                    // 获取上传的文件列表
+                    var fileList = [];
+                    $('#fileList .layui-upload-item').each(function() {
+                        var src = $(this).find('img').attr('decodeData');
+                        fileList.push(src);
+                    });
+    
+                    //如果图片大于3张提示 不能上传
+                    if (fileList.length > 3) {
+                        layer.msg('最多只能上传3张图片', {icon: 2, time: 1500});
+                        return false;
+                    }
+    
+                    fileList = fileList.join(',');
+    
+                    $.post('upload1', {orderid:id, image_path:fileList, number: number}, function (result) {
+                        if (result.code == 0){
+                            layer.msg(result.msg,{icon:1,time:1500},function (){
+                                window.location.reload();
+                            })
+                        }else{
+                            layer.msg(result.msg,{icon:2,time:1500}, function () {
+                                window.location.reload();
+                            })
+    
+                        }
+                        layer.close(index);
+                    })
+    
+    
+                },
+                success: function(layero, index) {
+                    layer.closeAll('loading'); // 关闭遮罩层
+    
+                    // 绑定上传文件按钮的点击事件
+                    var uploadInst = upload.render({
+                        elem: '#uploadFileBtn',
+                        url: '/member/daifu_orders/upload_https',
+                        accept: 'images',
+                        multiple: true,
+                        number: 3,
+                        field: 'image',
+                        before: function() {
+                            layer.load(2);
+                        },
+                        done: function(res) {
+                            if (res.code == 1) {
+                                $.post('decodeImagePath', {image_path:res.data, number: number}, function (result) {
+                                    if (result.code == 1){
+                                        // 解密成功，追加图片到列表
+                                        var fileHtml = '<div class="layui-upload-item"><img  decodeData="'+ res.data +'" src="' + result.data + '"  class="layui-upload-img"><div class="layui-upload-item-del">删</div></div>';
+                                        $('#fileList').append(fileHtml);
+                                    }else{
+                                        layer.msg(result.msg,{icon:2,time:1500})
+                                    }
+                                    layer.closeAll('loading'); // 关闭遮罩层
+                                })
+                            } else {
+                                layer.msg(res.msg, {icon: 2, time: 1500});
+                            }
+                        },
+                        error: function() {
+                            layer.msg('上传失败', {icon: 2, time: 1500});
+                        }
+                    });
+    
+                    // 绑定删除文件按钮的点击事件
+                    $('#fileList').on('click', '.layui-upload-item-del', function() {
+                        $(this).parent().remove();
+                    });
+
+                    // 绑定图片的点击事件
+                    $('#fileList').on('click', '.layui-upload-img', function() {
+                        var src = $(this).attr('src');
+                        var photos = {
+                            'title': '查看图片',
+                            'id': 1,
+                            'start': 0,
+                            'data': [
+                                {
+                                    'alt': '查看图片',
+                                    'pid': 1,
+                                    'src': src,
+                                    'thumb': src
+                                }
+                            ],
+                        }
+                        layer.photos({
+                            photos: photos,
+                            anim: 5
+                        });
+                    });
+                },
+    
+            });
+        });
+    }
+</script>

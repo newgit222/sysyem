@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>后台管理 - 代付订单列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__ADMIN__/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <!--头部-->
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">商户单号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="trade_no" placeholder="请输入交易单号" value="{$Request.get.trade_no}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">跑分平台订单号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="orderNum" placeholder="请输入跑分平台订单号" value="{$Request.get.orderNum}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">商户号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="uid" placeholder="请输入商户号" value="{$Request.get.uid}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">码商</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="username" placeholder="请输入码商用户名" value="{$Request.get.username}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">收款人</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="bank_owner" placeholder="请输入收款人" value="{$Request.get.bank_owner}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">中转平台名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="daifu_transfer_name" placeholder="请输入中转平台名称" value="{$Request.get.daifu_transfer_name}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">中转平台ID</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="daifu_transfer_id" placeholder="请输入中转平台ID" value="{$Request.get.daifu_transfer_id}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">时间类型</label>
+                    <div class="layui-input-block">
+                        <select name="time_type" lay-filter="time_type">
+                            <option value="">请选择一个状态</option>
+                            <option {$Request.get.time_type == '1' ? 'selected' : '' } value="1">创建时间</option>
+                            <option {$Request.get.time_type == '2' ? 'selected' : '' } value="2">更新时间</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="start" class="layui-input app-laydate-item" placeholder="yyyy-MM-dd HH:mm:ss">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="end" class="layui-input app-laydate-item" placeholder="yyyy-MM-dd HH:mm:ss">
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">订单状态</label>
+                    <div class="layui-input-block">
+                        <select name="status" lay-filter="status">
+                            <option value="">请选择一个状态</option>
+                            <option {$Request.get.status == '0' ? 'selected' : '' } value="0">处理失败</option>
+                            <option {$Request.get.status == '1' ? 'selected' : '' } value="1">待处理</option>
+                            <option {$Request.get.status == '2' ? 'selected' : '' } value="2">已完成</option>
+                            <option {$Request.get.status == '3' ? 'selected' : '' } value="3">处理中</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">冲正状态</label>
+                    <div class="layui-input-block">
+                        <select name="chongzhen" lay-filter="status">
+                            <option value="">请选择一个状态</option>
+                            <option {$Request.get.chongzhen == '0' ? 'selected' : '' } value="0">正常</option>
+                            <option {$Request.get.chongzhen == '1' ? 'selected' : '' } value="1">已冲正</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">回调状态</label>
+                    <div class="layui-input-block">
+                        <select name="notify_result" lay-filter="status">
+                            <option value="">请选择一个状态</option>
+                            <option {$Request.get.notify_result == '1' ? 'selected' : '' } value="1">回调成功</option>
+                            <option {$Request.get.notify_result == '2' ? 'selected' : '' } value="2">回调失败</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button  id="123" class="layui-btn layuiadmin-btn-order" lay-submit lay-filter="app-daifuorder-list-search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                        搜素
+                    </button>
+                    <button onclick="exportItem(0,layui.$('.layui-form').find('select,input[type=\'text\']').serialize())" class="layui-btn  layui-bg-red layuiadmin-btn-order"  data-type="all" data-events="export">
+                        <i class="layui-icon layui-icon-chart-screen layuiadmin-button-btn"></i>
+                        导出
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--数据表-->
+        <div class="layui-card-body">
+            <div class="app-channel-btns" style="margin-bottom: 10px;">
+                <blockquote class="layui-elem-quote layui-quote-nm">
+                    当前订单总金额：<span id="total" class="layui-badge layui-bg-green">{$fees.total_money}</span> 元
+                    成交总金额：<span id="paid" class="layui-badge layui-bg-black">{$fees.total_finish_money}</span> 元
+
+
+                    成功率：<span id="search_order_money" class="layui-badge layui-bg-blue">{$fees.success_percent}</span> %
+
+                    总单量：<span id="ordersum" class="layui-badge layui-bg-black">{$fees.total_count}</span> 单
+                    成功订单量：<span id="orderSuccsum" class="layui-badge layui-bg-green">{$fees.total_finish_count}</span> 单
+                </blockquote>
+            </div>
+            <script type="text/html" id="toolbarDemo">
+                <div class="layui-btn-container">
+                    <button class="layui-btn" lay-event="batch">批量转发代付</button>
+                    <button class="layui-btn layui-btn-danger" lay-event="batchAuditError">批量驳回代付</button>
+                </div>
+            </script>
+            <table id="app-order-list" lay-filter="app-order-list"></table>
+
+            <script type="text/html" id="notifyButtonTpl">
+                {{#  if(d.notify_result == 'SUCCESS'){ }}
+                <button class="layui-btn layui-btn layui-btn-xs">回调成功</button>
+                {{#  } else if(d.status == '2' && d.notify_result != 'SUCCESS' ){ }}
+                {{#  if(d.send_notify_times > 0 ){ }}
+                <button class="layui-btn layui-btn-danger layui-btn-xs">回调失败</button>
+                {{#  } else{ }}
+                <button class="layui-btn layui-btn-warm layui-btn-xs">等待通知</button>
+                {{#  } }}
+                {{#  } else if(d.status == '0' && d.notify_result != 'SUCCESS' ){ }}
+                {{#  if(d.send_notify_times > 0 ){ }}
+                <button class="layui-btn layui-btn-danger layui-btn-xs">回调失败</button>
+                {{#  } else{ }}
+                <button class="layui-btn layui-btn-warm layui-btn-xs">等待通知</button>
+                {{#  } }}
+                {{#  } else if(d.status == '3'){ }}
+                <button class="layui-btn layui-btn-huse layui-btn-xs">处理中</button>
+                {{#  } else{ }}
+                <button class="layui-btn layui-btn-warm layui-btn-xs">待处理</button>
+                {{#  } }}
+            </script>
+
+            <script type="text/html" id="buttonTpl">
+                {{#  if(d.status == '2'){ }}
+                <button class="layui-btn layui-btn layui-btn-xs">已完成</button>
+                {{#  } else if(d.status == '1'){ }}
+                <button class="layui-btn layui-btn-warm layui-btn-xs">待处理</button>
+                {{#  } else if(d.status == '3'){ }}
+                <button class="layui-btn layui-btn-huse layui-btn-xs">处理中</button>
+                {{#  } else{ }}
+                <button class="layui-btn layui-btn-danger layui-btn-xs">处理失败</button>
+                {{#  } }}
+            </script>
+            <script type="text/html" id="table-system-order">
+
+                {{#  if(d.status == '1'){ }}
+                    {{# if(d.is_lock == '1'){ }}
+                    <a class="layui-btn layui-btn-xs" lay-event="lock_df_operation" ><i class="layui-icon layui-icon-edit"></i>解锁</a>
+                    {{# }else{ }}
+                    <a class="layui-btn  layui-btn-danger layui-btn-xs" lay-event="lock_df_operation"><i class="layui-icon layui-icon-edit"></i>锁定</a>
+                    {{# } }}
+                <a class="layui-btn layui-btn-xs" lay-event="transfer_df"  ><i class="layui-icon layui-icon-share"></i>转发代付</a>
+                {{# } }}
+                {{#  if(d.status == '1'){ }}
+                <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="appoint_ms"><i class="layui-icon layui-icon-edit"></i>处理</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="auditError"><i class="layui-icon layui-icon-delete"></i>关闭订单</a>
+                {{# } }}
+
+                {{# if(d.status == '2' && d.chongzhen == '0') { }}
+                <a class="layui-btn layui-btn layui-btn-normal layui-btn-xs" lay-event="chongzhen"><i class="layui-icon layui-icon-edit"></i>冲正</a>
+                {{# } }}
+
+                {{#  if(d.status == '3'){ }}
+                <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="appoint_ms"><i class="layui-icon layui-icon-edit"></i>指派码商</a>
+                <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="auditSuccess"><i class="layui-icon layui-icon-auz"></i>完成代付</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="auditError"><i class="layui-icon layui-icon-delete"></i>代付失败</a>
+                {{#  if(d.is_to_channel == '2'){ }}
+                <a class="layui-btn layui-btn-xs" lay-event="transfer_df_bf"  ></i>中转补发</a>
+                {{#  } }}
+
+                {{#  } }}
+
+
+                {{#  if(d.status == '2' && d.notify_result != 'SUCCESS'  ){ }}
+                <a class="layui-btn layui-btn-danger  layui-btn-xs" lay-event="add_notify"><i class="layui-icon layui-icon-edit"></i>补发通知</a>
+                {if condition="$daifu_chars eq 2"}
+                <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="select_transfer"><i class="layui-icon layui-icon-edit"></i>查看凭证</a>
+                {/if}
+                {{#  } }}
+
+                {{#  if(d.status == '0' && d.notify_result != 'SUCCESS'  ){ }}
+                <a class="layui-btn layui-btn-danger  layui-btn-xs" lay-event="add_notify"><i class="layui-icon layui-icon-edit"></i>补发通知</a>
+                {{#  } }}
+
+
+                {{#  if(d.status == '2' && d.notify_result == 'SUCCESS'  ){ }}
+                {if condition="$daifu_chars eq 2"}
+                <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="select_transfer"><i class="layui-icon layui-icon-edit"></i>查看凭证</a>
+                {/if}
+                {{#  } }}
+
+                {{#  if(d.status == '0'){ }}
+                {if condition="$daifu_chars eq 2"}
+                <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="select_transfer"><i class="layui-icon layui-icon-edit"></i>查看凭证</a>
+                {/if}
+                {{#  } }}
+                <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="actionLog"><i class="layui-icon layui-icon-edit"></i>日志</a>
+                <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="details"><i class="layui-icon layui-icon-edit"></i>详情</a>
+            </script>
+        </div>
+    </div>
+</div>
+
+<script src="/public/static/member/lib/layui-v2.6.3/layui.js"></script>
+<script src="__STATIC__/cloudui/js/define.js"></script>
+<script>
+    layui.config({
+        base: '__ADMIN__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'daifu_orders','laydate', 'table'], function(){
+        var $ = layui.$
+            ,form = layui.form
+            ,laydate = layui.laydate
+            ,table = layui.table;
+form.render(); 
+
+        //同时绑定多个日期
+        lay('.app-laydate-item').each(function(k,v){
+            var  timestamp=(k==0)?' 00:00:00':" 00:00:00";
+            var date=new Date();
+            date.setHours('00');date.setMinutes('00');date.setSeconds('00');
+            if(k==1){
+                date.setHours('23');date.setMinutes('59');date.setSeconds('59');
+            }
+            laydate.render({
+                elem: this,
+                format: 'yyyy-MM-dd',type:'datetime'
+                ,istime:false
+                ,value:date
+                ,trigger: 'click'
+            });
+        });
+
+
+
+        //监听搜索
+        form.on('submit(app-daifuorder-list-search)', function(data){
+            var field = data.field;
+            console.log($(this).attr('id') == 'param_search');
+            //监听搜索分页为1
+            // if($(this).attr('id') == 'param_search')
+            // {
+            //     field.page=1;
+            // }
+            //执行重载
+            table.reload('app-order-list', {
+                where: field,
+                page :{
+                    curr:1,
+                }
+            });
+            //取得当前搜索条件下的订单总奖金
+            $.ajax({
+                url : 'searchOrderMoney',
+                type : 'get',
+                data:field,
+                dataType:'json',
+                success : function(data) {
+
+                    // $("#search_order_money").text(data.percent);
+                    console.log(data);
+                    $("#total").text(data.total);
+                    $("#paid").text(data.paid);
+                    $("#search_order_money").text(data.percent);
+                    $("#ordersum").text(data.total_count);
+                    $("#orderSuccsum").text(data.paid_count);
+
+
+                }
+            })
+
+        });
+
+/*        table.on('toolbar(toolbarDemo)', function(obj) {
+            alert(1000)
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch (obj.event) {
+                case 'batch':
+                    alert(1000)
+                    var data = checkStatus.data;
+                    if (data.length === 0) {
+                        layer.msg('请选择要操作的数据');
+                    } else {
+                        // 批量操作逻辑
+                        layer.msg('批量操作成功');
+                    }
+                    break;
+            }
+        });*/
+
+        table.on('toolbar(app-order-list)', function (obj) {
+            if (obj.event === 'batch') {  // 监听添加操作
+                var checkStatus = table.checkStatus(obj.config.id);
+                var data = checkStatus.data;
+                var globalVar = "Hello World!";
+                if (data.length === 0) {
+                    layer.msg('请选择要转发的订单');
+                    return;
+                }
+                $.ajaxSetup({
+                    async: false
+                });
+                    layer.open({
+                        title: '请选择转发通道',
+                        area:['280','250'],
+                        content:'<div>' +
+                            '<div className="layui-form">' +
+
+                            '<div class="layui-input-block" style="width: 100%;margin-left: 0" className="layui-input-block">'+
+                            '<select name="channel" style="width: 100%" id="channel"  class="layui-select" className="layui-select" >\n' +
+                            '        <option >请选择通道</option>\n' +
+                            '      </select>'+
+                            '</div>' +
+                            '</div>' +
+                            '</div>',
+                        yes:function(index){
+                            var ok_transfer_arr = [];
+                            for (var i = 0; i< data.length; i++){
+                                if (data[i].status == 1){
+
+                                    $.ajax({
+                                        url: 'dfTransfer',
+                                        type: "POST",
+                                        data: {id:data[i].id,channel:$('#channel').val()},
+                                        async: false,
+                                        success: function(response) {
+                                            if (response.code == 1){
+                                                ok_transfer_arr.push(data[i].id);
+                                            }
+                                        }
+                                    });
+
+                                 /*   $.post("dfTransfer",{id:data[i].id,channel:$('#channel').val()},function (res){
+
+                                    })
+*/
+                                }
+                            }
+
+                            if (ok_transfer_arr.length === 0){
+                                layer.msg('操作失败',{icon:2,time: 1500},function (){
+                                    // layer.close(index)
+                                })
+                            }else{
+                                let view_str = '订单id:'+ok_transfer_arr.join() + ' 转发成功';
+                                layer.msg(view_str,{icon:1,time: 1500},function (){
+                                    table.reload('app-order-list');
+                                })
+                            }
+                        }
+                    })
+                    $.ajax({
+                        url: "getTransferDfChannel",
+                        dataType: 'json',
+                        type: 'post',
+                        success: function (data) {
+                            console.log(data);//下面会提到这个data是什么值
+                            //使用循环遍历，给下拉列表赋值
+                            $.each(data.data, function (index, value) {
+                                // console.log(value.department_id);
+                                $('#channel').append(new Option(value.name,value.id));// 下拉菜单里添加元素
+                            });
+                            layui.form.render("select");//重新渲染 固定写法
+                        }
+                    })
+            }else if (obj.event === 'batchAuditError') {  // 监听添加操作
+                var checkStatus = table.checkStatus(obj.config.id);
+                var data = checkStatus.data;
+                var globalVar = "Hello World!";
+                if (data.length === 0) {
+                    layer.msg('请选择要转发的订单');
+                    return;
+                }
+                $.ajaxSetup({
+                    async: false
+                });
+
+                layer.confirm('确定驳回这些订单吗？', {
+                    btn: ['确定', '取消'] //可以无限个按钮
+                }, function(index, layero){
+                    layer.close(index);
+                    layer.open({
+                        type: 1,
+                        anim:2,
+                        title:'提交关闭原因',
+                        area:['400px','400px'],
+                        btn:['确认','关闭'],
+                        content:$('#gbyuanyin') ,
+                        success:function(){
+                            form.render();  //更新渲染表单
+                        },
+                        yes:function (index){
+                            var reason =  $("#reason").find("option:selected").text();
+                            //按钮【按钮一】的回调
+                            var ok_transfer_arr = [];
+                            for (var i = 0; i< data.length; i++){
+                                if (data[i].status == 1){
+
+                                    $.ajax({
+                                        url: 'auditError',
+                                        type: "POST",
+                                        data: {id:data[i].id,reason:reason},
+                                        async: false,
+                                        success: function(response) {
+                                            if (response.code == 1){
+                                                ok_transfer_arr.push(data[i].id);
+                                            }
+                                        }
+                                    });
+
+                                    /*   $.post("dfTransfer",{id:data[i].id,channel:$('#channel').val()},function (res){
+
+                                       })
+   */
+                                }
+                            }
+
+                            if (ok_transfer_arr.length === 0){
+                                layer.msg('操作失败',{icon:2,time: 1500},function (){
+                                    // layer.close(index)
+                                })
+                            }else{
+                                let view_str = '订单id:'+ok_transfer_arr.join() + ' 驳回成功';
+                                layer.msg(view_str,{icon:1,time: 1500},function (){
+                                    table.reload('app-order-list');
+                                })
+                            }
+                        },
+                    });
+
+                }, function(index){
+                    //按钮【按钮二】的回调
+                });
+
+            }
+        });
+
+    });
+</script>
+</body>
+<form class="layui-form" id="gbyuanyin" style="display:none">
+  <div class="layui-form-item">
+    <label class="layui-form-label">关闭原因</label>
+    <div class="layui-input-block">
+      <select name="reason" id="reason" lay-verify="required">
+        <option value=""></option>
+    {foreach name="res" item="value"}
+        <option value="{$value}">{$value}</option>
+ 
+    {/foreach}
+      </select>
+    </div>
+  </div>
+</form>
+</html>

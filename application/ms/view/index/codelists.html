@@ -1,0 +1,68 @@
+{include file="common/common_header" /}
+{include file="common/common_menu" /}
+<!--页面主要内容-->
+<main class="lyear-layout-content">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+
+
+                    <div class="card-body">
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>通道名称</th>
+                                    <th>通道编码</th>
+                                    <th style="width: 10%">费率</th>
+                                    <th style="width: 10%">创建时间</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {volist name="codeList" id="vo"}
+                                <tr>
+                                    <td style="font-size:10px;">
+                                        {$vo.name}
+                                    </td>
+                                    <td style="font-size:18px; color: red ">{$vo.code}</td>
+
+                                    <td style=" width: 10%; color: red ">
+                                        {$vo.rate}%
+                                    </td>
+                                    <td style=" width: 10%; color: red ">
+                                        {:date('Y-m-d H:i:s',$vo['create_time'])}
+
+                                    </td>
+
+                                </tr>
+                                {/volist}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+<!--End 页面主要内容-->
+</div>
+</div>
+
+{include file="common/common_js" /}
+
+</body>
+</html>

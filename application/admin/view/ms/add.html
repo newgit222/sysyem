@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>狂神科技|狂神聚合支付 - 后台管理 - 添加码商</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css" media="all">
+</head>
+<body>
+
+<div class="layui-form" lay-filter="layuiadmin-form-useradmin" id="layuiadmin-form-useradmin"
+     style="padding: 20px 30px 0 0;">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">所属码商：</label>
+        <div class="layui-input-block">
+            <select name="pid" >
+                <option value="">请选择代理（非必选）</option>
+                {volist name="ms" id="vo"}
+                <option value="{$vo.userid}">{$vo.username}</option>
+                {/volist}
+
+            </select>
+        </div>
+    </div>
+
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名：</label>
+        <div class="layui-input-block">
+            <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <!--<div class="layui-form-item">-->
+    <!--    <label class="layui-form-label">手机号：</label>-->
+    <!--    <div class="layui-input-block">-->
+    <!--        <input type="text" name="mobile" required lay-verify="required" placeholder="请输入手机号"-->
+    <!--               autocomplete="off" class="layui-input">-->
+    <!--    </div>-->
+    <!--</div>-->
+    <div class="layui-form-item">
+        <label class="layui-form-label">登录密码：</label>
+        <div class="layui-input-block">
+            <input type="password" name="login_pwd" required lay-verify="required|password" placeholder="请输入登录密码"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">确认密码：</label>
+        <div class="layui-input-block">
+            <input type="password" name="relogin_pwd" required lay-verify="required|password" placeholder="请确认登录密码"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    
+      <div class="layui-form-item">
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-block">
+          <input type="radio" name="status" value="1" checked title="正常">
+          <input type="radio" name="status" value="0" title="禁用" >
+        </div>
+         </div>
+    
+      <div class="layui-form-item">
+        <label class="layui-form-label">接单状态</label>
+        <div class="layui-input-block">
+          <input type="radio" name="work_status" value="1" checked title="开启">
+          <input type="radio" name="work_status" value="0" title="关闭" >
+        </div>
+         </div>
+
+    <div class="layui-form-item layui-hide">
+        <input type="button" lay-submit lay-filter="app-ms-list-submit" id="app-ms-list-submit" value="确认">
+    </div>
+</div>
+
+<script src="__ADMIN__/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__ADMIN__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'upload'], function () {
+        var $ = layui.$
+            , form = layui.form
+            , upload = layui.upload;
+    })
+</script>
+</body>
+</html>

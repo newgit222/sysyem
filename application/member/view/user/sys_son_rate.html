@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>后台管理 - 审核商户信息</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__MS__/layui/css/layui.css" media="all">
+</head>
+<body>
+
+
+<div class="layui-fluid">
+  <div class="layui-card">
+    <div class="layui-form" lay-filter="layuiadmin-form-useradmin" id="layuiadmin-form-useradmin" style="padding: 20px 30px 0 0;">
+
+      <!--产品列表-->
+      <table class="layui-table" lay-even="" lay-skin="line">
+        <thead>
+        <tr>
+<!--          <th>编号</th>-->
+          <th>渠道名称</th>
+          <th>自身费率(%)</th>
+          <th>设置下级费率(%)</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name="list" id="vo"}
+        <tr>
+          <input type="text" name="r[{$vo.id}][ms_id]" hidden value="{$Request.get.userid}">
+          <input type="text" name="r[{$vo.id}][code_type_id]" hidden value="{$vo.id}">
+<!--          <td>{$vo.id}</td>-->
+          <td>{$vo.name}</td>
+          <td>
+            <div class="layui-input-inline" style="width: 100px;">
+              <input type="text" disabled name="r[{$vo.id}][my_rate]" placeholder="" autocomplete="off" class="layui-input" value="{$vo.my_rate}">
+            </div>
+          </td>
+
+          <td>
+            <div class="layui-input-inline" style="width: 100px;">
+              <input type="text" name="r[{$vo.id}][son_rate]" placeholder="" autocomplete="off" class="layui-input" value="{$vo.son_rate}">
+            </div>
+          </td>
+        </tr>
+        {/volist}
+        </tbody>
+      </table>
+      <div class="layui-form-item layui-hide">
+        <input type="button" lay-submit lay-filter="app-user-profit-submit" id="app-user-profit-submit" value="确认">
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="__MS__/layui/layui.js"></script>
+<script>
+  layui.use(['form', 'upload'], function(){
+    var $ = layui.$
+            ,form = layui.form
+            ,upload = layui.upload ;
+
+
+
+  });
+
+
+</script>
+</body>
+</html>

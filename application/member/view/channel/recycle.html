@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>通道管理 - 回收站</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {include file="/common/link"}
+
+    <style>
+        .layui-card-body fieldset {
+            margin: 0;
+            border: 1px solid #e6e6e6;
+            padding: 10px 20px 5px 20px;
+            color: #6b6b6b;
+        }
+
+        .layui-card .layui-table-view {
+
+            margin-top: 10px;
+        }
+
+        .layui-table-cell {
+            height: auto;
+            overflow: visible;
+            text-overflow: inherit;
+            white-space: normal;
+            word-break: break-all;
+        }
+
+    </style>
+</head>
+<body layadmin-themealias="default">
+<div class="app" ></div>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+<!--            <fieldset id="searchFieldset_currentTableRenderId" class="table-search-fieldset layui-hide1">-->
+<!--                <legend>高级搜索</legend>-->
+<!--                <form class="layui-form layui-form-pane form-search">-->
+<!--                    <div class="layui-form-item layui-inline">-->
+<!--                        <label class="layui-form-label">收款编码</label>-->
+<!--                        <div class="layui-input-inline">-->
+<!--                            <input name="id" data-search-op="=" value="" placeholder="请输入收款编码" class="layui-input">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="layui-form-item layui-inline">-->
+<!--                        <label class="layui-form-label">支付宝昵称</label>-->
+<!--                        <div class="layui-input-inline">-->
+<!--                            <input name="account_name" data-search-op="%*%" value="" placeholder="请输入支付宝昵称"-->
+<!--                                   class="layui-input">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="layui-form-item layui-inline">-->
+<!--                        <label class="layui-form-label">支付宝账号</label>-->
+<!--                        <div class="layui-input-inline">-->
+<!--                            <input name="bank_name" data-search-op="%*%" value="" placeholder="请输入支付宝账号"-->
+<!--                                   class="layui-input">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="layui-form-item layui-inline">-->
+<!--                        <label class="layui-form-label">接单状态</label>-->
+<!--                        <div class="layui-input-inline">-->
+<!--                            <select class="layui-select" id="status" name="status" data-search-op="=">-->
+<!--                                <option value="-1">- 全部 -</option>-->
+<!--                                <option value="0">禁用</option>-->
+<!--                                <option value="1">启用</option>-->
+<!--                            </select>-->
+<!--                    </div>-->
+<!--                    <div class="layui-form-item layui-inline" style="margin-left: 115px">-->
+<!--                        <button type="submit" class="layui-btn layui-btn-normal" data-type="tableSearch"-->
+<!--                                data-table="currentTableRenderId" lay-submit-->
+<!--                                lay-filter="channel-search"> 搜 索-->
+<!--                        </button>-->
+<!--                        <button type="reset" class="layui-btn layui-btn-primary"-->
+<!--                                data-table-reset="currentTableRenderId"> 重 置-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </fieldset>-->
+            <table class="layui-hide" id="payCode" lay-filter="channelFilter"></table>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/html" id="table-channel">
+    <a class="layui-btn layui-btn-xs layui-btn-normal layui-paycodeadmin" lay-event="recovery">恢复</a>
+</script>
+
+<script src="/public/static/member/lib/layui-v2.6.3/layui.js"></script>
+<script src="/public/static/member/js/lay-config.js?v=2.0.0" charset="utf-8"></script>
+<script type="text/javascript" src="__ADMIN__/baisha/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/static/common/js/jquery.qrcode.js"></script>
+<script>
+    layui.use(['table', 'form', 'layer', 'miniTab'], function () {
+        var table = layui.table;
+        var $ = layui.$;
+        var form = layui.form;
+        var layer = layui.layer;
+        var miniTab = layui.miniTab;
+        table.render({
+            elem: '#payCode'
+            , url: "/member/channel/getRecycleList?pay_code={:input('pay_code')}"
+            , page: true
+            , defaultToolbar: ['exports']
+            , toolbar: '#toolbarDemo'
+            , response: {
+                statusCode: 1
+            }
+            , width: '100%'
+            , cols: [[
+                {field: 'id', width: 80, align:"center",title: '编号'}
+                , {field: 'account_name', align:"center" ,width:150,title: '支付宝昵称'}
+                , {field: 'image_url', align:"center" ,width:150,title: '账号备注'}
+                , {field: 'account_number' ,width:150,title: '支付二维码', templet:function (d) {
+
+                        if (d.account_type == 2){
+                            return '<a href="javascript:void(0);" onclick="decodeImagePath(\''+ d.account_number +'\')" style="color:#00b1ec">&nbsp;查看二维码</a>';
+                        }else{
+                            return '<a href="javascript:void(0);" onclick="openQrcode(\''+ d.account_number +'\')" style="color:#00b1ec">&nbsp;查看二维码</a>';
+                        }
+
+
+                    }}
+                , {field: 'bank_name', align:"center" ,width:150,title: '支付宝账号'}
+                , {
+                    field: 'success_order_num', align:"center" , width: 120, title: '每日限数', templet: function (d) {
+                        if (d.success_order_num == 0) {
+                            return '不限制';
+                        } else {
+                            return d.success_order_num;
+                        }
+                    }
+                }
+                , {field: 'limit__total', align:"center" , width: 120, title: '每日限额', align:"center" }
+
+                , {field: 'create_time', width: 180, align:"center" ,title: '添加时间'}
+                , {width: 100,title: '操作', toolbar: "#table-channel", fixed: 'right'}
+            ]]
+            , done: function (res, curr, count) {
+                // console.log(res)
+                //解决操作栏因为内容过多换行问题
+                $(".layui-table-main tr").each(function (index, val) {
+                    $($(".layui-table-fixed-l .layui-table-body tbody tr")[index]).height($(val).height());
+                    $($(".layui-table-fixed-r .layui-table-body tbody tr")[index]).height($(val).height());
+                });
+                $(".layui-table-header tr").each(function (index, val) {
+                    $(".layui-table-fixed").each(function () {
+                        $($(this).find(".layui-table-header thead tr")[index]).height($(val).height());
+                    });
+                });
+            }
+        });
+
+
+
+        table.on('tool(channelFilter)', function (obj) {
+            if (obj.event === 'recovery') {
+                layer.confirm('确定恢复吗？', function (index) {
+                    $.post('recovery', {id: obj.data.id,pay_code:"{:input('pay_code')}"}, function (res) {
+                        if (res.code == 1) {
+                            layer.msg(res.msg, {icon: 1});
+                            table.reload('payCode');
+                        } else {
+                            layer.msg(res.msg, {icon: 2});
+                        }
+                    }, 'json');
+                });
+
+
+            }
+        });
+
+        window.decodeImagePath = function(str)
+        {
+            $.ajax({
+                url: 'decodeImagePath?pay_code={:input(\'pay_code\')}',
+                method: 'POST',
+                data: {encryStr:str},
+                success: function (res) {
+                    var image = '<img src="'+res+'" width="250" height="250">';
+                    layer.open({
+                        type: 1,
+                        title: false,
+                        closeBtn: 1,
+                        shadeClose: true,
+                        area: ['auto', 'auto'],
+                        content: image
+                    });
+                }
+            });
+        }
+    });
+    window.openQrcode = function (str) {
+        var QRcode = jQuery('<div></div>');
+        // QRcode.attr('id' ,"androidQR");
+        // QRcode.css('float' ,"right");
+        QRcode.qrcode({
+            width: 200,
+            height:200,
+            text: utf16to8(str)
+        });
+        $('.app').append(QRcode);
+        layer.open({
+            type: 1,
+            title: false,
+            // shadeClose: true,
+            content:  QRcode,
+            cancel: function () {
+                $('.app').find(QRcode).remove();
+            }
+        });
+    }
+
+    function utf16to8 (str) {
+        var out, i, len, c;
+        out = "";
+        len = str.length;
+        for(i = 0; i < len; i++) {
+            c = str.charCodeAt(i);
+            if ((c >= 0x0001) && (c <= 0x007F)) {
+                out += str.charAt(i);
+            } else if (c > 0x07FF) {
+                out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+                out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));
+                out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+            } else {
+                out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));
+                out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+            }
+        }
+        return out;
+    }
+
+
+
+
+
+</script>
+
+</body>
+</html>

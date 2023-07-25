@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>控制台 - 狂神科技|狂神聚合支付 - 后台管理</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="__ADMIN__/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+  <span>平台利润算法：商户手续费减码商订单分润减码商代理分润减码商夜间分润，默认只加载今日数据<span style="color:red;">【按照订单完成时间统计】</span></span>
+
+  <hr>
+<!--  <span>代付利润算法：商户手续费减码商订单分润，默认只加载今日数据<span style="color:red;">【按照订单完成时间统计】</span></span>-->
+<!--  <hr>-->
+
+  <button type="button" class="layui-btn" onclick="count('today')">今日</button>
+  <button type="button" class="layui-btn layui-btn-normal" onclick="count('yesterday')">昨日</button>
+  <button type="button" class="layui-btn layui-btn-warm" onclick="count('week')">本周</button>
+  <hr>
+
+  <div class="layui-row layui-col-space15">
+
+    <div class="layui-col-sm6 layui-col-md4">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          代收成功金额
+          <span class="layui-badge layui-bg-orange layuiadmin-badge">统计</span>
+        </div>
+        <div class="layui-card-body layuiadmin-card-list">
+
+          <p class="layuiadmin-big-font" id="total_money">{$today.total_money}</p>
+<!--          <p>-->
+<!--            最近一个月-->
+<!--            <span class="layuiadmin-span-color">15% <i class="layui-inline layui-icon layui-icon-user"></i></span>-->
+<!--          </p>-->
+        </div>
+      </div>
+    </div>
+
+
+    <div class="layui-col-sm6 layui-col-md4">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          代收商户手续费
+          <span class="layui-badge layui-bg-orange layuiadmin-badge">统计</span>
+        </div>
+        <div class="layui-card-body layuiadmin-card-list">
+
+          <p class="layuiadmin-big-font" id="platform_in_user">{$platform_in_user}</p>
+          <!--          <p>-->
+          <!--            最近一个月-->
+          <!--            <span class="layuiadmin-span-color">15% <i class="layui-inline layui-icon layui-icon-user"></i></span>-->
+          <!--          </p>-->
+        </div>
+      </div>
+    </div>
+
+
+    <div class="layui-col-sm6 layui-col-md4">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          代收码商分成
+          <span class="layui-badge layui-bg-orange layuiadmin-badge">统计</span>
+        </div>
+        <div class="layui-card-body layuiadmin-card-list">
+
+          <p class="layuiadmin-big-font" id="todaydayOrders">{$todaydayOrders}</p>
+          <!--          <p>-->
+          <!--            最近一个月-->
+          <!--            <span class="layuiadmin-span-color">15% <i class="layui-inline layui-icon layui-icon-user"></i></span>-->
+          <!--          </p>-->
+        </div>
+      </div>
+    </div>
+
+
+    <div class="layui-col-sm6 layui-col-md4">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          代收代理分成
+          <span class="layui-badge layui-bg-orange layuiadmin-badge">统计</span>
+        </div>
+        <div class="layui-card-body layuiadmin-card-list">
+
+          <p class="layuiadmin-big-font" id="todayMsAgentIn">{$todayMsAgentIn}</p>
+          <!--          <p>-->
+          <!--            最近一个月-->
+          <!--            <span class="layuiadmin-span-color">15% <i class="layui-inline layui-icon layui-icon-user"></i></span>-->
+          <!--          </p>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="layui-col-sm6 layui-col-md4">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          代收平台利润
+          <span class="layui-badge layui-bg-orange layuiadmin-badge">统计</span>
+        </div>
+        <div class="layui-card-body layuiadmin-card-list">
+
+          <p class="layuiadmin-big-font" id="platform_in">{$platform_in}</p>
+          <!--          <p>-->
+          <!--            利润算法：-->
+          <!--            <span class="layuiadmin-span-color">商户手续费减码商提成减码商代理分润减码商夜间分润！<span style="color: red">[订单创建按照]</span></span>-->
+          <!--          </p>-->
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <div class="layui-col-sm6 layui-col-md4">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          代付成功金额
+          <span class="layui-badge layui-bg-orange layuiadmin-badge">统计</span>
+        </div>
+        <div class="layui-card-body layuiadmin-card-list">
+
+          <p class="layuiadmin-big-font" id="df_amount">{$df.df_amount}</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="layui-col-sm6 layui-col-md4">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          代付商户手续费
+          <span class="layui-badge layui-bg-orange layuiadmin-badge">统计</span>
+        </div>
+        <div class="layui-card-body layuiadmin-card-list">
+
+          <p class="layuiadmin-big-font" id="df_in">{$df.df_in}</p>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+</div>
+
+
+<script src="__ADMIN__/layui/layui.js"></script>
+<script>
+  layui.config({
+    base: '__ADMIN__/' //静态资源所在路径
+  }).extend({
+    index: 'lib/index' //主入口模块
+  }).use(['index','table', 'welcome'],function () {
+    var $ = layui.jquery,
+            util = layui.util,
+            layer = layui.layer,
+            table = layui.table;
+    window.count = function (time){
+          $.post('welcome', {time: time},function (data){
+            $("#total_money").text(data.total_money);
+            $("#platform_in_user").text(data.platform_in_user);
+            $("#todaydayOrders").text(data.todaydayOrders);
+            $("#todayMsAgentIn").text(data.todayMsAgentIn);
+            $("#platform_in").text(data.platform_in);
+            $("#df_amount").text(data.df_amount);
+            $("#df_in").text(data.df_in);
+          })
+    }
+  })
+
+</script>
+</body>
+</html>

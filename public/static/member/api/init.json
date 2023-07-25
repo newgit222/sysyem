@@ -1,0 +1,410 @@
+{
+  "homeInfo": {
+    "title": "后台首页",
+    "href": "/member/index/hello.html?t=1"
+  },
+  "logoInfo": {
+    "title": "码商管理后台",
+    "image": "/public/static/ms/favicon.ico",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "常规管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "后台首页",
+          "href": "/member/index/welcome.html?t=1",
+          "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+        {
+          "title": "账号管理",
+          "href": "",
+          "icon": "fa fa-user",
+          "target": "_self",
+          "child": [
+            {
+              "title": "服务商信息",
+              "href": "/member/Servers/index.html",
+              "icon": "fa fa-user",
+              "target": "_self"
+            },
+            {
+              "title": "通道费率",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-user",
+              "target": "_self"
+            },
+            {
+              "title": "运营统计",
+              "href": "/member/index/welcome.html",
+              "icon": "fa fa-user",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "订单管理",
+          "href": "",
+          "icon": "fa fa-ioxhost",
+          "target": "_self",
+          "child": [
+            {
+              "title": "支付宝口令红包1",
+              "href": "/member/Pay/aliRedEnvelope.html",
+              "icon": "fa fa-gears",
+              "target": "_self"
+            },
+            {
+              "title": "微信群红包",
+              "href": "/member/Pay/weChatGroup.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝UID",
+              "href": "/member/Pay/aliUid.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝小荷包",
+              "href": "/member/Pay/aliXhb.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝小荷包UID",
+              "href": "/member/Pay/aliXhbUid.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "卡转卡",
+              "href": "/member/Pay/kzk.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝零花钱",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "抖音红包",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "淘宝现在红包",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "微信手机号转账",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "QQ面对面红包",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝UID小额",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝UID转账",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "数字人民币",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "数字人民币自动",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "微信手表",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝批量转账",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "通道管理",
+          "href": "",
+          "icon": "fa fa-credit-card",
+          "target": "_self",
+          "child": [
+
+            {
+              "title": "支付宝口令红包1",
+              "href": "/member/Channel/aliRedEnvelope.html",
+              "icon": "fa fa-gears",
+              "target": "_self"
+            },
+            {
+              "title": "微信群红包",
+              "href": "/member/Channel/weChatGroup.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝UID",
+              "href": "/member/Channel/aliUid.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝小荷包",
+              "href": "/member/Channel/aliXhb.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝小荷包UID",
+              "href": "/member/Channel/aliXhbUid.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "卡转卡",
+              "href": "/member/Channel/kzk.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝零花钱",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "抖音红包",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "淘宝现在红包",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "微信手机号转账",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "QQ面对面红包",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝UID小额",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝UID转账",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "数字人民币",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "数字人民币自动",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "微信手表",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "支付宝批量转账",
+              "href": "/member/Payfee/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "余额管理",
+          "href": "",
+          "icon": "fa fa-money",
+          "target": "_self",
+          "child": [
+            {
+              "title": "余额明细",
+              "href": "/member/Bills/index.html",
+              "icon": "fa fa-money",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "下级管理",
+          "href": "",
+          "icon": "fa fa-group",
+          "target": "_self",
+          "child": [
+            {
+              "title": "下级服务商",
+              "href": "/member/Ms_Son/index.html",
+              "icon": "fa fa-group",
+              "target": "_self"
+            },
+            {
+              "title": "下级订单列表",
+              "href": "/member/Ms_Son/orders.html",
+              "icon": "fa fa-group",
+              "target": "_self"
+            },
+            {
+              "title": "团队跑量统计",
+              "href": "/member/Ms_Son/stats.html",
+              "icon": "fa fa-group",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "代付管理",
+          "href": "",
+          "icon": "fa fa-file-pdf-o",
+          "target": "_self",
+          "child": [
+            {
+              "title": "公池订单",
+              "href": "/member/Daifu_Orders/common_orders.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "我的订单",
+              "href": "/member/Daifu_Orders/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "核销管理",
+          "href": "",
+          "icon": "fa fa-file-pdf-o",
+          "target": "_self",
+          "child": [
+            {
+              "title": "E查卡-京东E卡",
+              "href": "/member/Ekahexiao/echaka.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "蒲曦-京东E卡",
+              "href": "/member/Ekahexiao/puxijishou.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "酷氪-京东E卡",
+              "href": "/member/Ekahexiao/kuke.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "蚂蚁-汇元易付卡",
+              "href": "/member/Ekahexiao/echaka_hyyf.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "蒲曦-汇元骏网天宏",
+              "href": "/member/Ekahexiao/puxijishouhuiyuan.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "e售通-骏网",
+              "href": "/member/Ekahexiao/estjunwang.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "达沫销卡-骏网",
+              "href": "/member/Ekahexiao/damoxiaoka.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "收卡云-骏网",
+              "href": "/member/Ekahexiao/shoukacloud.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "充值管理",
+          "href": "",
+          "icon": "fa fa-book",
+          "target": "_self",
+          "child": [
+            {
+              "title": "充值记录",
+              "href": "/member/Ms_Balance_Recharge/index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "申请充值",
+              "href": "/member/Ms_Balance_Recharge/add_index.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

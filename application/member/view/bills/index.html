@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>资金明细 - 服务商管理 - 码商管理后台</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  {include file="/common/link"}
+</head>
+<body>
+<div class="layuimini-container">
+  <div class="layuimini-main">
+    <fieldset class="table-search-fieldset">
+      <legend>高级搜索---默认加载今日数据</legend>
+      <div style="margin: 10px 10px 10px 10px">
+        <form class="layui-form layui-form-pane" action="">
+          <div class="layui-form-item">
+
+            <div class="layui-inline">
+              <label class="layui-form-label">账变类型</label>
+              <div class="layui-input-inline">
+                <select class="layui-select" name="bill_type">
+                  <option value="">全部</option>
+                  {notempty name="billTypes"}
+                  {foreach $billTypes as $k => $v}
+                  <option value="{$k}">{$v}</option>
+                  {/foreach}
+                  {/notempty}
+                </select>
+              </div>
+            </div>
+
+            <div class="layui-inline">
+              <label class="layui-form-label">资金类型</label>
+              <div class="layui-input-inline">
+                <select class="layui-select" name="type">
+                  <option value="all">全部</option>
+                  <option value="enable" selected>可用余额</option>
+                  <option value="disable">冻结余额</option>
+                </select>
+              </div>
+            </div>
+
+
+            <div class="layui-inline">
+              <label class="layui-form-label">收/支</label>
+              <div class="layui-input-inline">
+                <select class="layui-select" name="jc_class">
+                  <option value="">全部</option>
+                  <option value="+">收入</option>
+                  <option value="-">支出</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="layui-inline">
+              <label class="layui-form-label">交易时间</label>
+              <div class="layui-inline" id="test-range">
+                <div class="layui-input-inline">
+                  <input type="text" id="startDate" name="startDate" autocomplete="off" class="layui-input app-laydate-item" placeholder="yyyy-MM-dd HH:mm:ss">
+                </div>
+                <div class="layui-form-mid">-</div>
+                <div class="layui-input-inline">
+                  <input type="text" id="endDate" name="endDate" autocomplete="off" class="layui-input app-laydate-item" placeholder="yyyy-MM-dd HH:mm:ss">
+                </div>
+              </div>
+            </div>
+
+            <div class="layui-inline">
+              <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </fieldset>
+
+    <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+  </div>
+</div>
+</body>
+</html>
+{include file="common/js"}
+<script>
+  //获取url中的参数
+  function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+  }
+
+  var userid = getUrlParam('userid')
+  console.log(userid);
+  layui.use(['form', 'table','laydate'], function () {
+    var $ = layui.jquery,
+            form = layui.form,
+            u = layui.util,
+            laydate = layui.laydate,
+            table = layui.table;
+    lay('.app-laydate-item').each(function(k,v){
+      var  timestamp=(k==0)?' 00:00:00':" 00:00:00";
+      var date=new Date();
+      date.setHours('00');date.setMinutes('00');date.setSeconds('00');
+      if(k==1){
+        date.setHours('23');date.setMinutes('59');date.setSeconds('59');
+      }
+      laydate.render({
+        elem: this,
+        format: 'yyyy-MM-dd',type:'datetime'
+        ,istime:false
+        ,value:date
+        ,trigger: 'click'
+      });
+    });
+    table.render({
+      elem: '#currentTableId',
+      url: "{:url('getBalanceDetails')}",
+      cols: [[
+        {field: 'username',  align: "center", title: '服务商名称'},
+        {field: 'jl_class', align: "center",  title: '账变类型'},
+        {field: 'type',align: "center", title: '资金类型', templet:function (d) {
+              if (d.type == 'enable'){
+                return '可用余额';
+              }else{
+                return  '冻结余额';
+              }
+          }},
+        {field: 'info',align: "center", title: '事件'},
+        {field: 'pre_amount', title: '变动前余额',align: "center"},
+        {field: 'num',align: "center", title: '变动金额', templet: function (d){
+            var num = '';
+            if (d.jc_class == '+'){
+              num = '<span style="color:green">'+d.jc_class + d.num+'</span>'
+            }else{
+              num = '<span style="color:red">'+d.jc_class + d.num+'</span>'
+            }
+            return num;
+          }},
+        {field: 'last_amount', align: "center",  title: '变动后余额'},
+        {field: 'addtime',align: "center",  title: '变动时间', templet: function (d) {
+            return u.toDateString(d.addtime * 1000);
+          }},
+      ]],
+      limits: [10, 15, 20, 25, 50, 100],
+      limit: 15,
+      page: true,
+      skin: 'line'
+    });
+
+
+    // 监听搜索操作
+    form.on('submit(data-search-btn)', function (data) {
+      var result = JSON.stringify(data.field);
+
+      //执行搜索重载
+      table.reload('currentTableId', {
+        where: data.field,
+        page: {
+          curr: 1
+        }
+      }, 'data');
+
+      return false;
+    });
+
+
+    //监听表格复选框选择
+    table.on('checkbox(currentTableFilter)', function (obj) {
+      console.log(obj)
+    });
+
+
+
+  });
+</script>

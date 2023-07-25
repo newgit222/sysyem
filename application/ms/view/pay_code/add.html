@@ -1,0 +1,261 @@
+{include file="common/common_header" /}
+{include file="common/common_menu" /}
+<link rel="stylesheet" href="__AGENT__/layui/css/layui.css">
+<!--页面主要内容-->
+<main class="lyear-layout-content">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <form id="inputForm" action="{:url('add')}" method="post" class="row ">
+                        {if condition="$code eq 'kzk'"}
+                            <div id="bank_show" >
+                                <div class="form-group col-md-12">
+                                    <section>
+                                        <label for="bank__name">银行卡信息 <span style="color: red">如需自动回调，请务必选择下拉框内模板！</span></label>
+                                        <input type="hidden" name="code_type" id="{$code}" value="{$code}">
+                                        <input type="text" list="ygs" class="form-control" id="bank__name" name="bank_name" value="" autocomplete="off"  placeholder="请输入开户行名称 （可下拉选择，如下拉没有可手动输入）" />
+<!--                                        <input type="text" name="yg" list="ygs" id="yg">-->
+                                        <datalist id="ygs">
+                                            {volist name="banksList" id="vo"}
+                                            <option value="{$vo.source}"></option>
+                                            {/volist}
+                                        </datalist>
+                                    </section>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="bank_account_name">开户姓名</label>
+                                    <input type="text" class="form-control" id="bank_account_name" autocomplete="off" name="account_name" value="" placeholder="请输入开户姓名" />
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="bank_account_number">开户卡号</label>
+                                    <input type="text" class="form-control" autocomplete="off" id="bank_account_number" name="account_number" value="" placeholder="请输入开户卡号" />
+                                </div>
+
+                            </div>
+                            {/if}
+                            {if condition="$code eq 'alipayUid'" }
+                            <div id="bank_show" >
+
+                                <div class="form-group col-md-12">
+                                    <label for="code_type">选择通道</label>
+                                    <select name="code_type" class="form-control" id="code_type">
+                                        <option  value="alipayUid">支付宝UID</option>
+                                        <option   value="alipayUidSmall">支付宝小额UID</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="alipay_account">支付宝账号</label>
+                                    <input type="text" class="form-control" id="alipay_account" autocomplete="off" name="bank_name" value="" placeholder="请输入支付宝账号" />
+
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="alipay_user_id">支付宝用户ID</label>
+                                    <input type="text" class="form-control" id="alipay_user_id" autocomplete="off" name="account_number" value="" placeholder="请输入支付宝用户ID" />
+                                    <tip>填写支付宝用户ID,点击 <a href="javascript:void (0)"  id="show_alipay_uid">此处</a> 打开二维码，用支付宝扫描即可得到用户ID</tip>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="alipay_nickname">支付宝昵称</label>
+                                    <input type="text" class="form-control" id="alipay_nickname" autocomplete="off" name="account_name" value="" placeholder="请输入支付宝昵称" />
+                                </div>
+                            </div>
+                            {/if}
+
+                            {if condition="$code eq 'alipayUidTransfer'" }
+                            <div id="bank_show" >
+
+                                <div class="form-group col-md-12">
+                                    <label for="alipay_account">支付宝账号</label>
+                                    <input type="text" class="form-control" id="alipay_account" autocomplete="off" name="bank_name" value="" placeholder="请输入支付宝账号" />
+                                    <input type="hidden" name="code_type" value="{$code}">
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="alipay_user_id">支付宝用户ID</label>
+                                    <input type="text" class="form-control" id="alipay_user_id" autocomplete="off" name="account_number" value="" placeholder="请输入支付宝用户ID" />
+                                    <tip>填写支付宝用户ID,点击 <a href="javascript:void (0)"  id="show_alipay_uid">此处</a> 打开二维码，用支付宝扫描即可得到用户ID</tip>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="alipay_nickname">支付宝昵称</label>
+                                    <input type="text" class="form-control" id="alipay_nickname" autocomplete="off" name="account_name" value="" placeholder="请输入支付宝昵称" />
+                                </div>
+                            </div>
+                            {/if}
+
+                            {if condition="$code eq 'alipaySmallPurse'"}
+                            <div id="bank_show" >
+                                <div class="form-group col-md-12">
+                                    <label for="alipay_nickname">支付宝昵称</label>
+                                    <input type="text" class="form-control" id="alipay_nickname" autocomplete="off" name="account_name" value="" placeholder="请输入支付宝昵称" />
+                                    <input type="hidden" name="code_type" value="alipaySmallPurse">
+                                </div>
+
+
+                                <div class="form-group col-md-12">
+                                    <label for="alipay_account">个人二维码</label>
+                                    <input type="text" class="form-control" id="alipay_account"  autocomplete="off" name="account_number" value="" placeholder="请输入支付宝账号" />
+                                    <tip>请 <a href="https://cli.im/deqr" target="_blank"><span style="color:#ff0000;"> 点击这里 </span></a> 解析二维码，然后将解析结果复制粘贴到上方网址栏中</tip>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="alipay_user_id">支付宝用户ID</label>
+                                    <input type="text" class="form-control" id="alipay_user_id" autocomplete="off" name="bank_name" value="" placeholder="请输入支付宝用户ID" />
+                                    <tip>填写支付宝用户ID,点击 <a href="javascript:void (0)"  id="show_alipay_uid">此处</a> 打开二维码，用支付宝扫描即可得到用户ID</tip>
+                                </div>
+
+                            </div>
+                            {/if}
+
+                            {if condition="$code eq 'alipayCode'"}
+                            <div id="bank_show" >
+                                <div class="form-group col-md-12">
+                                    <label for="alipay_nickname">支付宝昵称</label>
+                                    <input type="text" class="form-control" id="alipay_nickname" autocomplete="off" name="account_name" value="" placeholder="请输入支付宝昵称" />
+                                    <input type="hidden" name="code_type" value="alipayCode">
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="alipay_user_id">支付宝账号</label>
+                                    <input type="text" class="form-control" id="alipay_user_id" autocomplete="off" name="bank_name" value="" placeholder="请输入支付宝账号" />
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="alipay_account">个人二维码</label>
+                                    <input type="text" class="form-control" id="alipay_account" autocomplete="off" name="account_number" value="" placeholder="请输入个人二维码解析结果" />
+                                    <tip>请 <a href="https://cli.im/deqr" target="_blank"><span style="color:#ff0000;"> 点击这里 </span></a> 解析二维码，然后将解析结果复制粘贴到上方网址栏中</tip>
+                                </div>
+
+                            </div>
+                            {/if}
+                            <div class="form-group col-md-12">
+                                <label for="limit__total">单笔最小金额</label>
+                                <input type="text" class="form-control" id="min_money" autocomplete="off" name="min_money" value="" placeholder="请输入单笔最小金额" />
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="limit__total">单笔最大金额</label>
+                                <input type="text" class="form-control" id="max_money" autocomplete="off" name="max_money" value="" placeholder="请输入单笔最大金额" />
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                    <label for="limit__total">日限额</label>
+                                    <input type="text" class="form-control" id="limit__total" autocomplete="off" name="limit__total" value="" placeholder="请输入日限额" />
+                                </div>
+                            <div class="form-group col-md-12">
+                                <label for="limit__total">收款笔数上限 -（为0则不限制）</label>
+                                <input type="text" class="form-control" id="success_order_num" autocomplete="off" name="success_order_num" value="" placeholder="请输入收款笔数上限，为0则不限制" />
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="security">安全码</label>
+                                <input type="password" class="form-control" id="security" autocomplete="off" name="security" value="" placeholder="请输入安全码" />
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-primary ajax-post" target-form="add-form">确 定</button>
+                                <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);return false;">返 回</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+<!--End 页面主要内容-->
+</div>
+</div>
+
+{include file="common/common_js" /}
+<script type="text/javascript" src="__MS__/layui//layui.js"></script>
+<script>
+
+    layui.use('upload', function(){
+        var $ = layui.jquery
+            ,upload = layui.upload;
+
+        $("#show_alipay_uid").click(function (){
+            layer.open({
+                title:'获取支付宝UID',
+                type: 1,
+                area: ['260px', '300px'], //宽高
+                content: '<img src="/public/uploads/qr/alipay_uid.png" width="250px" height="250px" >'
+            });
+        })
+
+    })
+
+    function getArea(that,idName =''){
+        var id = 0;
+        if(that){
+            // console.log(123213213)
+            id = $("#"+that).val();
+        }
+        $.post("{:url('common/getArea')}",{id:id},function(data){
+            // console.log(data)
+            if(data.code ==1 ) {
+                var str = '';
+                data.data.forEach(function (element, index) {
+                    str += "<option value= '"+element.id+"'> "+element.name+" </option>"
+                });
+                $("#"+idName).html(str)
+            }else{
+                layer.msg(data.msg);
+            }
+        });
+    }
+
+    function is_show() {
+        var type = $('#type option:selected').val();
+        // console.log(group_id)
+        if(type == 2){
+            $("#account_number_name").text("支付宝账号")
+            // $('#bank_show_true').css('display','none');
+            $('#bank_show').css('display','none');
+            $('#bank_show_false').css('display','block');
+            $('#code_show').css('display','block');
+            $('#is_show_type').css('display','block');
+            $('#alipay_uid').css('display','block');
+        }else if (type ==1) {
+            $("#account_number_name").text("微信账号")
+            // $('#bank_show_true').css('display','none');
+            $('#bank_show').css('display','none');
+            $('#bank_show_false').css('display','block');
+            $('#code_show').css('display','block');
+            $('#is_show_type').css('display','none');
+            $('#alipay_uid').css('display','none');
+        }else if (type==3){
+            $('#is_show_type').css('display','none');
+            $('#code_show').css('display','none');
+            // $('#bank_show_true').css('display','block');
+            $('#bank_show').css('display','block');
+            $('#bank_show_false').css('display','none');
+            $('#alipay_uid').css('display','none');
+        }
+        $('#bank_show_true').css('display','none');
+        // layer.msg(group_id)
+    }
+
+
+    setTimeout(function () {
+        //省市区联动
+        getArea(null,'province_id');
+    },1000)
+</script>
+
+</body>
+</html>

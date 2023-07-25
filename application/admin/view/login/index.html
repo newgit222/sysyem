@@ -1,0 +1,178 @@
+{__NOLAYOUT__}<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登入 - {$site.seo_title|default="聚合支付"} - 后台管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__ADMIN__/style/admin.css" media="all">
+    <link rel="stylesheet" href="__ADMIN__/style/login.css" media="all">
+
+    <style>
+        html, body {width: 100%;height: 100%;overflow: hidden}
+        body {background: #1E9FFF;}
+        body:after {content:'';background-repeat:no-repeat;background-size:cover;-webkit-filter:blur(3px);-moz-filter:blur(3px);-o-filter:blur(3px);-ms-filter:blur(3px);filter:blur(3px);position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;}
+        .layui-container {width: 100%;height: 100%;overflow: hidden}
+        .admin-login-background {width:360px;height:300px;position:absolute;left:50%;top:40%;margin-left:-180px;margin-top:-100px;}
+        .logo-title {text-align:center;letter-spacing:2px;padding:14px 0;}
+        .logo-title h1 {color:#1E9FFF;font-size:25px;font-weight:bold;}
+        .login-form {background-color:#fff;border:1px solid #fff;border-radius:3px;padding:14px 20px;box-shadow:0 0 8px #eeeeee;}
+        .login-form .layui-form-item {position:relative;}
+        .login-form .layui-form-item label {position:absolute;left:1px;top:1px;width:38px;line-height:36px;text-align:center;color:#d2d2d2;}
+        .login-form .layui-form-item input {padding-left:36px;}
+        .captcha {width:60%;display:inline-block;}
+        .captcha-img {display:inline-block;width:34%;float:right;}
+        .captcha-img img {height:34px;border:1px solid #e6e6e6;height:36px;width:100%;}
+    </style>
+
+</head>
+<body>
+
+<div class="layui-container">
+    <div class="admin-login-background">
+        <div class="layui-form login-form">
+            <form class="layui-form" action="">
+                <div class="layui-form-item logo-title">
+                    <h1>聚合 · 后台管理</h1><br>
+                    <p>欢迎使用{$title}</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="app-user-login-username"></label>
+                    <input type="text" name="username" id="app-user-login-username" lay-verify="required|username" placeholder="用户名" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="app-user-login-password"></label>
+                    <input type="password" name="password" id="app-user-login-password" lay-verify="required|password" placeholder="密码" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="app-user-login-password"></label>
+                    <input type="text" name="google_code" id="app-user-login-google-code" lay-verify="" placeholder="若已绑定Google身份验证,请输入Google验证码" class="layui-input">
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-row">
+                        <div class="layui-col-xs7">
+                            <label class="layadmin-user-login-icon layui-icon layui-icon-vercode" for="app-user-login-vercode"></label>
+                            <input type="text" name="vercode" id="app-user-login-vercode" lay-verify="required|vercode" placeholder="图形验证码" class="layui-input">
+                        </div>
+                        <div class="layui-col-xs5">
+                            <div style="margin-left: 10px;">
+                                <img src="{:captcha_src()}" class="layadmin-user-login-codeimg" id="app-user-get-vercode">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+<!--                    <button class="layui-btn layui-btn layui-btn-normal layui-btn-fluid" lay-submit="" lay-filter="login">登 入</button>-->
+                    <button class="layui-btn layui-btn layui-btn-normal layui-btn-fluid" lay-submit lay-filter="app-user-login-submit">登 入</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
+
+    <div class="layadmin-user-login-main">
+        <div class="layadmin-user-login-box layadmin-user-login-header">
+            <h2>聚合 · 后台管理</h2>
+            <p>欢迎使用{$site.seo_title|default="狂神聚合支付"}系统</p>
+        </div>
+        <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="app-user-login-username"></label>
+                <input type="text" name="username" id="app-user-login-username" lay-verify="required|username" placeholder="用户名" class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="app-user-login-password"></label>
+                <input type="password" name="password" id="app-user-login-password" lay-verify="required|password" placeholder="密码" class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="app-user-login-password"></label>
+                <input type="text" name="google_code" id="app-user-login-google-code" lay-verify="" placeholder="若已绑定Google身份验证,请输入Google验证码" class="layui-input">
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-row">
+                    <div class="layui-col-xs7">
+                        <label class="layadmin-user-login-icon layui-icon layui-icon-vercode" for="app-user-login-vercode"></label>
+                        <input type="text" name="vercode" id="app-user-login-vercode" lay-verify="required|vercode" placeholder="图形验证码" class="layui-input">
+                    </div>
+                    <div class="layui-col-xs5">
+                        <div style="margin-left: 10px;">
+                            <img src="{:captcha_src()}" class="layadmin-user-login-codeimg" id="app-user-get-vercode">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn layui-btn-normal layui-btn-fluid" lay-submit lay-filter="app-user-login-submit">登 入</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-trans layadmin-user-login-footer">
+
+        <p>{$site.app_copyright|default="© 2018 Caomao. "} <a href="https://www.iredcap.cn" target="_blank">狂神科技</a> · {$site.seo_title|default="狂神聚合支付"} · 桂ICP备180004251号</p>
+    </div>
+
+    &lt;!&ndash;<div class="ladmin-user-login-theme">
+      <script type="text/html" template>
+        <ul>
+          <li data-theme=""><img src="{{ layui.setter.base }}style/res/bg-none.jpg"></li>
+          <li data-theme="#03152A" style="background-color: #03152A;"></li>
+          <li data-theme="#2E241B" style="background-color: #2E241B;"></li>
+          <li data-theme="#50314F" style="background-color: #50314F;"></li>
+          <li data-theme="#344058" style="background-color: #344058;"></li>
+          <li data-theme="#20222A" style="background-color: #20222A;"></li>
+        </ul>
+      </script>
+    </div>&ndash;&gt;
+
+</div>-->
+
+<script src="__ADMIN__/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__ADMIN__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'login'], function(){
+        var $ = layui.$
+            ,setter = layui.setter
+            ,admin = layui.admin
+            ,form = layui.form
+            ,router = layui.router()
+            ,search = router.search;
+
+        form.render();
+
+        //提交
+        form.on('submit(app-user-login-submit)', function(obj){
+            //请求登入接口
+            $.post("{:url('login')}",obj.field,function (res) {
+                    if (res.code == 1){
+                        //请求成功后，写入 access_token
+                        layui.data(setter.tableName, {
+                            key: setter.request.tokenName
+                            ,value: res.data.access_token
+                        });
+                        layer.msg('登入成功', {icon: 1,time: 1500}, function(){
+                            location.href = "/admin.html"; //后台主页
+                        });
+                    }else {
+                        $("#app-user-get-vercode").click();
+                        layer.msg(res.msg, {icon: 2,time: 1500});
+                    }
+                }
+            );
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

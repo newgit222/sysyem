@@ -1,0 +1,299 @@
+{include file="common/common_header" /}
+{include file="common/common_menu" /}
+<link rel="stylesheet" href="__MS__/layui/css/layui.css">
+<!--页面主要内容-->
+<main class="lyear-layout-content">
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-toolbar clearfix">
+
+            <form class="form-inline pull-right " method="get" action="#!" role="form">
+
+              <div class="form-group">
+                <label class="sr-only" for="account">下级名称</label>
+                <input class="form-control" type="text" id="username" name="account_name" value=""  placeholder="请输入下级名称">
+              </div>
+
+
+              <div class="form-group">
+                <label class="sr-only" >搜索</label>
+                <button class="btn btn-primary form-control" type="submit">搜索</button>
+              </div>
+
+              <!--                            <div class="form-group">-->
+              <!--                                <label class="sr-only" >重置</label>-->
+              <!--                                <a href="{:url('User/ewm')}" class="btn btn-danger form-control" type="reset">重置</a>-->
+              <!--                            </div>-->
+            </form>
+            {if condition="$level LT 5"}
+            <div class="toolbar-btn-action">
+              <a class="btn btn-primary m-r-5" href="{:url('add')}"><i class="mdi mdi-plus"></i> 新增</a>
+            </div>
+            {/if}
+          </div>
+          <div class="card-body">
+
+            <table id="table1" class="layui-table" lay-filter="table1"></table>
+
+          </div>
+          <script type="text/html" id="table-sonms-status">
+            {{#  if(d.status == 1){ }}
+            <button class="layui-btn layui-btn-xs">正常</button>
+            {{#  } else { }}
+            <button class="layui-btn layui-btn-danger layui-btn-xs">禁用</button>
+            {{#  } }}
+          </script>
+
+          <script type="text/html" id="table-sonms-workstatus">
+            {{#  if(d.work_status == 1){ }}
+            <button class="layui-btn layui-btn-xs">正常</button>
+            {{#  } else { }}
+            <button class="layui-btn layui-btn-danger layui-btn-xs">禁用</button>
+            {{#  } }}
+          </script>
+
+          <script type="text/html" id="table-menu-list">
+<!--            {{#  if(d.level <= 4){ }}-->
+<!--            <a class="btn btn-xs btn-success"  href="javascript:void(0);"  onclick="selectSonList({{d.userid}})">查看下级</a>-->
+<!--            {{#  } }}-->
+
+            <a class="btn btn-xs btn-success"  href="javascript:void(0);" onclick="selectSonOrders({{d.userid}})">查看订单</a>
+
+            {{#  if(d.pid == {$agent_id}){ }}
+            <a class="btn btn-xs btn-success"  href="javascript:void(0);" onclick="sysSonRate({{d.userid}})" >设置费率</a>
+            {{#  } }}
+            {{#  if(d.pid == {$agent_id}){ }}
+            <a class="btn btn-xs btn-success"  href="javascript:void(0);" onclick="eiitMoney({{d.userid}})" >变更余额</a>
+            {{#  } }}
+          </script>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+<!--End 页面主要内容-->
+</div>
+</div>
+
+{include file="common/common_js" /}
+<script type="text/javascript" src="__MS__/layui/layui.js"></script>
+<script type="text/javascript" src="__MS__/layui/treeGrid.js"></script>
+<script>
+  function eiitMoney(userid){
+    $.confirm({
+      title: '变更余额',
+      content: '' +
+              '<form action="" class="formName">' +
+              '<div class="form-group">' +
+              '<label>此操作会变更你自己的余额</label>' +
+              '<input type="text"  class="money form-control" required />' +
+              '</div>' +
+              '</form>',
+      buttons: {
+        formSubmit: {
+          text: '扣减',
+          btnClass: 'btn-red',
+          action: function () {
+            var money = this.$content.find('.money').val();
+            console.log(money);
+            if(money){
+              var sendRes = "{:url('user/editMerChantAmount')}?userid=" + userid + '&money=' + money + '&status=0';
+              ajaxUrl(sendRes)
+            }
+
+          }
+        },
+        '增加': {
+          text: '增加',
+          btnClass: 'btn-blue',
+          action: function () {
+            var money = this.$content.find('.money').val();
+            console.log(money);
+            if(money){
+              var sendRes = "{:url('user/editMerChantAmount')}?userid=" + userid + '&money=' + money + '&status=1';
+              ajaxUrl(sendRes)
+            }
+
+          }
+        },
+
+        '取消': function () {
+          //close
+        },
+
+      },
+
+      onContentReady: function () {
+        // bind to events
+        var jc = this;
+        this.$content.find('form').on('submit', function (e) {
+          // if the user submits the form by pressing enter in the field.
+          e.preventDefault();
+          jc.$formSubmit.trigger('click'); // reference the button and click it
+        });
+      }
+    });
+  }
+  layui.use([ 'layer','form', 'table','jquery','tree','treeGrid'], function() {
+    var layer = layui.layer,
+            table = layui.table,
+            form = layui.form,
+            $ = layui.jquery,
+            tree = layui.tree,
+            i = layui.treeGrid;
+
+    // Array.from(tabList);
+    i.render({
+      id:'table1'
+      ,elem: '#table1'
+      ,url: "{:url('sonIndex')}"
+      ,cellMinWidth: 100
+      ,idField:'userid'//必須字段
+      ,treeId:'userid'//树形id字段名称
+      ,treeUpId:'pid'//树形父id字段名称
+      ,treeShowName:'username'//以树形式显示的字段
+      ,heightRemove:[".dHead",10]//不计算的高度,表格设定的是固定高度，此项不生效
+      ,height:'100%'
+      ,isFilter:false
+      ,iconOpen:false//是否显示图标【默认显示】
+      ,isOpenDefault:false//节点默认是展开还是折叠【默认展开】
+      ,loading:true
+      ,cols: [[{
+          field:'userid',
+          width:60,
+          title: 'ID',
+          sort:true
+        }
+        ,{
+          field:'username',
+          width:130,
+          title: '码商名称',
+        }
+        ,{
+          field:'money',
+          width:100,
+          title: '下级余额'
+        },
+        {
+          title: "状态",
+          // width: 500,
+          align: "center",
+          width: 120,
+          toolbar: "#table-sonms-status"
+        },
+        {
+          title: "接单状态",
+          // width: 500,
+          align: "center",
+          width: 120,
+          toolbar: "#table-sonms-workstatus"
+        }
+        ,{
+          field:'reg_date',
+          width:150,
+          title: '添加时间',
+          templet:function(data){
+            return layui.util.toDateString(data.reg_date*1000, "yyyy-MM-dd HH:mm:ss");
+          }
+
+        }
+        ,{
+          width: 440,
+          title: '操作',
+          align:'center',
+          templet:"#table-menu-list"
+
+        }
+      ]]
+      ,isPage:false
+      ,parseData: function (res) {
+        if(res.code == 1)
+        {
+          return {
+            'code': 201, //接口状态
+            'msg': '无数据', //提示文本
+            'count': 0, //数据长度
+            'data': [] //数据列表，是直接填充进表格中的数组
+          }
+        }
+      },
+    });
+
+
+
+
+    //设置下级费率
+    window.sysSonRate = function (userid){
+      layer.open({
+        type: 2,
+        content: "{:url('sysSonRate')}?userid=" + userid,
+        title: '设置下级费率   （下级费率不可大于自身费率）',
+        maxmin: !0, area: ['80%', '60%'],
+        btn: ["确定", "取消"],
+        yes: function (index, layero) {
+          var iframeWindow = window['layui-layer-iframe' + index]
+                  , submitID = 'app-user-profit-submit'
+                  , submit = layero.find('iframe').contents().find('#' + submitID);
+
+          //监听提交
+          iframeWindow.layui.form.on('submit('+ submitID +')', function (obj) {
+            var field = obj.field; //获取提交的字段
+            // var index = layer.msg("加载中.....", {time: 0, shade: 0.01});
+            console.log(field);
+            $.ajax({
+              url: "{:url('sysSonRate')}",
+              method: 'POST',
+              data: field,
+              success: function (res) {
+                if (res.code == 1) {
+                  // table.reload('app-user-manage'); //数据刷新
+                  window.location.href
+                }
+                layer.msg(res.msg, {icon: res.code == 1 ? 1 : 2, time: 1500});
+                layer.close(index); //关闭弹层
+              }
+            })
+          });
+          submit.trigger('click')
+
+        }
+      });
+    }
+    //查看下级列表
+    window.selectSonList = function (userid){
+      layer.open({
+        type: 2,
+        content: "{:url('sonList')}?userid=" + userid,
+        title: '下级列表',
+        maxmin: !0, area: ['90%', '80%'],
+
+      });
+    }
+
+    window.selectSonOrders = function (userid){
+      layer.open({
+        type: 2,
+        content: "{:url('sonOrders')}?userid=" + userid,
+        title: '下级订单',
+        maxmin: !0, area: ['90%', '80%'],
+
+      });
+    }
+
+  })
+
+
+
+
+
+</script>
+
+</body>
+</html>

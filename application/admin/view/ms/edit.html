@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>后台管理 - 编辑码商</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css" media="all">
+</head>
+<body>
+
+<div class="layui-form" lay-filter="layuiadmin-form-useradmin" id="layuiadmin-form-useradmin" style="padding: 20px 30px 0 0;">
+
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">所属码商：</label>-->
+<!--        <div class="layui-input-block">-->
+<!--            <select name="pid" >-->
+<!--                <option value="">请选择代理（非必选）</option>-->
+<!--                {volist name="ms" id="vo"}-->
+<!--                <option value="{$vo.userid}" {if condition="$info.pid == $vo.userid"} selected {/if} >{$vo.username}</option>-->
+<!--                {/volist}-->
+
+<!--            </select>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">UID：</label>
+        <div class="layui-input-block">
+            <input type="text" disabled name="userid" autocomplete="off" class="layui-input" value="{$info.userid|default=''}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名：</label>
+        <div class="layui-input-block">
+            <input type="text" name="username" required lay-verify="required"   value="{$info.username|default=''}" placeholder="请输入用户名"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+<!--    <div class="layui-form-item">
+        <label class="layui-form-label">押金浮动金额：</label>
+        <div class="layui-input-block">
+            <input type="text" name="deposit_floating_money" required lay-verify="required"   value="{$info.deposit_floating_money|default=''}" placeholder="请输入押金浮动金额"
+                   autocomplete="off" class="layui-input">
+        </div>
+</div>--->
+
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">登录密码：</label>
+        <div class="layui-input-block">
+            <input type="password" name="login_pwd"   placeholder="为空则不做修改"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">确认密码：</label>
+        <div class="layui-input-block">
+            <input type="password" name="relogin_pwd"  placeholder="请确认登录密码"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-block">
+            <input type="radio" name="status" value="0" title="禁用" {if condition="$info.status eq 0"}checked{/if}>
+            <input type="radio" name="status" value="1" title="开启"  {if condition="$info.status eq 1"}checked{/if}>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">安全码：</label>
+        <div class="layui-input-block">
+            <input type="password" name="safety_pwd" placeholder="码商安全码，为空则不做修改"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">代付最小接单金额：</label>-->
+<!--        <div class="layui-input-block">-->
+<!--            <input type="text" name="min_money" required lay-verify="number"   value="{$info.min_money|default=''}" placeholder="最小接单金额"-->
+<!--                   autocomplete="off" class="layui-input">-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">代付最大接单金额：</label>-->
+<!--        <div class="layui-input-block">-->
+<!--            <input type="text" name="max_money" required lay-verify="number"   value="{$info.max_money|default=''}" placeholder="最大接单金额"-->
+<!--                   autocomplete="off" class="layui-input">-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">押金：</label>
+        <div class="layui-input-block">
+            <input type="text" name="cash_pledge" autocomplete="off" class="layui-input" value="{$info.cash_pledge|default=''}">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否允许代付</label>
+        <div class="layui-input-block">
+            <input type="radio" name="is_daifu" value="0" title="禁用" {if condition="$info.is_daifu eq 0"}checked{/if}>
+            <input type="radio" name="is_daifu" value="1" title="开启"  {if condition="$info.is_daifu eq 1"}checked{/if}>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">代付费率</label>
+        <div class="layui-input-block">
+            <input type="number" class="layui-input" name="bank_rate"  value="{$info.bank_rate}" placeholder="代付费率%">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">ip白名单设置</label>
+        <div class="layui-input-block">
+            <textarea type="text" name="auth_ips" class="form-control"  rows="5"></textarea>
+            <p class="card-description">多个IP请用,换行隔开</p>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">监控回调ip白名单设置</label>
+        <div class="layui-input-block">
+            <textarea type="text" name="monitor_ip" class="form-control"  rows="5">{$info.monitor_ip|default=''}</textarea>
+            <p class="card-description">多个IP请用,逗号隔开</p>
+        </div>
+    </div>
+    <div class="layui-form-item layui-hide">
+        <input type="button" lay-submit lay-filter="app-ms-list-submit" id="app-ms-list-submit" value="确认">
+    </div>
+</div>
+
+<script src="__ADMIN__/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__ADMIN__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index','form', 'upload'], function(){
+        var $ = layui.$
+            ,form = layui.form
+            ,upload = layui.upload ;
+    });
+</script>
+</body>
+</html>
