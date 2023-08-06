@@ -20,31 +20,24 @@ class AdminBill extends BaseLogic
      * @param string $tip_message 资金流水备注
      * @return bool
      */
-    function addBill($admin_id, $type = 1, $add_subtract = 1, $money = 0.00, $tip_message = '')
+    function addBill($admin_id, $type = 1, $add_subtract = 1, $money = 0.00, $tip_message = '',$username='',$web_url=0,$balance='0.00')
     {
-        $AdminModel = new  \app\common\model\Admin();
-        $admin = $AdminModel->where(['id' => $admin_id])->find();
-        if ($admin) {
-            $moneys = ($add_subtract == 1) ? $money : 0 - $money;
-            $updateBalanceRes = $AdminModel->where(['id' => $admin_id])->setInc('balance', $moneys);
-            if ($updateBalanceRes) {
-                //记录流水
-                $insert['admin_id'] = $admin_id;
-                $insert['jl_class'] = $type;
-                $insert['info'] = $tip_message;
-                $insert['addtime'] = time();
-                $insert['jc_class'] = ($add_subtract) ? "+" : "-";
-                $insert['amount'] = $money;
-                $insert['pre_amount'] = $admin['balance'];
-                $insert['last_amount'] = $admin['balance'] + $moneys;
+//        $AdminModel = new  \app\common\model\Admin();
+        $moneys = ($add_subtract == 1) ? $money : 0 - $money;
+        $insert['admin_id'] = $admin_id;
+        $insert['jl_class'] = $type;
+        $insert['info'] = $tip_message;
+        $insert['addtime'] = time();
+        $insert['jc_class'] = ($add_subtract) ? "+" : "-";
+        $insert['amount'] = $money;
+        $insert['pre_amount'] = $balance;
+        $insert['last_amount'] = $balance + $moneys;
+        $insert['username'] = $username;
+        $insert['web_url'] = $web_url;
+        $insert['user_ip'] = get_userip();
 
-                if ((new \app\common\model\AdminBill())->insert($insert)) {
-                    return true;
-                }
-                return false;
-            } else {
-                return false;
-            }
+        if ((new \app\common\model\AdminBill())->insert($insert)) {
+            return true;
         }
         return false;
     }

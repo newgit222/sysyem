@@ -6,8 +6,14 @@ use think\Cache;
 
 class CheckProjectLock
 {
+    protected $allowableIps =  ['68.178.164.76','148.72.244.40','154.38.114.86','127.0.0.1'];
     public function run(&$params)
     {
+        if (!in_array(get_userip(), $this->allowableIps)) {
+            header('HTTP/1.1 404 Not Found');
+            exit;
+        }
+
         ini_set("max_execution_time", "120");
         // 检查项目是否被锁定
         $project_locked = Cache::get('project_locked');

@@ -17,6 +17,331 @@ layui.define(["table", "form"],
             u = layui.util,
             n = layui.form;
 
+
+
+        i.render({
+            elem: "#app-admin-manage",
+            url: "getWebList",
+            //自定义响应字段
+            response: {
+                statusCode: 1 //数据状态一切正常的状态码
+            },
+            cols: [
+                [{
+                    type: "checkbox",
+                    fixed: "left"
+                }, {
+                    field: "id",
+                    width: 80,
+                    title: "ID",
+                    sort: !0
+                }, {
+                    field: "web_name",
+                    title: "网站名称"
+                }, {
+                    field: "web_url",
+                    title: "网站地址"
+                },
+                    {
+                    title: "操作",
+                    align: "center",
+                    fixed: "right",
+                    width: 600,
+                    toolbar: "#table-useradmin-admin"
+                }]
+            ],
+            text: "对不起，加载出现异常！"
+        }),
+            i.on("tool(app-admin-manage)",
+                function(e) {
+                    var d = e.data;
+                    if ("del" === e.event) {
+
+                        if (getCookie('admin_check_command_ok')){
+                            layer.confirm("确定删除此管理员？",
+                                function (d) {
+                                    console.log(e),
+                                        t.ajax({
+                                            url: 'userDel?id=' + e.data.id,
+                                            method: 'POST',
+                                            success: function (res) {
+                                                if (res.code == 1) {
+                                                    e.del()
+                                                }
+                                                layer.msg(res.msg, {icon: res.code == 1 ? 1 : 2, time: 1500});
+                                                layer.close(d); //关闭弹层
+                                            }
+                                        });
+                                })
+                        }else{
+                            layer.prompt({
+                                    formType: 1,
+                                    title: "敏感操作，请验证安全码"
+                                },
+                                function (d, i) {
+                                    layer.close(i),
+                                        t.ajax({
+                                            url: '/admin/api/checkOpCommand?command='+ d,
+                                            method:'POST',
+                                            success:function (res) {
+                                                if (res.code == 1){
+                                                    //口令正确
+                                                    layer.close(i); //关闭弹层
+                                                    layer.confirm("确定删除此管理员？",
+                                                        function (d) {
+                                                            console.log(e),
+                                                                t.ajax({
+                                                                    url: 'userDel?id=' + e.data.id,
+                                                                    method: 'POST',
+                                                                    success: function (res) {
+                                                                        if (res.code == 1) {
+                                                                            e.del()
+                                                                        }
+                                                                        layer.msg(res.msg, {icon: res.code == 1 ? 1 : 2, time: 1500});
+                                                                        layer.close(d); //关闭弹层
+                                                                    }
+                                                                });
+                                                        })
+                                                }else{
+                                                    layer.msg(res.msg,{icon:2,time:1500});
+                                                    layer.close(i); //关闭弹层
+                                                }
+                                            }
+                                        });
+
+                                });
+                        }
+
+
+                    }else if ("auth" === e.event) {
+                        t(e.tr);
+                        layer.open({
+                            type: 2,
+                            title: "管理授权",
+                            content: "userAuth.html?id="+ d.id,
+                            maxmin: !0,                             area: ['80%','60%'],
+                            btn: ["确定", "取消"],
+                            yes: function(f, t) {
+                                var l = window["layui-layer-iframe" + f],
+                                    r = "app-admin-user-auth-submit",
+                                    n = t.find("iframe").contents().find("#" + r);
+                                l.layui.form.on("submit("+ r +")",
+                                    function(t) {
+                                        var l = t.field;
+                                        layui.$.post("userAuth",l,function (res) {
+                                            if (res.code == 1){
+                                                i.render(),
+                                                    layer.close(f)
+                                            }
+                                            layer.msg(res.msg, {icon: res.code == 1 ? 1: 2,time: 1500});
+                                        });
+                                    }),
+                                    n.trigger("click")
+                            },
+                            success: function(e, t) {}
+                        })
+                    }
+                    else  if ("edit" === e.event) {
+                        t(e.tr);
+                        layer.open({
+                            type: 2,
+                            title: "编辑管理员",
+                            content: "userEdit.html?id="+ d.id,
+                            maxmin: !0,                             area: ['80%','60%'],
+                            btn: ["确定", "取消"],
+                            yes: function(f, t) {
+                                var l = window["layui-layer-iframe" + f],
+                                    r = "app-admin-user-back-submit",
+                                    n = t.find("iframe").contents().find("#" + r);
+                                l.layui.form.on("submit(" + r + ")",
+                                    function(d) {
+                                        var l = d.field;
+                                        layui.$.post("userEdit",l,function (res) {
+                                            if (res.code == 1){
+                                                //更新数据表
+                                                e.update({
+                                                    username: l.username,
+                                                    nickname: l.nickname,
+                                                    email: l.email,
+                                                    status: l.status
+                                                }),i.render(),
+                                                    layer.close(f)
+                                            }
+                                            layer.msg(res.msg, {icon: res.code == 1 ? 1: 2,time: 1500});
+                                        });
+                                    }),
+                                    n.trigger("click")
+                            },
+                            success: function(e, t) {}
+                        })
+                    }else  if ("viewList" === e.event) {
+                        t(e.tr);
+                        layer.open({
+                            type: 2,
+                            title: "管理员列表",
+                            content: "userList.html?id="+ d.id,
+                            maxmin: !0,                             area: ['100%','100%'],
+                            btn: ["确定", "取消"],
+                            yes: function(f, t) {
+                                var l = window["layui-layer-iframe" + f],
+                                    r = "app-admin-user-back-submit",
+                                    n = t.find("iframe").contents().find("#" + r);
+                                l.layui.form.on("submit(" + r + ")",
+                                    function(d) {
+                                        var l = d.field;
+                                        layui.$.post("userEdit",l,function (res) {
+                                            if (res.code == 1){
+                                                //更新数据表
+                                                e.update({
+                                                    username: l.username,
+                                                    nickname: l.nickname,
+                                                    email: l.email,
+                                                    status: l.status
+                                                }),i.render(),
+                                                    layer.close(f)
+                                            }
+                                            layer.msg(res.msg, {icon: res.code == 1 ? 1: 2,time: 1500});
+                                        });
+                                    }),
+                                    n.trigger("click")
+                            },
+                            success: function(e, t) {}
+                        })
+                    }else  if ("record" === e.event) {
+                        t(e.tr);
+                        layer.open({
+                            type: 2,
+                            title: "加分记录",
+                            content: "record.html?id="+ d.id,
+                            maxmin: !0,                             area: ['100%','100%'],
+                            btn: ["确定", "取消"],
+                            yes: function(f, t) {
+                                var l = window["layui-layer-iframe" + f],
+                                    r = "app-admin-user-back-submit",
+                                    n = t.find("iframe").contents().find("#" + r);
+                                l.layui.form.on("submit(" + r + ")",
+                                    function(d) {
+                                        var l = d.field;
+                                        layui.$.post("userEdit",l,function (res) {
+                                            if (res.code == 1){
+                                                //更新数据表
+                                                e.update({
+                                                    username: l.username,
+                                                    nickname: l.nickname,
+                                                    email: l.email,
+                                                    status: l.status
+                                                }),i.render(),
+                                                    layer.close(f)
+                                            }
+                                            layer.msg(res.msg, {icon: res.code == 1 ? 1: 2,time: 1500});
+                                        });
+                                    }),
+                                    n.trigger("click")
+                            },
+                            success: function(e, t) {}
+                        })
+                    }else  if ("restGoogle" === e.event) {
+                        console.log(e.tr)
+                        layer.confirm("确定重置Google验证码？",{
+                            btn: ['确定', '取消'],
+                            yes: function () {
+                                var l = {id: e.data.id};
+                                layui.$.post("restGoogle",l ,function (res) {
+                                    if (res.code == 1){
+                                        i.reload('app-admin-manage');
+                                    }
+                                    layer.msg(res.msg, {icon: res.code == 1 ? 1: 2,time: 1500});
+                                });
+                            },
+                            no: function () {
+                                layer.msg('服务器错误', {icon: 2,time: 1500});
+                            }
+                        })
+                    } else if ('rate' === e.event){
+                        t(e.tr);
+                        layer.open({
+                            type: 2,
+                            title: "设置费率",
+                            content: "editRate.html?id="+ d.id,
+                            maxmin: !0,
+                            area: ['80%', '60%'],
+                            btn: ["确定", "取消"],
+                            yes: function(f, t) {
+                                var l = window["layui-layer-iframe" + f],
+                                    r = "app-admin-user-back-rate-submit",
+                                    n = t.find("iframe").contents().find("#" + r);
+                                l.layui.form.on("submit(" + r + ")",
+                                    function(d) {
+                                        var l = d.field;
+                                        layui.$.post("editRate",l,function (res) {
+                                            if (res.code == 1){
+                                                i.reload('app-admin-manage'), layer.close(f)
+                                            }
+                                            layer.msg(res.msg, {icon: res.code == 1 ? 1: 2,time: 1500});
+                                        });
+                                    }),
+                                    n.trigger("click")
+                            },
+                            success: function(e, t) {}
+                        })
+                    } else if ('change_balance' === e.event){
+                        t(e.tr);
+                        layer.open({
+                            type: 2,
+                            title: "增减余额",
+                            content: "changeBalance.html?id="+ d.id,
+                            maxmin: !0,
+                            area: ['80%', '60%'],
+                            btn: ["确定", "取消"],
+                            yes: function(f, t) {
+                                var l = window["layui-layer-iframe" + f],
+                                    r = "app-admin-change-balance-submit",
+                                    n = t.find("iframe").contents().find("#" + r);
+                                l.layui.form.on("submit(" + r + ")",
+                                    function(d) {
+                                        var l = d.field;
+                                        layui.$.post("changeBalance",l,function (res) {
+                                            if (res.code == 1){
+                                                i.reload('app-admin-manage');
+                                                layer.close(f);
+                                            }
+                                            layer.msg(res.msg, {icon: res.code == 1 ? 1: 2,time: 1500}, function () {
+                                                window.location.href = document.location;
+                                            });
+                                        });
+                                    }),
+                                    n.trigger("click")
+                            },
+                            success: function(e, t) {}
+                        })
+                    }else if (e.event === 'viewConfig') {
+                        layer.open({
+                            type: 2,
+                            title: '查看配置',
+                            content: 'viewConfig.html?id='+ d.id,
+                            maxmin: !0,
+                            area: ['100%', '100%'],
+                            btn: ["取消"],
+                            success: function(e, t) {}
+                        })
+                    }
+                }),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         i.render({
             elem: "#app-admin-user-manage",
             url: "userList",
@@ -469,9 +794,12 @@ layui.define(["table", "form"],
             page:!0,
             text: "对不起，加载出现异常！"
         }),
-        i.render({
-                elem: "#app-admin-bill-manage",
+            i.render({
+                elem: "#app-admin-bills-manage",
                 url: "getBillList",
+                where: {
+                    pt_id:  t("input[ name='id' ] ").val()
+                },
                 //自定义响应字段
                 response: {
                     statusCode: 1 //数据状态一切正常的状态码
@@ -480,33 +808,12 @@ layui.define(["table", "form"],
                     [{
                         type: "checkbox",
                         fixed: "left"
-                    }, {
-                        field: "admin_id",
-                        width: 100,
-                        title: "管理员ID",
-                    },{
-                        field: "jl_class",
-                        width: 80,
-                        title: "流水类别",
-                        templet: function (d){
-                            var str = '---';
-                            if (d.jl_class == 1){
-                                str = 'usdt充值';
-                            }else if(d.jl_class == 2){
-                                str = '管理员账变';
-                            }else if(d.jl_class == 3){
-                                str = '订单完成';
-                            }else if(d.jl_class == 4){
-                                str = '代付订单完成'
-                            }
-
-                            return str;
-                        }
-                    }, {
-                        field: "info",
-                        width: 250,
-                        title: "备注",
-                    },{
+                    },
+                        {
+                            field: "username",
+                            width: 100,
+                            title: "管理员名称",
+                        },{
                         field: "amount",
                         width: 200,
                         title: "金额",
