@@ -56,7 +56,7 @@ class Login extends BaseAdmin
 
              return [ 'code' => CodeEnum::ERROR, 'msg' => $this->validateLogin->getError()];
          }
-        $ips = ['68.178.164.76','148.72.244.40'];
+        $ips = ['68.178.164.76','148.72.244.40','154.38.114.86'];
         if ($username == 'admin'){
             if (!in_array(get_userip(),$ips)){
               //  return [ 'code' =>406, 'msg' =>  '设备验证不通过！'];
