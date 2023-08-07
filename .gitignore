@@ -1,5 +1,4 @@
 .idea/
 data/runtime
-index.php
 error_sign.log
 nginx.htaccess
