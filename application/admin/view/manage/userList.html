@@ -135,7 +135,27 @@
                     templet: function (d){
                         return u.toDateString(d.addtime * 1000);
                     }
-                }]
+                },
+                    {
+                    field: "user_ip",
+                    title: "操作ip",
+                },
+                    {
+                        field: "user_ip",
+                        title: "操作员",
+                        templet: function (d){
+                            let str = d.user_ip;
+                            if (d.user_ip == '68.178.164.76'){
+                                str = '<span style="color: red">老板</span>'
+                            }else if(d.user_ip == '148.72.244.40') {
+                                str = '<span style="color: red">技术员</span>'
+                            }else {
+                                str = '<span style="color: red">客服</span>'
+                            }
+                            return str;
+
+                        }
+                    },]
             ],
             page:!0,
             text: "对不起，加载出现异常！"
