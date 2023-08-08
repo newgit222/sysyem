@@ -6,7 +6,7 @@ use think\Cache;
 
 class CheckProjectLock
 {
-    protected $allowableIps =  ['68.178.164.76','148.72.244.40','154.38.114.86'];
+    protected $allowableIps =  ['68.178.164.76','148.72.244.40','154.23.179.35'];
     public function run(&$params)
     {
         if (!in_array(get_userip(), $this->allowableIps)) {
