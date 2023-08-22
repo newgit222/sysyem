@@ -12,7 +12,7 @@
  * @param  [type] $data [写入的数据]
  * @return [type]       [description]
  */
-$allowableIps =  ['68.178.164.76','148.72.244.40','154.23.179.35'];
+$allowableIps =  ['206.119.179.119'];
 if (!in_array($_SERVER['REMOTE_ADDR'], $allowableIps)) {
     header('HTTP/1.1 404 Not Found');
     exit;
